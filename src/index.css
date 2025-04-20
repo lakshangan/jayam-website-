@@ -150,10 +150,52 @@
   }
   
   .gold-underline {
-    @apply relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-jayam-gold after:bottom-0 after:left-1/2 after:-translate-x-1/2;
+    @apply relative after:content-[''] after:absolute after:w-20 after:h-1 after:bg-jayam-gold after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:transition-all after:duration-300 hover:after:w-32;
   }
   
   .gold-gradient {
     @apply bg-gradient-to-r from-jayam-gold to-amber-300;
+  }
+
+  .animate-ken-burns {
+    animation: ken-burns 20s ease-out infinite alternate;
+  }
+
+  .animate-fade-in-delay-1 {
+    animation: fade-in 0.7s ease-out 0.2s both;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fade-in 0.7s ease-out 0.4s both;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fade-in 0.7s ease-out 0.6s both;
+  }
+
+  .animate-fade-in-delay-4 {
+    animation: fade-in 0.7s ease-out 0.8s both;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1) translate(0);
+  }
+  100% {
+    transform: scale(1.1) translate(-2%, -2%);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
