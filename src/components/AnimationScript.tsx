@@ -16,7 +16,8 @@ const AnimationScript = () => {
                   const scrolled = window.scrollY;
                   const speed = entry.target.getAttribute('data-speed') || '0.1';
                   const yPos = -(scrolled * parseFloat(speed));
-                  entry.target.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                  // Fix: Cast the element to HTMLElement to access style property
+                  (entry.target as HTMLElement).style.transform = `translate3d(0, ${yPos}px, 0)`;
                 };
                 
                 window.addEventListener('scroll', handleParallax);
