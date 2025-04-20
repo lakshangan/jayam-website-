@@ -1,7 +1,6 @@
-
 import { useEffect } from 'react';
 import Hero from '@/components/Hero';
-import WhyChooseUs from '@/components/WhyChooseUs';
+import AboutInstitute from '@/components/AboutInstitute';
 import Courses from '@/components/Courses';
 import TailoringProgram from '@/components/TailoringProgram';
 import CampusLife from '@/components/CampusLife';
@@ -22,7 +21,7 @@ const Index = () => {
       <AnimationScript />
       <Navbar />
       <Hero />
-      <WhyChooseUs />
+      <AboutInstitute />
       <Courses />
       <TailoringProgram />
       <CampusLife />

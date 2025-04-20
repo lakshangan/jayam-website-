@@ -1,6 +1,5 @@
-
 import { useEffect, useRef } from 'react';
-import { Calendar, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 interface Course {
   id: number;
@@ -140,9 +139,9 @@ const Courses = () => {
     <section id="courses" className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="section-title gold-underline pb-4">Courses Offered</h2>
+          <h2 className="section-title gold-underline pb-4">Our Academic Programs</h2>
           <p className="section-subtitle">
-            Explore our diverse range of programs designed to help you achieve your educational and career goals
+            Discover our comprehensive range of programs designed for your academic and professional success
           </p>
         </div>
         
