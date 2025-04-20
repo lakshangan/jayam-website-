@@ -3,23 +3,36 @@ import { useEffect } from 'react';
 
 const AnimationScript = () => {
   useEffect(() => {
-    // Observer for animating elements when they scroll into view
     const animateOnScroll = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('active');
-              observer.unobserve(entry.target);
+              
+              // Add parallax effect to elements with parallax class
+              if (entry.target.classList.contains('parallax')) {
+                const handleParallax = () => {
+                  const scrolled = window.scrollY;
+                  const speed = entry.target.getAttribute('data-speed') || '0.1';
+                  const yPos = -(scrolled * parseFloat(speed));
+                  entry.target.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                };
+                
+                window.addEventListener('scroll', handleParallax);
+                return () => window.removeEventListener('scroll', handleParallax);
+              }
             }
           });
         },
-        { threshold: 0.1 }
+        { 
+          threshold: 0.1,
+          rootMargin: '50px'
+        }
       );
 
-      // Observe all elements with the animation class
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach((element) => {
+      // Observe elements with animation classes
+      document.querySelectorAll('.animate-on-scroll, .parallax').forEach((element) => {
         observer.observe(element);
       });
 
@@ -29,14 +42,13 @@ const AnimationScript = () => {
     const observer = animateOnScroll();
 
     return () => {
-      // Clean up the observer when component unmounts
-      document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+      document.querySelectorAll('.animate-on-scroll, .parallax').forEach((element) => {
         observer.unobserve(element);
       });
     };
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default AnimationScript;
