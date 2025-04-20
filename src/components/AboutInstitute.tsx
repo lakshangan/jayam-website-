@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Card, CardContent } from "./ui/card";
+import { Card } from "./ui/card";
 
 const AboutInstitute = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -30,28 +30,19 @@ const AboutInstitute = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="about" className="py-20 bg-gradient-to-b from-pink-50 to-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="section-title gold-underline pb-4">About The Institute</h2>
-          <p className="section-subtitle">
-            Excellence in Education, Leadership in Innovation
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div 
             ref={sectionRef}
-            className="opacity-0 translate-y-8 transition-all duration-700 hover:transform hover:scale-[1.02] transition-transform duration-500"
+            className="opacity-0 translate-y-8 transition-all duration-700"
           >
-            <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="p-0">
-                <img 
-                  src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                  alt="Jayam Institute Campus"
-                  className="w-full h-[400px] object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </CardContent>
+            <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white">
+              <img 
+                src="/lovable-uploads/78aa69bd-81da-42b8-bf5c-1a07a7291726.png"
+                alt="Sahaya Selvam - Founder of Jayam Fashion Institute"
+                className="w-full h-auto object-cover"
+              />
             </Card>
           </div>
 
@@ -59,14 +50,24 @@ const AboutInstitute = () => {
             ref={sectionRef}
             className="opacity-0 translate-y-8 transition-all duration-700 delay-200 space-y-6"
           >
-            <p className="text-gray-700 leading-relaxed animate-slide-up">
-              Founded with a vision to provide quality education, Jayam Institute has emerged as a leading educational institution committed to academic excellence and holistic development. Our state-of-the-art campus provides an inspiring environment for learning and growth.
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              About Us - Jayam Fashion Institute
+            </h2>
+            
+            <p className="text-gray-800 leading-relaxed text-lg">
+              Welcome to Jayam Fashion Institution, where passion meets craftsmanship. Led by Sahaya Selvam, a visionary with over 22 years of experience in tailoring and fashion, Jayam Fashion Institution is dedicated to providing top-tier education and practical skills in the fields of fashion, tailoring, and beauty.
             </p>
-            <p className="text-gray-700 leading-relaxed animate-slide-up delay-100">
-              We take pride in our comprehensive curriculum that combines theoretical knowledge with practical skills, preparing students for successful careers in their chosen fields. Our experienced faculty members bring their industry expertise to the classroom, ensuring that our students receive the best possible education.
+
+            <p className="text-gray-800 leading-relaxed text-lg">
+              Our institution offers a range of specialized courses, including fashion design, tailoring, beauty therapy, and personal grooming, all with government-recognized certifications. We are proud to be affiliated with the National Skill Development Corporation (NSDC), ensuring that our students receive industry-relevant, quality education.
             </p>
-            <p className="text-gray-700 leading-relaxed animate-slide-up delay-200">
-              At Jayam Institute, we believe in nurturing not just academic excellence but also fostering leadership qualities, creativity, and innovation among our students. Our diverse range of programs across various disciplines reflects our commitment to providing comprehensive education that meets the demands of today's dynamic professional landscape.
+
+            <p className="text-gray-800 leading-relaxed text-lg">
+              At Jayam, we believe in empowering our students with the skills and confidence they need to succeed in the dynamic world of fashion and beauty. Whether you're interested in becoming a fashion designer, tailoring expert, or beautician, Jayam Fashion Institution is here to guide you every step of the way.
+            </p>
+
+            <p className="text-gray-800 leading-relaxed text-lg font-medium">
+              Join us and take the first step toward a successful career in fashion and beauty.
             </p>
           </div>
         </div>
