@@ -1,82 +1,6 @@
 
 import { useEffect, useRef } from 'react';
 
-interface TestimonialProps {
-  quote: string;
-  author: string;
-  role: string;
-  image: string;
-}
-
-const testimonials: TestimonialProps[] = [
-  {
-    quote: "The tailoring program at Jayam Institute gave me the skills and confidence to start my own fashion business. The hands-on training was invaluable.",
-    author: "Priya Sharma",
-    role: "Fashion Entrepreneur, Batch of 2020",
-    image: "https://randomuser.me/api/portraits/women/32.jpg"
-  },
-  {
-    quote: "I learned not just the technical aspects of tailoring, but also the business side of fashion. The industry connections I made through Jayam helped me secure a job immediately after graduation.",
-    author: "Rajiv Mehta",
-    role: "Senior Designer at Fashion House, Batch of 2018",
-    image: "https://randomuser.me/api/portraits/men/47.jpg"
-  },
-  {
-    quote: "The faculty's industry experience and personalized guidance helped me develop my unique style. Jayam's tailoring program is truly world-class.",
-    author: "Ananya Patel",
-    role: "Costume Designer, Batch of 2019",
-    image: "https://randomuser.me/api/portraits/women/65.jpg"
-  }
-];
-
-const Testimonial = ({ quote, author, role, image }: TestimonialProps) => {
-  const testimonialRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (testimonialRef.current) {
-      observer.observe(testimonialRef.current);
-    }
-
-    return () => {
-      if (testimonialRef.current) {
-        observer.unobserve(testimonialRef.current);
-      }
-    };
-  }, []);
-
-  return (
-    <div 
-      ref={testimonialRef}
-      className="bg-white p-6 rounded-lg shadow-md opacity-0 translate-y-8 transition-all duration-700"
-    >
-      <div className="flex items-center mb-4">
-        <img 
-          src={image} 
-          alt={author} 
-          className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-jayam-gold"
-        />
-        <div>
-          <h4 className="font-bold text-jayam-blue">{author}</h4>
-          <p className="text-gray-600 text-sm">{role}</p>
-        </div>
-      </div>
-      <p className="text-gray-700 italic">{quote}</p>
-    </div>
-  );
-};
-
 const TailoringProgram = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -99,26 +23,17 @@ const TailoringProgram = () => {
       { threshold: 0.1 }
     );
 
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
-
-    if (contentRef.current) {
-      observer.observe(contentRef.current);
-    }
+    if (imageRef.current) observer.observe(imageRef.current);
+    if (contentRef.current) observer.observe(contentRef.current);
 
     return () => {
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
-      if (contentRef.current) {
-        observer.unobserve(contentRef.current);
-      }
+      if (imageRef.current) observer.unobserve(imageRef.current);
+      if (contentRef.current) observer.unobserve(contentRef.current);
     };
   }, []);
 
   return (
-    <section id="tailoring" className="py-20 bg-gray-50" ref={sectionRef}>
+    <section id="tailoring" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50" ref={sectionRef}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="section-title gold-underline pb-4">Tailoring Program</h2>
@@ -146,16 +61,14 @@ const TailoringProgram = () => {
           
           <div 
             ref={contentRef}
-            className="opacity-0 translate-x-8 transition-all duration-700 ease-out"
+            className="opacity-0 translate-x-8 transition-all duration-700 ease-out space-y-6"
           >
             <h3 className="text-2xl font-bold mb-4 text-jayam-blue">A Legacy of Craftsmanship</h3>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700">
               For over 25 years, Jayam Institute has been at the forefront of tailoring education, 
-              blending traditional craftsmanship with cutting-edge design techniques. Our tailoring 
-              program is designed to equip students with the skills needed to excel in the 
-              dynamic world of fashion and design.
+              blending traditional craftsmanship with cutting-edge design techniques.
             </p>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700">
               Students in our tailoring program benefit from state-of-the-art facilities, 
               industry-experienced faculty, and hands-on training that prepares them for 
               successful careers in fashion design, costume creation, and entrepreneurship.
@@ -163,13 +76,24 @@ const TailoringProgram = () => {
             <button className="btn-gold">Join Tailoring Course</button>
           </div>
         </div>
-        
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-jayam-blue">What Our Graduates Say</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Testimonial key={index} {...testimonial} />
-            ))}
+
+        <div className="mt-16 py-12 bg-gradient-to-r from-purple-900 to-pink-900 rounded-2xl shadow-xl">
+          <div className="text-center space-y-8">
+            <div className="flex justify-center items-center gap-8 flex-wrap px-4">
+              <img 
+                src="/lovable-uploads/fde4ba77-c46f-4828-9cc3-87e19b36dcd8.png" 
+                alt="NSDC Affiliations" 
+                className="max-w-full h-auto"
+              />
+            </div>
+            <div className="space-y-4 text-white px-4">
+              <h3 className="text-3xl font-bold animate-fade-in-delay-1">LET'S SKILL UP TOGETHER!</h3>
+              <div className="space-y-2 text-lg animate-fade-in-delay-2">
+                <p>Visit us at: <a href="https://hopestrc.com" className="text-jayam-gold hover:underline">HTTPS://HOPESTRC.COM</a></p>
+                <p>Contact: 8015270029 / 7397681673</p>
+                <p>HSTRC.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

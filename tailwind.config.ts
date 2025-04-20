@@ -63,10 +63,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				jayam: {
-					blue: '#0a2463',
-					gold: '#e6b55c',
-					'light-blue': '#3e92cc',
-					'off-white': '#f8f8f8',
+					blue: '#4F46E5',
+					gold: '#F59E0B',
+					'light-blue': '#60A5FA',
+					'off-white': '#F8FAFC',
 				}
 			},
 			fontFamily: {
@@ -147,7 +147,8 @@ export default {
 			},
 			backgroundImage: {
 				'hero-pattern': "url('https://images.unsplash.com/photo-1524230572899-a752b3835840?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')",
-				'gold-gradient': 'linear-gradient(135deg, #e6b55c 0%, #f0c57a 100%)',
+				'gold-gradient': 'linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)',
+				'purple-gradient': 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)',
 			}
 		}
 	},
