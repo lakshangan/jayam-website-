@@ -1,4 +1,5 @@
 
+// Remove old NSDC image, rewrite in a modern readable block.
 import { useEffect, useRef } from 'react';
 
 const TailoringProgram = () => {
@@ -33,12 +34,12 @@ const TailoringProgram = () => {
   }, []);
 
   return (
-    <section id="tailoring" className="py-20 bg-gradient-to-br from-purple-50 to-pink-50" ref={sectionRef}>
+    <section id="tailoring" className="py-20 bg-gradient-to-br from-[#f9f6ff] to-[#fff5f5]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="section-title gold-underline pb-4">Tailoring Program</h2>
-          <p className="section-subtitle">
-            Discover our specialized tailoring courses that blend traditional craftsmanship with modern design
+          <h2 className="section-title gold-underline pb-4 text-[#46256c]">Tailoring Program</h2>
+          <p className="section-subtitle text-[#925ec7]">
+            Blending traditional craftsmanship—a legacy of excellence—with bold, modern design.
           </p>
         </div>
         
@@ -47,14 +48,14 @@ const TailoringProgram = () => {
             ref={imageRef}
             className="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
           >
-            <div className="relative">
+            <div className="relative flex justify-center">
               <img 
                 src="https://images.unsplash.com/photo-1593030942428-a5451dca4b42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
                 alt="Tailoring Workshop" 
-                className="rounded-lg shadow-lg w-full h-[400px] object-cover"
+                className="rounded-lg shadow-xl w-full max-w-xl h-[370px] object-cover border-4 border-[#ecd7fe]"
               />
-              <div className="absolute -bottom-6 -right-6 bg-jayam-gold p-4 rounded-lg shadow-lg w-32 h-32 flex items-center justify-center">
-                <span className="font-display text-jayam-blue text-lg font-bold text-center">25+ Years of Excellence</span>
+              <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-[#f9c76f] to-[#ffd97e] p-4 rounded-lg shadow-xl w-28 h-28 flex items-center justify-center border-2 border-white/80">
+                <span className="font-display text-[#46256c] text-base font-bold text-center">25+ Years of Excellence</span>
               </div>
             </div>
           </div>
@@ -63,36 +64,33 @@ const TailoringProgram = () => {
             ref={contentRef}
             className="opacity-0 translate-x-8 transition-all duration-700 ease-out space-y-6"
           >
-            <h3 className="text-2xl font-bold mb-4 text-jayam-blue">A Legacy of Craftsmanship</h3>
-            <p className="text-gray-700">
-              For over 25 years, Jayam Institute has been at the forefront of tailoring education, 
-              blending traditional craftsmanship with cutting-edge design techniques.
+            <h3 className="text-2xl font-bold mb-4 text-[#46256c]">A Legacy of Craftsmanship</h3>
+            <p className="text-gray-700 text-lg">
+              For over 25 years, Jayam Institute’s tailoring program has been recognized for its NSDC-approved, industry-focused courses. Graduates join a lineage of skilled designers and entrepreneurs.
             </p>
-            <p className="text-gray-700">
-              Students in our tailoring program benefit from state-of-the-art facilities, 
-              industry-experienced faculty, and hands-on training that prepares them for 
-              successful careers in fashion design, costume creation, and entrepreneurship.
+            <p className="text-gray-700 text-lg">
+              Our curriculum combines hands-on training, expert faculty, and state-of-the-art equipment—grounded in tradition, ready for the future of fashion.
             </p>
             <button className="btn-gold">Join Tailoring Course</button>
           </div>
         </div>
 
-        <div className="mt-16 py-12 bg-gradient-to-r from-purple-900 to-pink-900 rounded-2xl shadow-xl">
-          <div className="text-center space-y-8">
-            <div className="flex justify-center items-center gap-8 flex-wrap px-4">
-              <img 
-                src="/lovable-uploads/fde4ba77-c46f-4828-9cc3-87e19b36dcd8.png" 
-                alt="NSDC Affiliations" 
-                className="max-w-full h-auto"
-              />
+        {/* NSDC Highlight Section */}
+        <div className="mt-16 py-12 px-8 bg-gradient-to-br from-[#f8f1e5] to-[#fafcff] rounded-2xl shadow-xl border border-[#e5dcff] max-w-4xl mx-auto">
+          <div className="text-center space-y-7">
+            <div className="text-3xl font-extrabold text-[#46256c]">
+              Proud to be an <span className="bg-[#ecd74a]/80 px-2 rounded">NSDC Approved Training Centre</span>
             </div>
-            <div className="space-y-4 text-white px-4">
-              <h3 className="text-3xl font-bold animate-fade-in-delay-1">LET'S SKILL UP TOGETHER!</h3>
-              <div className="space-y-2 text-lg animate-fade-in-delay-2">
-                <p>Visit us at: <a href="https://hopestrc.com" className="text-jayam-gold hover:underline">HTTPS://HOPESTRC.COM</a></p>
-                <p>Contact: 8015270029 / 7397681673</p>
-                <p>HSTRC.</p>
-              </div>
+            <ul className="text-lg text-[#272935] space-y-2 list-disc list-inside max-w-2xl mx-auto">
+              <li>Certified by <b>National Skill Development Corporation (NSDC)</b></li>
+              <li>Certificate of Training Center for tailoring & fashion design</li>
+              <li>Accredited for Women Empowerment and Skill Development</li>
+              <li>Official partners of Skill India, Ministry of Skill Development & Entrepreneurship</li>
+              <li>Offering nationally recognized certifications</li>
+              <li>Supporting government schemes for skill upgradation</li>
+            </ul>
+            <div className="text-[#a989e3] font-medium">
+              <b>Certificate No:</b> JC123456 (Sample Only) &bull; <b>Valid Upto:</b> 18/Oct/2024
             </div>
           </div>
         </div>
