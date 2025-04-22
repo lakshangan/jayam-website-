@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { GraduationCap, Heart, Users } from 'lucide-react';
+import { GraduationCap, Users, Heart } from 'lucide-react';
 
 const AboutJayam = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,6 @@ const AboutJayam = () => {
 
   return (
     <section id="about-jayam" className="py-20 relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#f3e8ff] via-[#ede9fe] to-[#faf5ff] opacity-50"></div>
       <div className="absolute inset-0 bg-[url('/path/to/pattern.png')] opacity-5"></div>
       
@@ -50,13 +49,13 @@ const AboutJayam = () => {
         <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
           <div 
             ref={imageRef} 
-            className="opacity-0 translate-x-[-100px] transition-all duration-1000 max-w-md"
+            className="opacity-0 translate-x-[-100px] transition-all duration-1000 max-w-md w-full"
           >
-            <div className="relative">
+            <div className="relative mx-auto max-w-md">
               <img
                 src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
                 alt="Founder"
-                className="rounded-lg shadow-2xl relative z-10 transform hover:scale-105 transition-transform duration-500 mx-auto"
+                className="rounded-lg shadow-2xl relative z-10 transform hover:scale-105 transition-transform duration-500 w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#ecd74a]/20 to-[#46256c]/20 rounded-lg z-0 blur-xl"></div>
             </div>
@@ -64,10 +63,10 @@ const AboutJayam = () => {
 
           <div 
             ref={contentRef}
-            className="opacity-0 translate-x-[100px] transition-all duration-1000 max-w-2xl"
+            className="opacity-0 translate-x-[100px] transition-all duration-1000 max-w-2xl w-full"
           >
-            <div className="prose prose-lg max-w-none">
-              <h3 className="text-2xl font-bold text-[#46256c] mb-6 text-center lg:text-left">Our Legacy of Excellence</h3>
+            <div className="prose prose-lg max-w-none text-center lg:text-left">
+              <h3 className="text-2xl font-bold text-[#46256c] mb-6">Our Legacy of Excellence</h3>
               <p className="text-gray-700 mb-6">
                 Founded with a vision to empower individuals through quality education in fashion and design, 
                 Jayam Institute has been at the forefront of creative education for over two decades. Our 
@@ -79,18 +78,18 @@ const AboutJayam = () => {
                 modern design techniques, preparing our students for successful careers in the fashion industry.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 justify-center">
+                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300 max-w-xs mx-auto">
                   <GraduationCap className="w-8 h-8 text-[#46256c] mb-4 mx-auto" />
                   <h4 className="font-bold text-[#46256c] text-center">Expert Faculty</h4>
                   <p className="text-sm text-gray-600 text-center">Industry professionals with decades of experience</p>
                 </div>
-                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300 max-w-xs mx-auto">
                   <Users className="w-8 h-8 text-[#46256c] mb-4 mx-auto" />
                   <h4 className="font-bold text-[#46256c] text-center">5000+ Alumni</h4>
                   <p className="text-sm text-gray-600 text-center">Successful graduates across the country</p>
                 </div>
-                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300">
+                <div className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300 max-w-xs mx-auto">
                   <Heart className="w-8 h-8 text-[#46256c] mb-4 mx-auto" />
                   <h4 className="font-bold text-[#46256c] text-center">Passionate Teaching</h4>
                   <p className="text-sm text-gray-600 text-center">Dedicated to student success</p>
@@ -105,3 +104,4 @@ const AboutJayam = () => {
 };
 
 export default AboutJayam;
+
