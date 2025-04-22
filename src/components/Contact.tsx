@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
@@ -38,7 +37,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-gradient-to-b from-[#f9f6ff] to-[#e8d7ff]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="section-title gold-underline pb-4">Contact & Inquiry</h2>
@@ -145,7 +144,7 @@ const Contact = () => {
               className="bg-white rounded-lg shadow-lg overflow-hidden h-64 opacity-0 translate-x-8 transition-all duration-700"
             >
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3512026490246!2d80.2512368!3d13.0105758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266ea218f1b6b%3A0x5ecf37426dd3db8e!2sChennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1619012385945!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3937.6290742069766!2d78.13645731478558!3d8.763776993697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03ef3a8a7a3c29%3A0x9f7a6923f627f9f9!2s3A%2F7E%2C%207th%20St%2C%20Sundaravelpuram%20West%2C%20Thalamuthu%20Nagar%2C%20Thoothukudi%2C%20Tamil%20Nadu%20628002!5e0!3m2!1sen!2sin!4v1629789456789!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -157,18 +156,18 @@ const Contact = () => {
             
             <div 
               ref={infoRef}
-              className="bg-white p-6 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700"
+              className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700"
             >
               <h3 className="text-xl font-bold mb-6 text-jayam-blue">Contact Information</h3>
               
               <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-full bg-jayam-blue/10 flex items-center justify-center mr-4 flex-shrink-0">
+                <div className="flex items-start group hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 rounded-full bg-jayam-blue/10 flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-jayam-blue/20">
                     <MapPin className="text-jayam-blue" size={20} />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-700">Address</h4>
-                    <p className="text-gray-600">123 Education Street, Chennai, Tamil Nadu, India - 600001</p>
+                    <p className="text-gray-600">3A/7E, 7th St, Sundaravelpuram West, Thalamuthu Nagar, Thoothukudi, Tamil Nadu 628002</p>
                   </div>
                 </div>
                 
