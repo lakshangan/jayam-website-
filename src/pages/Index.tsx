@@ -6,7 +6,6 @@ import AboutJayam from '@/components/AboutJayam';
 import Courses from '@/components/Courses';
 import TailoringProgram from '@/components/TailoringProgram';
 import CampusLife from '@/components/CampusLife';
-import OurLegacy from '@/components/OurLegacy';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -28,7 +27,6 @@ const Index = () => {
       <Courses />
       <TailoringProgram />
       <CampusLife />
-      <OurLegacy />
       <Contact />
       <Footer />
       <ScrollToTop />
