@@ -1,10 +1,86 @@
-import { useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+
+import { useEffect, useRef, useState } from 'react';
+import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useToast } from '@/hooks/use-toast';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+
+// Form schema using Zod for validation
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
+  email: z.string().email({ message: 'Please enter a valid email address' }),
+  phone: z.string().optional(),
+  program: z.string().min(1, { message: 'Please select a program' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const formRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  // Form setup with React Hook Form and Zod validation
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      program: '',
+      message: '',
+    },
+  });
+
+  // Handle form submission
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    console.log('Form data submitted:', data);
+    
+    try {
+      // Simulate API call with timeout
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      // In a real implementation, you would send the data to your backend/API
+      // const response = await fetch('your-api-endpoint', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // });
+      
+      // Show success message
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      // Reset the form
+      form.reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        variant: "destructive",
+        title: "Submission failed",
+        description: "Please try again later or contact us directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,99 +125,137 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
           <div 
             ref={formRef}
-            className="bg-white p-8 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700"
+            className="bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700 border border-white/20 hover:shadow-xl hover:border-white/30 transition-all"
           >
             <h3 className="text-2xl font-bold mb-6 text-jayam-blue">Send us a Message</h3>
             
-            <form>
-              <div className="mb-4 relative">
-                <input 
-                  type="text" 
-                  id="name" 
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all peer"
-                  placeholder=" "
-                  required
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Your Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your full name" 
+                          {...field} 
+                          className="border-gray-300 focus:border-jayam-blue focus:ring-jayam-blue/30"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <label 
-                  htmlFor="name" 
-                  className="absolute left-3 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:-top-3 peer-focus:left-3 peer-focus:text-sm peer-focus:text-jayam-blue peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-3 peer-focus:-top-3"
-                >
-                  Your Name
-                </label>
-              </div>
-              
-              <div className="mb-4 relative">
-                <input 
-                  type="email" 
-                  id="email" 
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all peer"
-                  placeholder=" "
-                  required
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Email Address</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email" 
+                          placeholder="Enter your email address" 
+                          {...field} 
+                          className="border-gray-300 focus:border-jayam-blue focus:ring-jayam-blue/30"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <label 
-                  htmlFor="email" 
-                  className="absolute left-3 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:-top-3 peer-focus:left-3 peer-focus:text-sm peer-focus:text-jayam-blue peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-3 peer-focus:-top-3"
-                >
-                  Email Address
-                </label>
-              </div>
-              
-              <div className="mb-4 relative">
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all peer"
-                  placeholder=" "
+                
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Phone Number (Optional)</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="tel" 
+                          placeholder="Enter your phone number" 
+                          {...field} 
+                          className="border-gray-300 focus:border-jayam-blue focus:ring-jayam-blue/30"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                <label 
-                  htmlFor="phone" 
-                  className="absolute left-3 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:-top-3 peer-focus:left-3 peer-focus:text-sm peer-focus:text-jayam-blue peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-3 peer-focus:-top-3"
+                
+                <FormField
+                  control={form.control}
+                  name="program"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Program of Interest</FormLabel>
+                      <FormControl>
+                        <select 
+                          {...field} 
+                          className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all appearance-none bg-white"
+                        >
+                          <option value="" disabled>Select a Program</option>
+                          <option value="engineering">Engineering</option>
+                          <option value="computer-science">Computer Science</option>
+                          <option value="management">Management</option>
+                          <option value="arts">Arts</option>
+                          <option value="science">Science</option>
+                          <option value="tailoring">Tailoring</option>
+                        </select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700">Your Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Type your message here" 
+                          {...field} 
+                          rows={4} 
+                          className="border-gray-300 focus:border-jayam-blue focus:ring-jayam-blue/30"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center gap-2 h-12 group overflow-hidden relative"
                 >
-                  Phone Number
-                </label>
-              </div>
-              
-              <div className="mb-4 relative">
-                <select 
-                  id="program" 
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all appearance-none"
-                >
-                  <option value="" disabled selected>Select a Program</option>
-                  <option value="engineering">Engineering</option>
-                  <option value="computer-science">Computer Science</option>
-                  <option value="management">Management</option>
-                  <option value="arts">Arts</option>
-                  <option value="science">Science</option>
-                  <option value="tailoring">Tailoring</option>
-                </select>
-              </div>
-              
-              <div className="mb-6 relative">
-                <textarea 
-                  id="message" 
-                  rows={4} 
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-jayam-blue/50 transition-all peer"
-                  placeholder=" "
-                  required
-                ></textarea>
-                <label 
-                  htmlFor="message" 
-                  className="absolute left-3 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-focus:-top-3 peer-focus:left-3 peer-focus:text-sm peer-focus:text-jayam-blue peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-3 peer-focus:-top-3"
-                >
-                  Your Message
-                </label>
-              </div>
-              
-              <button type="submit" className="btn-primary w-full">
-                Send Message
-              </button>
-            </form>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
+                      <span className="relative">Send Message</span>
+                    </>
+                  )}
+                </button>
+              </form>
+            </Form>
           </div>
           
           <div className="flex flex-col gap-8">
             <div 
               ref={mapRef}
-              className="bg-white rounded-lg shadow-lg overflow-hidden h-64 opacity-0 translate-x-8 transition-all duration-700"
+              className="bg-white/80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-64 opacity-0 translate-x-8 transition-all duration-700 border border-white/20 hover:shadow-xl hover:border-white/30"
             >
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3937.6290742069766!2d78.13645731478558!3d8.763776993697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03ef3a8a7a3c29%3A0x9f7a6923f627f9f9!2s3A%2F7E%2C%207th%20St%2C%20Sundaravelpuram%20West%2C%20Thalamuthu%20Nagar%2C%20Thoothukudi%2C%20Tamil%20Nadu%20628002!5e0!3m2!1sen!2sin!4v1629789456789!5m2!1sen!2sin" 
@@ -156,7 +270,7 @@ const Contact = () => {
             
             <div 
               ref={infoRef}
-              className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700"
+              className="bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700 border border-white/20 hover:shadow-xl hover:border-white/30"
             >
               <h3 className="text-xl font-bold mb-6 text-jayam-blue">Contact Information</h3>
               
