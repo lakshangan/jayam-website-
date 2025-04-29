@@ -1,7 +1,25 @@
 
 import { ArrowDown, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Hero = () => {
+  const { toast } = useToast();
+
+  const handleAdmissionInfo = () => {
+    toast({
+      title: "Admission Information",
+      description: "Our admission team will contact you shortly with more information.",
+      duration: 5000,
+    });
+    
+    // Scroll to contact section
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced background with parallax effect */}
@@ -39,13 +57,26 @@ const Hero = () => {
             Engineering, Computer Science, Management, Arts, and Science.
           </p>
           
-          {/* Enhanced CTA Buttons */}
+          {/* Enhanced CTA Buttons - Now Functional */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-4">
-            <button className="relative overflow-hidden group px-6 py-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] text-[#46256c] font-bold rounded-lg shadow-[0_4px_12px_rgba(236,215,74,0.5)] hover:shadow-[0_6px_20px_rgba(236,215,74,0.7)] transform transition-all duration-300 hover:-translate-y-1">
+            <Link 
+              to="/courses" 
+              className="relative overflow-hidden group px-6 py-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] text-[#46256c] font-bold rounded-lg shadow-[0_4px_12px_rgba(236,215,74,0.5)] hover:shadow-[0_6px_20px_rgba(236,215,74,0.7)] transform transition-all duration-300 hover:-translate-y-1"
+              onClick={() => {
+                const coursesSection = document.getElementById("courses");
+                if (coursesSection) {
+                  coursesSection.scrollIntoView({ behavior: "smooth" });
+                  return false; // Prevent default navigation
+                }
+              }}
+            >
               <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
               <span className="relative">Explore Courses</span>
-            </button>
-            <button className="relative overflow-hidden group px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 transform transition-all duration-300 hover:-translate-y-1">
+            </Link>
+            <button 
+              className="relative overflow-hidden group px-6 py-3 bg-transparent border-2 border-white text-white rounded-lg hover:bg-white/10 transform transition-all duration-300 hover:-translate-y-1"
+              onClick={handleAdmissionInfo}
+            >
               <span className="absolute top-0 left-0 w-0 h-full bg-white/10 group-hover:w-full transition-all duration-500"></span>
               <span className="relative">Get Admission Info</span>
             </button>

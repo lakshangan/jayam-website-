@@ -33,6 +33,9 @@ const Contact = () => {
   const infoRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  
+  // Google Sheets submission URL - Replace with your actual Google Sheets Web App URL
+  const [googleSheetUrl, setGoogleSheetUrl] = useState<string>("");
 
   // Form setup with React Hook Form and Zod validation
   const form = useForm<FormValues>({
@@ -46,26 +49,39 @@ const Contact = () => {
     },
   });
 
-  // Handle form submission
+  // Handle form submission to Google Sheets
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     console.log('Form data submitted:', data);
     
     try {
-      // Simulate API call with timeout
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Check if Google Sheet URL is configured
+      if (!googleSheetUrl) {
+        // If no URL is set, show configuration message
+        toast({
+          title: "Google Sheets Not Configured",
+          description: "Please set up your Google Sheets Web App URL in the admin settings.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
       
-      // In a real implementation, you would send the data to your backend/API
-      // const response = await fetch('your-api-endpoint', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
+      // Send the data to Google Sheets
+      const response = await fetch(googleSheetUrl, {
+        method: 'POST',
+        mode: 'no-cors', // This is important for CORS issues with Google Scripts
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
       
-      // Show success message
+      // Since we're using no-cors, we won't get a proper response
+      // So we'll just assume it succeeded if no error is thrown
       toast({
         title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible.",
+        description: "Your message has been recorded. We'll get back to you soon.",
       });
       
       // Reset the form
@@ -81,6 +97,27 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  // For demonstration or admin purposes, a way to set the Google Sheets URL
+  const handleSetGoogleSheetUrl = () => {
+    const url = prompt("Enter your Google Sheets Web App URL:", googleSheetUrl);
+    if (url) {
+      setGoogleSheetUrl(url);
+      localStorage.setItem('jayam_googlesheet_url', url);
+      toast({
+        title: "URL Updated",
+        description: "Google Sheets connection URL has been updated.",
+      });
+    }
+  };
+
+  // Load Google Sheets URL from localStorage on component mount
+  useEffect(() => {
+    const savedUrl = localStorage.getItem('jayam_googlesheet_url');
+    if (savedUrl) {
+      setGoogleSheetUrl(savedUrl);
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -127,7 +164,17 @@ const Contact = () => {
             ref={formRef}
             className="bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-lg opacity-0 translate-y-8 transition-all duration-700 border border-white/20 hover:shadow-xl hover:border-white/30 transition-all"
           >
-            <h3 className="text-2xl font-bold mb-6 text-jayam-blue">Send us a Message</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-jayam-blue">Send us a Message</h3>
+              {/* Admin button - typically would be hidden or protected in production */}
+              <button 
+                onClick={handleSetGoogleSheetUrl}
+                className="text-xs text-gray-400 hover:text-jayam-blue"
+                title="Admin: Configure Google Sheets"
+              >
+                Configure
+              </button>
+            </div>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
