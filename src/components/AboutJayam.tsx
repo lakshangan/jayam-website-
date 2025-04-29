@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { GraduationCap, Users, Heart } from 'lucide-react';
+import { GraduationCap, Users, Heart, Award, Sparkles } from 'lucide-react';
 
 const AboutJayam = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -37,53 +37,68 @@ const AboutJayam = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#f3e8ff] via-[#ede9fe] to-[#faf5ff]">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#46256c] mb-4 font-display opacity-0 translate-y-4 transition-all duration-700 ease-out"
+    <section ref={sectionRef} className="py-20 md:py-28 relative overflow-hidden">
+      {/* Premium background with decorative elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#f6f0ff] via-[#f3ebff] to-[#faf5ff] -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-5">
+        <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ecd74a]/10 rounded-full blur-3xl animate-pulse-soft"></div>
+        <div className="absolute top-1/4 -left-24 w-72 h-72 bg-[#46256c]/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[#ecd74a]/10 rounded-full blur-3xl animate-pulse-soft"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 rounded-full bg-[#46256c]/10 text-[#46256c] font-medium text-sm mb-4 animate-fade-in">
+            <Sparkles className="inline-block w-4 h-4 mr-2" /> Our Story
+          </span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#46256c] mb-6 font-display opacity-0 translate-y-4 transition-all duration-700 ease-out"
               ref={(el) => textRefs.current[0] = el}>
             About Jayam Institute
           </h2>
-          <div className="w-24 h-1 bg-[#ecd74a] mx-auto"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-start max-w-7xl mx-auto">
-          {/* Image Column */}
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-16 items-center max-w-7xl mx-auto">
+          {/* Image Column with premium styling */}
           <div ref={imageRef} 
                className="lg:col-span-5 opacity-0 -translate-x-8 transition-all duration-1000 ease-out">
-            <div className="relative">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#ecd74a]/20 to-[#46256c]/20 rounded-xl blur-lg transform group-hover:scale-105 transition-all duration-500"></div>
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-[#ecd74a] to-[#46256c] rounded-xl blur opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
               <img
                 src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
                 alt="Founder"
-                className="rounded-lg shadow-2xl relative z-10 w-full object-cover aspect-[3/4] transition-transform duration-500 hover:scale-105"
+                className="rounded-xl shadow-2xl relative z-10 w-full object-cover aspect-[3/4] transition-all duration-500 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#ecd74a]/20 to-[#46256c]/20 rounded-lg z-0 blur-xl"></div>
+              <div className="absolute top-3 left-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] rounded-full p-3 shadow-lg z-20 transform -translate-x-4 -translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500">
+                <Award className="w-6 h-6 text-[#46256c]" />
+              </div>
             </div>
           </div>
 
-          {/* Content Column */}
+          {/* Content Column with enhanced typography */}
           <div ref={contentRef}
                className="lg:col-span-7 opacity-0 translate-x-8 transition-all duration-1000 ease-out">
             <div className="prose prose-lg max-w-none">
-              <h3 className="text-2xl md:text-3xl font-bold text-[#46256c] mb-6"
+              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#46256c] to-[#7c43a8] bg-clip-text text-transparent mb-6"
                   ref={(el) => textRefs.current[1] = el}>
                 Our Legacy of Excellence
               </h3>
-              <p className="text-base md:text-lg text-gray-700 mb-6 opacity-0 translate-y-4 transition-all duration-700 delay-100"
+              <p className="text-lg md:text-xl text-gray-700 mb-6 opacity-0 translate-y-4 transition-all duration-700 delay-100 leading-relaxed"
                  ref={(el) => textRefs.current[2] = el}>
                 Founded with a vision to empower individuals through quality education in fashion and design, 
                 Jayam Institute has been at the forefront of creative education for over two decades. Our 
                 institution stands as a beacon of innovation and excellence in the field of fashion design 
                 and tailoring education.
               </p>
-              <p className="text-base md:text-lg text-gray-700 mb-8 opacity-0 translate-y-4 transition-all duration-700 delay-200"
+              <p className="text-lg md:text-xl text-gray-700 mb-10 opacity-0 translate-y-4 transition-all duration-700 delay-200 leading-relaxed"
                  ref={(el) => textRefs.current[3] = el}>
                 We take pride in our comprehensive curriculum that blends traditional craftsmanship with 
                 modern design techniques, preparing our students for successful careers in the fashion industry.
               </p>
 
-              {/* Feature Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Feature Cards with enhanced styling and animations */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
                   {
                     icon: <GraduationCap className="w-10 h-10 text-[#46256c]" />,
@@ -103,13 +118,17 @@ const AboutJayam = () => {
                 ].map((feature, index) => (
                   <div
                     key={feature.title}
-                    className="bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:transform hover:scale-105 transition-all duration-300 opacity-0 translate-y-4"
-                    style={{ transitionDelay: `${index * 100 + 300}ms` }}
+                    className="group relative bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transform transition-all duration-500 opacity-0 translate-y-4"
+                    style={{ transitionDelay: `${index * 150 + 300}ms` }}
                     ref={(el) => textRefs.current[index + 4] = el}
                   >
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      {feature.icon}
-                      <h4 className="font-bold text-[#46256c] text-lg">{feature.title}</h4>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#46256c]/5 to-[#ecd74a]/5 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ecd74a] to-[#46256c] rounded-xl opacity-0 group-hover:opacity-30 blur-sm transition-all duration-500"></div>
+                    <div className="flex flex-col items-center text-center space-y-4 relative z-10">
+                      <div className="bg-[#f4f0ff] p-3 rounded-full transform group-hover:scale-110 transition-all duration-500">
+                        {feature.icon}
+                      </div>
+                      <h4 className="font-bold text-[#46256c] text-xl">{feature.title}</h4>
                       <p className="text-gray-600">{feature.description}</p>
                     </div>
                   </div>

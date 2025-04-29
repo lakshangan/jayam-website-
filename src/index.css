@@ -1,8 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -125,11 +126,43 @@
   .animate-on-scroll.active {
     @apply opacity-100 translate-y-0;
   }
+  
+  .premium-card {
+    @apply relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-xl border border-white/50
+           shadow-md hover:shadow-xl transition-all duration-500;
+  }
+  
+  .premium-card:before {
+    @apply content-[''] absolute -inset-0.5 bg-gradient-to-r from-[#ecd74a]/0 to-[#46256c]/0
+           rounded-xl opacity-0 transition-all duration-500;
+    z-index: -1;
+  }
+  
+  .premium-card:hover:before {
+    @apply from-[#ecd74a]/30 to-[#46256c]/30 opacity-100 blur;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#46256c] to-[#7c43a8] bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply relative border border-transparent bg-white;
+  }
+  
+  .gradient-border:before {
+    @apply content-[''] absolute inset-0 -z-10 rounded-xl p-0.5 bg-gradient-to-r from-[#ecd74a] to-[#46256c];
+    margin: -1px;
+  }
 }
 
 @layer utilities {
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.23);
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
   }
   
   .gold-underline {
@@ -140,6 +173,10 @@
     @apply bg-gradient-to-r from-[#ecd74a] to-[#ffe195];
   }
 
+  .purple-gradient {
+    @apply bg-gradient-to-r from-[#46256c] to-[#7c43a8];
+  }
+  
   .animate-ken-burns {
     animation: ken-burns 20s ease-out infinite alternate;
   }
@@ -196,5 +233,23 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
   }
 }
