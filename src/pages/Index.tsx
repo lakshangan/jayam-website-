@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import AnimationScript from '@/components/AnimationScript';
+import OurLegacy from '@/components/OurLegacy';
 
 const Index = () => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const Index = () => {
       <Courses />
       <TailoringProgram />
       <CampusLife />
+      <OurLegacy />
       <Contact />
       <Footer />
       <ScrollToTop />

@@ -58,27 +58,31 @@ const AboutJayam = () => {
           <div className="w-32 h-1.5 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-16 items-center max-w-7xl mx-auto">
-          {/* Image Column with premium styling */}
+        <div className="grid lg:grid-cols-12 gap-10 md:gap-16 items-center max-w-7xl mx-auto">
+          {/* Image Column with improved alignment and border */}
           <div ref={imageRef} 
-               className="lg:col-span-5 opacity-0 -translate-x-8 transition-all duration-1000 ease-out">
-            <div className="relative group">
+               className="lg:col-span-5 opacity-0 -translate-x-8 transition-all duration-1000 ease-out lg:order-1 order-2">
+            <div className="relative group mx-auto lg:mx-0 lg:mr-auto max-w-md">
+              {/* Enhanced border and shadow effects */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-[#ecd74a] to-[#46256c] rounded-xl opacity-30 blur-sm group-hover:opacity-70 transition-all duration-500"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-[#ecd74a]/20 to-[#46256c]/20 rounded-xl blur-lg transform group-hover:scale-105 transition-all duration-500"></div>
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-[#ecd74a] to-[#46256c] rounded-xl blur opacity-30 group-hover:opacity-60 transition-all duration-500"></div>
-              <img
-                src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
-                alt="Founder"
-                className="rounded-xl shadow-2xl relative z-10 w-full object-cover aspect-[3/4] transition-all duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute top-3 left-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] rounded-full p-3 shadow-lg z-20 transform -translate-x-4 -translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500">
-                <Award className="w-6 h-6 text-[#46256c]" />
+              <div className="relative overflow-hidden rounded-xl shadow-2xl">
+                <img
+                  src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
+                  alt="Founder"
+                  className="rounded-xl relative z-10 w-full object-cover aspect-[4/5] transition-all duration-500 group-hover:scale-[1.02]"
+                />
+                {/* Decorative corner element */}
+                <div className="absolute top-3 left-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] rounded-full p-3 shadow-lg z-20 transform -translate-x-4 -translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500">
+                  <Award className="w-6 h-6 text-[#46256c]" />
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Content Column with enhanced typography */}
+          {/* Content Column with better text alignment */}
           <div ref={contentRef}
-               className="lg:col-span-7 opacity-0 translate-x-8 transition-all duration-1000 ease-out">
+               className="lg:col-span-7 opacity-0 translate-x-8 transition-all duration-1000 ease-out lg:order-2 order-1 text-left">
             <div className="prose prose-lg max-w-none">
               <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#46256c] to-[#7c43a8] bg-clip-text text-transparent mb-6"
                   ref={(el) => textRefs.current[1] = el}>
