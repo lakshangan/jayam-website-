@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,88 +26,94 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const navLinks = [
+    { href: '#why-choose-us', label: 'Why Choose Us' },
+    { href: '#courses', label: 'Courses' },
+    { href: '#tailoring', label: 'Tailoring' },
+    { href: '#campus-life', label: 'Campus Life' },
+    { href: '#legacy', label: 'Legacy' },
+    { href: '#contact', label: 'Contact' }
+  ];
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md py-2' : 'bg-gradient-to-r from-[#ede9fe] via-[#e0e7ff] to-[#f3e8ff] py-4'
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-white/20' 
+        : 'bg-white/60 backdrop-blur-md'
     }`}>
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
           <a 
             href="#" 
-            className="flex items-center space-x-3 group"
+            className="flex items-center space-x-2 sm:space-x-3 group z-50"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           >
-            <img
-              src="/lovable-uploads/edbba000-eab6-4e02-9a4a-a593687c6004.png"
-              alt="Jayam Logo"
-              className="w-12 h-12 rounded-full drop-shadow-xl border-2 border-[#ecd74a] bg-white transition-transform group-hover:scale-105"
-            />
-            <span className={`font-display font-bold text-2xl tracking-tight ${
-              isScrolled ? 'text-[#5e51a6]' : 'text-[#46256c]'
-            }`}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#ecd74a] to-[#46256c] rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <img
+                src="/lovable-uploads/edbba000-eab6-4e02-9a4a-a593687c6004.png"
+                alt="Jayam Logo"
+                className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white shadow-xl bg-white transition-transform group-hover:scale-110 duration-300"
+              />
+            </div>
+            <span className="font-display font-bold text-lg sm:text-xl lg:text-2xl bg-gradient-to-r from-[#46256c] to-[#7c43a8] bg-clip-text text-transparent">
               Jayam Institute
             </span>
           </a>
-          <div className="hidden md:flex space-x-8">
-            <a href="#why-choose-us" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Why Choose Us</a>
-            <a href="#courses" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Courses</a>
-            <a href="#tailoring" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Tailoring</a>
-            <a href="#campus-life" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Campus Life</a>
-            <a href="#legacy" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Legacy</a>
-            <a href="#contact" onClick={handleLinkClick}
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-[#7c43a8] hover:text-[#ecd74a]' : 'text-[#5e51a6] hover:text-[#ecd74a]'
-              }`} >Contact</a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleLinkClick}
+                className="relative px-4 py-2 text-[#46256c] font-medium rounded-full hover:text-[#7c43a8] transition-all duration-300 group"
+              >
+                <span className="relative z-10">{link.label}</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-[#ecd74a]/0 to-[#ecd74a]/0 group-hover:from-[#ecd74a]/20 group-hover:to-[#ffe195]/20 rounded-full transition-all duration-300"></span>
+              </a>
+            ))}
           </div>
+
+          {/* Mobile Menu Button */}
           <button 
-            className="md:hidden focus:outline-none" 
+            className="lg:hidden p-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#ecd74a]/30 shadow-md hover:shadow-lg transition-all duration-300 z-50" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              className="w-7 h-7 text-[#5e51a6]"
-            >
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-[#46256c]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#46256c]" />
+            )}
           </button>
         </div>
+
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 bg-white rounded-lg shadow-lg animate-fade-in">
-            <div className="flex flex-col space-y-3">
-              <a href="#why-choose-us" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Why Choose Us</a>
-              <a href="#courses" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Courses</a>
-              <a href="#tailoring" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Tailoring</a>
-              <a href="#campus-life" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Campus Life</a>
-              <a href="#legacy" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Legacy</a>
-              <a href="#contact" onClick={handleLinkClick}
-                className="px-4 py-2 text-[#5e51a6] hover:bg-[#ecd74a]/25 rounded font-medium" >Contact</a>
+          <div className="lg:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-b border-white/20 shadow-2xl animate-fade-in">
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex flex-col space-y-2">
+                {navLinks.map((link, index) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    className="px-6 py-3 text-[#46256c] hover:text-[#7c43a8] font-medium rounded-full hover:bg-gradient-to-r hover:from-[#ecd74a]/20 hover:to-[#ffe195]/20 transition-all duration-300 transform hover:translate-x-2"
+                    style={{ 
+                      animation: `fade-in 0.3s ease-out ${index * 0.1}s forwards`,
+                      opacity: 0 
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         )}
