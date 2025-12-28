@@ -124,40 +124,45 @@ const Hero = () => {
           <div className="text-center px-2 relative w-full z-20">
             <div className="absolute inset-0 bg-accent/5 blur-[60px] md:blur-[120px] -z-10" />
             <h1 className="flex flex-col items-center leading-[0.9] md:leading-[0.9]">
-              <span className="flex flex-wrap justify-center overflow-visible py-1 md:py-4">
-                {"Jayam".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    custom={i}
-                    variants={titleCharVariants}
-                    className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-                <span className="mx-[1vw] md:mx-[2vw]" />
-                {"Fashion".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    custom={i + 5}
-                    variants={titleCharVariants}
-                    className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
+              <span className="flex flex-wrap justify-center overflow-visible py-1 md:py-4 gap-x-[2vw] md:gap-x-[3vw]">
+                <span className="whitespace-nowrap inline-block">
+                  {"Jayam".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      custom={i}
+                      variants={titleCharVariants}
+                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
+                <span className="whitespace-nowrap inline-block">
+                  {"Fashion".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      custom={i + 5}
+                      variants={titleCharVariants}
+                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
               </span>
               <span className="flex justify-center overflow-visible py-1 md:py-4 mt-[-2vw] md:mt-[-1vw]">
-                {"Institution".split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    custom={i + 12}
-                    variants={titleCharVariants}
-                    className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
-                  >
-                    {char}
-                  </motion.span>
-                ))}
+                <span className="whitespace-nowrap inline-block">
+                  {"Institution".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      custom={i + 12}
+                      variants={titleCharVariants}
+                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </span>
               </span>
             </h1>
           </div>
