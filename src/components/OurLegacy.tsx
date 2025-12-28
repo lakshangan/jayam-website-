@@ -1,154 +1,129 @@
 
-import { useEffect, useRef } from 'react';
-
-interface MilestoneProps {
-  year: string;
-  title: string;
-  description: string;
-  isLeft: boolean;
-}
+import { motion } from 'framer-motion';
+import { Sparkles, History, Star, Award, Heart, ShieldCheck, Zap } from 'lucide-react';
 
 const milestones = [
   {
-    year: "1995",
-    title: "Founding of Jayam Institute",
-    description: "Established with a vision to provide quality education with a focus on practical skills."
+    icon: <Star size={24} />,
+    title: "The Beginning",
+    description: "Jayam Institute was started with a focus on teaching real sewing skills."
   },
   {
-    year: "2000",
-    title: "Introduction of Engineering Programs",
-    description: "Expanded our offerings to include cutting-edge engineering courses."
+    icon: <Award size={24} />,
+    title: "New Programs",
+    description: "We launched our main Professional Tailoring course for students."
   },
   {
-    year: "2005",
-    title: "Launch of Tailoring Program",
-    description: "Introduced our flagship tailoring program, combining traditional craftsmanship with modern design."
+    icon: <ShieldCheck size={24} />,
+    title: "Official Recognition",
+    description: "We became an approved training partner with the Government."
   },
   {
-    year: "2010",
-    title: "Campus Expansion",
-    description: "Inaugurated our new state-of-the-art campus with advanced facilities."
+    icon: <Zap size={24} />,
+    title: "Adding Technology",
+    description: "We started using modern design tools along with traditional sewing."
   },
   {
-    year: "2015",
-    title: "International Recognition",
-    description: "Received accreditation from international education bodies for excellence."
-  },
-  {
-    year: "2020",
-    title: "Digital Transformation",
-    description: "Implemented cutting-edge digital learning platforms and resources."
-  },
-  {
-    year: "2023",
-    title: "Research Excellence Center",
-    description: "Established a dedicated center for advanced research and innovation."
+    icon: <Heart size={24} />,
+    title: "The Future",
+    description: "Focusing on eco-friendly designs and even better student experiences."
   }
 ];
 
-const Milestone = ({ year, title, description, isLeft }: MilestoneProps) => {
-  const milestoneRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', isLeft ? 'translate-x-0' : 'translate-x-0');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (milestoneRef.current) {
-      observer.observe(milestoneRef.current);
-    }
-
-    return () => {
-      if (milestoneRef.current) {
-        observer.unobserve(milestoneRef.current);
-      }
-    };
-  }, [isLeft]);
-
-  return (
-    <div 
-      ref={milestoneRef}
-      className={`flex w-full items-center justify-between opacity-0 transition-all duration-700 ${
-        isLeft ? '-translate-x-8' : 'translate-x-8'
-      }`}
-    >
-      {isLeft ? (
-        <>
-          <div className="w-5/12">
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold text-jayam-blue">{title}</h3>
-              <p className="text-gray-600 text-sm mt-1">{description}</p>
-            </div>
-          </div>
-          <div className="w-2/12 flex flex-col items-center">
-            <div className="w-4 h-4 bg-jayam-gold rounded-full z-10"></div>
-            <div className="w-0.5 h-24 bg-jayam-gold"></div>
-          </div>
-          <div className="w-5/12">
-            <div className="bg-jayam-gold p-3 rounded-full text-center text-jayam-blue font-bold">
-              {year}
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="w-5/12">
-            <div className="bg-jayam-gold p-3 rounded-full text-center text-jayam-blue font-bold">
-              {year}
-            </div>
-          </div>
-          <div className="w-2/12 flex flex-col items-center">
-            <div className="w-4 h-4 bg-jayam-gold rounded-full z-10"></div>
-            <div className="w-0.5 h-24 bg-jayam-gold"></div>
-          </div>
-          <div className="w-5/12">
-            <div className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold text-jayam-blue">{title}</h3>
-              <p className="text-gray-600 text-sm mt-1">{description}</p>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
 const OurLegacy = () => {
   return (
-    <section id="legacy" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="section-title gold-underline pb-4">Our Legacy</h2>
-          <p className="section-subtitle">
-            A journey of excellence and innovation spanning over 25 years
-          </p>
+    <section id="legacy" className="section-padding bg-[#050508] relative overflow-hidden">
+      {/* Decorative Orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] -z-10" />
+
+      <div className="container-custom relative z-10">
+        <div className="max-w-3xl mb-32">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <History className="w-4 h-4 text-accent" />
+            <span className="text-xs uppercase tracking-[0.3em] font-medium text-accent">Our Journey</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold bg-white bg-clip-text text-transparent mb-8"
+          >
+            A Long History of <br />
+            <span className="gold-gradient-text italic font-normal">Excellence</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-white/40 text-lg md:text-xl font-light leading-relaxed"
+          >
+            We have been dedicated to nurturing creative talent and shaping the future of design in our community.
+          </motion.p>
         </div>
-        
-        <div className="relative mt-16">
-          {/* Vertical line */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-jayam-gold"></div>
-          
-          {/* Milestones */}
-          <div className="space-y-16">
-            {milestones.map((milestone, index) => (
-              <Milestone 
-                key={milestone.year}
-                year={milestone.year}
-                title={milestone.title}
-                description={milestone.description}
-                isLeft={index % 2 === 0}
-              />
+
+        <div className="relative">
+          {/* Vertical Timeline Line */}
+          <div className="absolute left-[8px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/50 via-white/10 to-transparent" />
+
+          <div className="space-y-24 md:space-y-40">
+            {milestones.map((milestone, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className={`relative flex flex-col md:flex-row items-start md:items-center ${idx % 2 === 0 ? "md:flex-row-reverse" : ""
+                  }`}
+              >
+                {/* Timeline Dot */}
+                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-[17px] h-[17px] rounded-full bg-[#050508] border-2 border-accent shadow-[0_0_15px_rgba(197,163,88,0.5)] z-20" />
+
+                {/* Content Side */}
+                <div className="w-full md:w-5/12 ml-10 md:ml-0 group">
+                  <div className={`p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm group-hover:border-accent/30 transition-all duration-500 shadow-xl ${idx % 2 === 0 ? "md:text-right" : "md:text-left"
+                    }`}>
+                    <div className={`mb-4 flex text-accent/30 group-hover:text-accent transition-colors ${idx % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
+                      {milestone.icon}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-accent transition-colors">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-white/40 leading-relaxed font-light">
+                      {milestone.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Empty Side for balance */}
+                <div className="hidden md:block md:w-5/12" />
+              </motion.div>
             ))}
           </div>
         </div>
+
+        {/* Final Achievement Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mt-40 flex flex-col items-center text-center"
+        >
+          <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-8">
+            <Sparkles className="text-accent w-8 h-8" />
+          </div>
+          <p className="text-xs uppercase tracking-[0.5em] text-white/20 font-bold mb-4">Quality Education</p>
+          <div className="text-6xl md:text-8xl font-display font-bold text-white/5 italic">Excellence</div>
+        </motion.div>
       </div>
     </section>
   );

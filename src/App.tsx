@@ -6,18 +6,27 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CustomCursor from "./components/CustomCursor";
+import Preloader from "./components/Preloader";
+import FloatingAdmissionCTA from "./components/FloatingAdmissionCTA";
+import SmoothScroll from "./components/SmoothScroll";
+import BackgroundMusic from "./components/BackgroundMusic";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SmoothScroll />
+      <CustomCursor />
+      <BackgroundMusic />
+      <Preloader />
+      <FloatingAdmissionCTA />
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

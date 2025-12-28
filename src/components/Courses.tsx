@@ -1,87 +1,90 @@
 
 import { useState } from 'react';
-import { Clock, ChevronDown, ChevronUp, Users, BookOpen } from 'lucide-react';
+import { Clock, ChevronDown, Users, BookOpen, Sparkles, Layout, PenTool, Scissors, Award } from 'lucide-react';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const courseGroups = [
   {
-    title: "🧵 One-Year Courses (Diploma Level)",
+    title: "Diploma Programs",
+    subtitle: "One-Year Professional Certifications",
     courses: [
       {
-        name: "Commercial Master Designer Diploma",
-        description: "Become a certified commercial fashion designer with training in advanced tailoring, design, and customization.",
+        name: "Commercial Master Designer",
+        description: "A complete program for people wanting to start their own fashion business.",
         duration: "1 Year",
-        details: "Advanced fashion, tailoring, creative pattern making, business skills, commercial project exposure, and career guidance.",
-        students: "120+"
+        students: "120+",
+        highlight: "Entrepreneurship Focused",
+        modules: [
+          "Advanced Couture Pattern Drafting",
+          "Fashion Business & Marketing",
+          "Digital Design Portfolio",
+          "Commercial Apparel Production",
+          "Luxury Brand Positioning"
+        ],
+        details: "This flagship program covers everything from initial sketch to market launch, focusing on the commercial viability of high-fashion designs."
       },
       {
         name: "Diploma in Fashion Designing",
-        description: "Master the principles of fashion, fabric, cutting, and trend-based apparel design.",
+        description: "Master the fundamental pillars of fashion, from textile science to trend forecasting.",
         duration: "1 Year",
-        details: "Fabric science, design theory, practical sewing, latest trends, portfolio development, and placement preparation.",
-        students: "85+"
+        students: "85+",
+        highlight: "Technical Mastery",
+        modules: [
+          "Textile & Fabric Science",
+          "Basic & Advanced Sewing",
+          "Trend Analysis & Forecasting",
+          "Garment Construction",
+          "Illustrative Design Techniques"
+        ],
+        details: "A foundational intensive that transforms creative passion into technical precision, recognized across the Indian fashion industry."
       },
       {
-        name: "Tailoring (Full Course)",
-        description: "Comprehensive course covering stitching techniques for both men's and women's wear.",
+        name: "Professional Tailoring",
+        description: "Heritage-led tailoring techniques for creating bespoke men's and women's collections.",
         duration: "1 Year",
-        details: "Traditional and modern techniques, custom fitting, garment finishing, project assignments.",
-        students: "150+"
-      },
-      {
-        name: "Blouse & Chudithar Designing",
-        description: "Specialized course on designing and stitching traditional Indian outfits with modern patterns.",
-        duration: "1 Year",
-        details: "Indian ethnic wear patterns, creativity with modern styles, detailed hands-on sessions.",
-        students: "75+"
-      },
-      {
-        name: "Custom Costume Training",
-        description: "Focused training for movie, dance, and stage costume creation and design.",
-        duration: "1 Year",
-        details: "Performance costume design, embellishments, fabric selection, and practical production.",
-        students: "40+"
-      },
-      {
-        name: "Hand & Machine Embroidery",
-        description: "Learn artistic embroidery techniques using both hand and machine, perfect for embellishing garments.",
-        duration: "1 Year",
-        details: "Embroidery basics, machine mastery, pattern creation, accessorizing, and project work.",
-        students: "65+"
-      },
+        students: "150+",
+        highlight: "Bespoke Specialization",
+        modules: [
+          "Bespoke Menswear Tailoring",
+          "Intricate Women's Couture",
+          "Alteration & Fitting Mastery",
+          "Pattern Manipulation",
+          "Industrial Machine Handling"
+        ],
+        details: "Focused on the architecture of a garment, this course ensures 100% precision in fitting and construction."
+      }
     ]
   },
   {
-    title: "✂️ 3-Month & 6-Month Short Courses",
+    title: "Specialized Certifications",
+    subtitle: "Focused Skill Enhancement Modules",
     courses: [
       {
-        name: "Short Term Tailoring Courses",
-        description: "Flexible, quick-start tailoring courses for beginners and hobbyists.",
-        duration: "3–6 Months",
-        details: "Skill-based short modules on basic tailoring, with practical workshops and personal coaching.",
-        students: "90+"
+        name: "Ethnic Wear Designing",
+        description: "Specialized in the intricate world of Indian traditional wear and bridal couture.",
+        highlight: "Cultural Couture",
+        modules: [
+          "Bridal Wear Architecture",
+          "Embroidery & Surface Design",
+          "Traditional Draping Arts",
+          "Modernizing Ethnic Patterns"
+        ],
+        details: "Learn to blend centuries-old Indian craftsmanship with contemporary design sensibilities for the modern bride."
       },
       {
-        name: "Saree Draping",
-        description: "Learn various traditional and modern saree draping techniques.",
-        duration: "3 Months",
-        details: "Classic and contemporary drapes, cultural significance, and styling tips.",
-        students: "60+"
-      },
-      {
-        name: "Saree Pre-Pleating",
-        description: "Master the art of pre-pleating sarees for ready-to-wear ease.",
-        duration: "3 Months",
-        details: "Pre-pleating skills, ready-to-wear saree techniques, trend design.",
-        students: "45+"
-      },
-      {
-        name: "Beautician Course",
-        description: "Intro to beauty care: skincare, makeup, hair styling, and salon essentials.",
+        name: "Advanced Beautician",
+        description: "Professional training in bridal makeup, skincare, and luxury salon management.",
         duration: "6 Months",
-        details: "Beauty theory, modern facials, salon hygiene, hair/skin care, and client management.",
-        students: "70+"
+        students: "70+",
+        highlight: "Salon Ready",
+        modules: [
+          "Advanced Skin Therapy",
+          "HD & Airbrush Bridal Makeup",
+          "Artistic Hair Styling",
+          "Aesthetics & Hygiene Standards"
+        ],
+        details: "A holistic approach to beauty that prepares students for the competitive luxury grooming industry."
       }
     ]
   },
@@ -89,106 +92,170 @@ const courseGroups = [
 
 const CourseCard = ({ course, index }: { course: any; index: number }) => {
   const [open, setOpen] = useState(false);
-  
-  // Create a gradient pattern based on index
-  const gradients = [
-    "from-violet-100 to-fuchsia-100 border-l-4 border-violet-400",
-    "from-blue-50 to-indigo-100 border-l-4 border-blue-400",
-    "from-pink-50 to-rose-100 border-l-4 border-pink-400",
-    "from-cyan-50 to-sky-100 border-l-4 border-cyan-400",
-    "from-amber-50 to-yellow-100 border-l-4 border-amber-400",
-    "from-emerald-50 to-green-100 border-l-4 border-emerald-400"
-  ];
-  
-  const gradientClass = gradients[index % gradients.length];
 
   return (
-    <Collapsible open={open} onOpenChange={setOpen}>
-      <Card className={`overflow-hidden bg-gradient-to-br ${gradientClass} shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1`}>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-xl font-bold text-[#55529e] flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-inner border border-[#ecd74a]/30">
-              <BookOpen size={18} className="text-[#7E69AB]" />
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Collapsible open={open} onOpenChange={setOpen} className="group">
+        <div className={`premium-card h-full flex flex-col transition-all duration-700 ${open ? 'border-accent/60 bg-accent/5 ring-1 ring-accent/20' : ''}`}>
+          <div className="flex-1">
+            <div className="flex items-start justify-between mb-8">
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent/40 transition-all duration-500">
+                  <BookOpen size={24} className="text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
+                    {course.name}
+                  </h3>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-accent/60 font-black">{course.highlight}</span>
+                </div>
+              </div>
             </div>
-            {course.name}
-          </CardTitle>
-          <CardDescription className="text-gray-700 font-medium mt-2">
-            {course.description}
-          </CardDescription>
-        </CardHeader>
-        
-        <CardContent className="pb-0">
-          <div className="flex items-center justify-between text-sm mb-3">
-            <div className="flex items-center text-[#9070ac]">
-              <Clock size={16} className="mr-1.5 text-[#ecd74a]" />
-              <span>{course.duration}</span>
-            </div>
-            
-            <div className="flex items-center text-[#9070ac]">
-              <Users size={16} className="mr-1.5 text-[#ecd74a]" />
-              <span>{course.students} Students</span>
+
+            <p className="text-white/40 text-sm leading-relaxed mb-10 font-light">
+              {course.description}
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1">
+                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Duration</span>
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
+                  <Clock size={14} className="text-accent" />
+                  {course.duration}
+                </div>
+              </div>
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1">
+                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Success Rate</span>
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
+                  <Award size={14} className="text-accent" />
+                  {course.students} Alumni
+                </div>
+              </div>
             </div>
           </div>
-        </CardContent>
-        
-        <CardFooter className="pt-3 pb-4">
+
           <CollapsibleTrigger asChild>
-            <button className="w-full py-2 px-4 rounded-lg bg-white/70 backdrop-blur-sm border border-[#ecd74a]/50 text-[#46256c] font-medium hover:bg-white/90 hover:shadow-md transition-all flex items-center justify-center gap-2">
-              <span>{open ? "Hide Details" : "Course Details"}</span>
-              {open ? <ChevronUp size={16}/> : <ChevronDown size={16}/>}
+            <button className="flex items-center justify-between w-full pt-8 border-t border-white/5 text-[10px] uppercase tracking-[0.5em] font-black text-white/30 hover:text-accent transition-all duration-500 group/btn">
+              <span>{open ? "Close Blueprint" : "Explore Curriculum"}</span>
+              <motion.div
+                animate={{ rotate: open ? 180 : 0 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <ChevronDown size={14} className="text-accent" />
+              </motion.div>
             </button>
           </CollapsibleTrigger>
-        </CardFooter>
-        
-        <CollapsibleContent>
-          <div className="px-6 pb-6">
-            <div className="mt-1 text-[#54388e] bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-[#ecd74a]/30 font-semibold shadow-inner animate-fade-in">
-              {course.details}
-            </div>
-          </div>
-        </CollapsibleContent>
-      </Card>
-    </Collapsible>
+
+          <AnimatePresence>
+            {open && (
+              <CollapsibleContent forceMount>
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-10 space-y-8">
+                    <div className="space-y-4">
+                      <span className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-bold">Specialized Modules</span>
+                      <div className="grid grid-cols-1 gap-3">
+                        {course.modules.map((module: string, mIdx: number) => (
+                          <motion.div
+                            initial={{ x: -10, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: mIdx * 0.1 }}
+                            key={mIdx}
+                            className="flex items-center gap-4 text-xs text-white/60 font-medium"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-accent/40" />
+                            {module}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-xs text-white/40 leading-relaxed font-light italic border-l border-accent/20 pl-6">
+                      {course.details}
+                    </p>
+                  </div>
+                </motion.div>
+              </CollapsibleContent>
+            )}
+          </AnimatePresence>
+        </div>
+      </Collapsible>
+    </motion.div>
   );
 };
 
-const CourseGroupBlock = ({ group, groupIndex }: any) => (
-  <div className="mb-12">
-    <div className="text-2xl md:text-3xl font-display font-semibold mb-8 text-[#7E69AB] drop-shadow flex items-center">
-      <div className="mr-3 p-1.5 bg-white/70 backdrop-blur-sm rounded-lg border border-[#ecd74a]/30 shadow-sm">
-        {group.title.split(' ')[0]}
-      </div>
-      <span>{group.title.substring(group.title.indexOf(' ') + 1)}</span>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {group.courses.map((course: any, idx: number) => (
-        <CourseCard key={course.name} course={course} index={groupIndex*6+idx} />
-      ))}
-    </div>
-  </div>
-);
-
 const Courses = () => {
   return (
-    <section id="courses" className="py-20 bg-gradient-to-b from-[#ede9fe] via-[#e9ecff] to-[#f4ecfb]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="w-20 h-20 mx-auto relative mb-5">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-violet-300 to-pink-300 animate-pulse-soft"></div>
-            <img 
-              src="/lovable-uploads/edbba000-eab6-4e02-9a4a-a593687c6004.png" 
-              alt="" 
-              className="w-20 h-20 mx-auto rounded-full relative z-10 object-cover border-2 border-[#ecd74a]" 
-            />
-          </div>
-          <h2 className="section-title gold-underline pb-4 text-[#54388e]">Specialized Course Listings</h2>
-          <p className="section-subtitle text-[#925ec7]">
-            Explore our fashionable, tailoring, and beauty programs. Find a course that fits your dream.
-          </p>
+    <section id="courses" className="section-padding bg-background relative overflow-hidden mask-linear-t mask-linear-b">
+      <div className="noise-overlay" />
+
+      {/* Premium Theme Orbs */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-1/2 left-[15%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -translate-y-1/2 opacity-30" />
+        <div className="absolute bottom-0 right-[10%] w-[500px] h-[500px] bg-accent/15 rounded-full blur-[130px] opacity-20" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        <div className="max-w-4xl mb-24">
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <Layout className="w-4 h-4 text-accent" />
+            <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-accent">Learning Paths</span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-8xl font-bold text-white mb-10 leading-[0.9] tracking-tighter"
+          >
+            Explore Our <br />
+            <span className="gold-gradient-text italic font-normal text-glow">Courses</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-white/45 font-light leading-snug max-w-2xl border-l-2 border-accent/20 pl-10"
+          >
+            Learn the art of fashion from the best teachers. <br className="hidden md:block" />
+            <span className="text-white/70">Empowering students to build successful careers in the fashion world.</span>
+          </motion.p>
         </div>
-        <div>
-          {courseGroups.map((group, groupIndex) => (
-            <CourseGroupBlock key={group.title} group={group} groupIndex={groupIndex} />
+
+        <div className="space-y-40">
+          {courseGroups.map((group, groupIdx) => (
+            <div key={group.title}>
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/5 pb-12 gap-8">
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-3 tracking-tight">{group.title}</h3>
+                  <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">
+                    {group.courses.length} Certified Pathways
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {group.courses.map((course, idx) => (
+                  <CourseCard key={course.name} course={course} index={idx} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -197,3 +264,4 @@ const Courses = () => {
 };
 
 export default Courses;
+

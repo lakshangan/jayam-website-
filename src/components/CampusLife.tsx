@@ -1,5 +1,7 @@
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, LayoutGrid, Camera } from 'lucide-react';
 
 interface CampusImage {
   id: number;
@@ -11,149 +13,145 @@ interface CampusImage {
 const campusImages: CampusImage[] = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Modern Classroom",
-    category: "Classrooms"
+    src: "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Modern Design Studio",
+    category: "Studios"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1562516155-e0c1ee44059b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Computer Lab",
+    src: "https://images.unsplash.com/photo-1562516155-e0c1ee44059b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Digital Labs",
     category: "Labs"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Library Reading Area",
+    src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Resource Library",
     category: "Library"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Students in Discussion",
-    category: "Student Activities"
+    src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Collaboration Zone",
+    category: "Campus"
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Annual Cultural Festival",
+    src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Fashion Showcase",
     category: "Events"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1621786030333-5a43a6c6a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    src: "https://images.unsplash.com/photo-1621786030333-5a43a6c6a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     alt: "Tailoring Workshop",
-    category: "Tailoring workshops"
+    category: "Studios"
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1534187886935-1e1236e856c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Science Lab",
+    src: "https://images.unsplash.com/photo-1534187886935-1e1236e856c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Textile Lab",
     category: "Labs"
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    alt: "Tailoring Studio",
-    category: "Tailoring workshops"
+    src: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    alt: "Couture Suite",
+    category: "Studios"
   }
 ];
 
-const categories = ["All", "Classrooms", "Labs", "Library", "Student Activities", "Events", "Tailoring workshops"];
+const categories = ["All", "Studios", "Labs", "Library", "Campus", "Events"];
 
 const CampusLife = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [filteredImages, setFilteredImages] = useState(campusImages);
-  
-  const galleryRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (activeCategory === "All") {
-      setFilteredImages(campusImages);
-    } else {
-      setFilteredImages(campusImages.filter(img => img.category === activeCategory));
-    }
-  }, [activeCategory]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const images = entry.target.querySelectorAll('.campus-image');
-            images.forEach((img, index) => {
-              setTimeout(() => {
-                img.classList.add('opacity-100', 'translate-y-0');
-              }, index * 100);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (galleryRef.current) {
-      observer.observe(galleryRef.current);
-    }
-
-    return () => {
-      if (galleryRef.current) {
-        observer.unobserve(galleryRef.current);
-      }
-    };
-  }, [filteredImages]);
+  const filteredImages = activeCategory === "All"
+    ? campusImages
+    : campusImages.filter(img => img.category === activeCategory);
 
   return (
-    <section id="campus-life" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="section-title gold-underline pb-4">Campus Life & Infrastructure</h2>
-          <p className="section-subtitle">
-            Explore our world-class facilities designed to provide an optimal learning environment
-          </p>
+    <section id="campus-life" className="section-padding bg-secondary relative overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[180px] -z-10" />
+
+      <div className="container-custom relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            <Camera className="w-4 h-4 text-accent" />
+            <span className="text-xs uppercase tracking-[0.3em] font-medium text-accent">See Our Classes</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold text-white mb-8"
+          >
+            Modern Rooms for <br />
+            <span className="gold-gradient-text italic font-normal">Our Students</span>
+          </motion.h2>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-8 py-2.5 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all duration-500 border ${activeCategory === category
+                  ? 'bg-accent text-background border-accent shadow-[0_0_20px_rgba(197,163,88,0.3)]'
+                  : 'bg-white/5 text-white/40 border-white/10 hover:border-white/20 hover:text-white'
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
-        
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-jayam-blue text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-        
-        <div 
-          ref={galleryRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+
+        <motion.div
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {filteredImages.map((image) => (
-            <div 
-              key={image.id}
-              className="campus-image opacity-0 translate-y-8 transition-all duration-500 overflow-hidden rounded-lg shadow-md h-64 relative"
-            >
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <p className="text-white font-medium">{image.alt}</p>
-                <span className="text-white/70 text-sm">{image.category}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+          <AnimatePresence mode="popLayout">
+            {filteredImages.map((image) => (
+              <motion.div
+                key={image.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+                className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/5"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="absolute inset-x-0 bottom-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-accent mb-2 block">
+                    {image.category}
+                  </span>
+                  <h3 className="text-xl font-display font-semibold text-white">
+                    {image.alt}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default CampusLife;
+

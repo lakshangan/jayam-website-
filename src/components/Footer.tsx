@@ -1,86 +1,101 @@
 
+import { Facebook, Instagram, Twitter, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+
 const Footer = () => {
   return (
-    <footer className="bg-jayam-blue text-white pt-16 pb-6">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4 font-display">Jayam Institute</h3>
-            <p className="text-white/80 mb-4">
-              Empowering students with knowledge and skills to excel in their chosen fields since 1995.
+    <footer className="bg-[#050508] text-white pt-24 pb-12 relative overflow-hidden">
+      {/* Decorative Gradient Line */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <img
+                src="/lovable-uploads/logo.png"
+                alt="Jayam Logo"
+                className="w-12 h-12 rounded-full border border-white/10 p-1 bg-white"
+              />
+              <div className="flex flex-col">
+                <span className="text-xl font-display font-bold text-white leading-tight">Jayam</span>
+                <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
+              </div>
+            </div>
+            <p className="text-white/40 text-sm leading-relaxed font-light">
+              Crafting excellence in fashion and beauty since 1995. Our boutique education approach empowers the next generation of creative entrepreneurs.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-jayam-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                </svg>
-              </a>
-              <a href="#" className="text-white hover:text-jayam-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </a>
-              <a href="#" className="text-white hover:text-jayam-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </a>
-              <a href="#" className="text-white hover:text-jayam-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </a>
+            <div className="flex gap-4">
+              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent/40 hover:bg-white/[0.02] transition-all duration-300"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
-          
+
           <div>
-            <h3 className="text-xl font-bold mb-4 font-display">Programs</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Engineering</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Computer Science</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Management</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Arts</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Science</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Tailoring</a></li>
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Specializations</h3>
+            <ul className="space-y-4">
+              {['Professional Tailoring', 'Fashion Designing', 'Beautician Courses', 'Master Designer', 'Apparel Design'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-white/40 hover:text-white transition-colors flex items-center group">
+                    <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3 opacity-0 group-hover:opacity-100" />
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="text-xl font-bold mb-4 font-display">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Admissions</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Campus Life</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Faculty</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Infrastructure</a></li>
-              <li><a href="#" className="text-white/80 hover:text-jayam-gold transition-colors">Contact Us</a></li>
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Academic Links</h3>
+            <ul className="space-y-4">
+              {['Admission Process', 'Campus Life', 'Galleria', 'Our Legacy', 'Join Faculty'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-white/40 hover:text-white transition-colors flex items-center group">
+                    <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3 opacity-0 group-hover:opacity-100" />
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          <div>
-            <h3 className="text-xl font-bold mb-4 font-display">Contact</h3>
-            <address className="not-italic text-white/80">
-              <p>123 Education Street</p>
-              <p>Chennai, Tamil Nadu</p>
-              <p>India - 600001</p>
-              <p className="mt-2">Phone: +91 98765 43210</p>
-              <p>Email: info@jayaminstitute.edu</p>
-            </address>
+
+          <div className="space-y-8">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Global HQ</h3>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <MapPin size={20} className="text-accent shrink-0" />
+                <p className="text-sm text-white/40 font-light leading-relaxed">
+                  123 Creative Street, <br />
+                  Chennai, Tamil Nadu <br />
+                  600001, India
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <Phone size={18} className="text-accent shrink-0" />
+                <p className="text-sm text-white/40 font-light">+91 98765 43210</p>
+              </div>
+              <div className="flex gap-4">
+                <Mail size={18} className="text-accent shrink-0" />
+                <p className="text-sm text-white/40 font-light">admissions@jayam.edu</p>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/70 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Jayam Institute. All rights reserved.
+
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] uppercase tracking-widest text-white/20">
+            &copy; {new Date().getFullYear()} Jayam Institute of Design. All rights reserved.
           </p>
-          <div className="flex space-x-4 text-sm text-white/70">
-            <a href="#" className="hover:text-jayam-gold transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-jayam-gold transition-colors">Terms & Conditions</a>
-            <a href="#" className="hover:text-jayam-gold transition-colors">Sitemap</a>
+          <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-white/20">
+            <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+            <a href="#" className="hover:text-accent transition-colors">Terms</a>
+            <a href="#" className="hover:text-accent transition-colors">Sitemap</a>
           </div>
         </div>
       </div>
@@ -89,3 +104,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

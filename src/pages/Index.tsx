@@ -12,23 +12,29 @@ import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import AnimationScript from '@/components/AnimationScript';
 import OurLegacy from '@/components/OurLegacy';
+import Awards from '@/components/Awards';
+import TrustBar from '@/components/TrustBar';
+import StudentShowcase from '@/components/StudentShowcase';
 
 const Index = () => {
   useEffect(() => {
     document.title = "Jayam Institute - Shaping Futures, Empowering Minds";
   }, []);
-  
+
   return (
     <main className="overflow-x-hidden">
       <AnimationScript />
       <Navbar />
       <Hero />
+      <TrustBar />
       <AboutInstitute />
       <AboutJayam />
       <Courses />
       <TailoringProgram />
       <CampusLife />
       <OurLegacy />
+      <Awards />
+      <StudentShowcase />
       <Contact />
       <Footer />
       <ScrollToTop />

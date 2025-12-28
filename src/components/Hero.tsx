@@ -1,96 +1,211 @@
 
-import { ArrowDown, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { MoveRight } from "lucide-react";
+import { FloatingPaths } from "@/components/ui/background-paths";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const { toast } = useToast();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const scaleTransform = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
   const handleAdmissionInfo = () => {
     toast({
-      title: "Admission Information",
-      description: "Our admission team will contact you shortly with more information.",
-      duration: 5000,
+      title: "Admissions Open",
+      description: "Start your journey in fashion. Our teachers are ready.",
     });
-    
-    // Scroll to contact section
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.4,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as any },
+    },
+  };
+
+  const titleCharVariants: any = {
+    hidden: { y: 100, opacity: 0 },
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.03,
+        type: "spring",
+        stiffness: 150,
+        damping: 25,
+      },
+    }),
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Enhanced background with parallax effect */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transform-gpu scale-[1.1] animate-ken-burns"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524230572899-a752b3835840?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-jayam-blue/90 via-jayam-blue/70 to-jayam-blue/80 backdrop-blur-sm"></div>
-        
-        {/* Enhanced decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-jayam-gold/30 rounded-full blur-2xl animate-pulse-soft"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-jayam-blue/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-bounce-slow"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-16 h-16 bg-jayam-gold/20 rounded-full blur-lg animate-pulse"></div>
-      </div>
-      
-      {/* Hero content with premium styling and animations */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-12 sm:py-16">
-        <div className="bg-black/20 p-4 sm:p-6 lg:p-8 backdrop-blur-xl rounded-2xl max-w-4xl mx-auto border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.2)] transform transition-all duration-700 hover:shadow-[0_0_60px_rgba(0,0,0,0.3)]">
-          <div className="animate-fade-in overflow-hidden">
-            <span className="inline-flex items-center px-3 sm:px-4 py-1.5 bg-white/10 text-white/90 rounded-full text-xs sm:text-sm font-medium mb-4 backdrop-blur-sm border border-white/10">
-              <Sparkles className="inline-block w-3 h-3 sm:w-4 sm:h-4 mr-2 text-jayam-gold" /> Elevating Education Since 1995
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 animate-fade-in font-display text-shadow">
-            Jayam Institute
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 mb-3 animate-fade-in-delay-1 font-display">
-            Shaping Futures, Empowering Minds
-          </p>
-          <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-jayam-gold to-[#ffe195] mx-auto my-4 sm:my-6 animate-fade-in-delay-2 rounded-full"></div>
-          <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-3xl mx-auto mb-6 sm:mb-10 animate-fade-in-delay-3 leading-relaxed px-2">
-            Jayam Institute is a premier institution dedicated to academic excellence and holistic development. 
-            Located in Chennai, we offer a wide range of undergraduate and postgraduate programs across 
-            Engineering, Computer Science, Management, Arts, and Science.
-          </p>
-          
-          {/* Enhanced CTA Buttons - Now Functional */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-delay-4 px-2">
-            <Link 
-              to="/courses" 
-              className="relative overflow-hidden group px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#ecd74a] to-[#ffe195] text-[#46256c] font-bold rounded-lg text-sm sm:text-base shadow-[0_4px_12px_rgba(236,215,74,0.5)] hover:shadow-[0_6px_20px_rgba(236,215,74,0.7)] transform transition-all duration-300 hover:-translate-y-1"
-              onClick={() => {
-                const coursesSection = document.getElementById("courses");
-                if (coursesSection) {
-                  coursesSection.scrollIntoView({ behavior: "smooth" });
-                  return false;
-                }
+    <div ref={containerRef} className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050508] pt-16">
+      {/* Background Paths Integration */}
+      <motion.div style={{ y, scale: scaleTransform, opacity: opacityTransform }} className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[#050508]" />
+
+        <div className="absolute inset-0">
+          <FloatingPaths position={1} />
+          <FloatingPaths position={-1} />
+        </div>
+
+        {/* Ambient Gold Dust - Ultra Visibility */}
+        <div className="absolute inset-0">
+          {[...Array(100)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{
+                opacity: 0,
+                x: Math.random() * 100 + "%",
+                y: Math.random() * 100 + "%",
+                scale: Math.random() * 2 + 0.5
               }}
-            >
-              <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-              <span className="relative">Explore Courses</span>
-            </Link>
-            <button 
-              className="relative overflow-hidden group px-4 sm:px-6 py-2.5 sm:py-3 bg-transparent border-2 border-white text-white rounded-lg text-sm sm:text-base hover:bg-white/10 transform transition-all duration-300 hover:-translate-y-1"
-              onClick={handleAdmissionInfo}
-            >
-              <span className="absolute top-0 left-0 w-0 h-full bg-white/10 group-hover:w-full transition-all duration-500"></span>
-              <span className="relative">Get Admission Info</span>
-            </button>
+              animate={{
+                opacity: [0, 1, 0],
+                y: ["-10%", "110%"],
+              }}
+              style={{
+                translateX: useTransform(scrollYProgress, [0, 1], [0, (i % 5 - 2) * 40]),
+              }}
+              transition={{
+                duration: Math.random() * 12 + 8,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "linear"
+              }}
+              className="absolute w-[3px] h-[3px] bg-accent/80 rounded-full blur-[0.1px] shadow-[0_0_10px_rgba(197,163,88,0.5)]"
+            />
+          ))}
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050508] via-transparent to-[#050508]" />
+        <div className="noise-overlay opacity-30" />
+      </motion.div>
+
+      <div className="container-custom relative z-10 w-full h-full flex flex-col items-center justify-between py-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="w-full flex flex-col items-center flex-1 justify-center"
+        >
+
+          {/* Main Cinematic Title */}
+          <div className="text-center mb-10 px-4">
+            <h1 className="flex flex-col items-center leading-[0.9]">
+              <span className="flex flex-wrap justify-center overflow-visible py-4">
+                {"Jayam".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i}
+                    variants={titleCharVariants}
+                    className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                <span className="mx-[2vw]" />
+                {"Fashion".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i + 5}
+                    variants={titleCharVariants}
+                    className="text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="flex justify-center overflow-visible py-4 mt-[-2vw]">
+                {"Institution".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i + 12}
+                    variants={titleCharVariants}
+                    className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            </h1>
           </div>
-        </div>
-      </div>
-      
-      {/* Enhanced scroll indicator */}
-      <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce-slow hidden sm:block">
-        <p className="text-xs sm:text-sm mb-2 opacity-80">Scroll Down</p>
-        <div className="relative flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8">
-          <div className="absolute inset-0 bg-white/10 rounded-full animate-ping"></div>
-          <ArrowDown className="relative z-10 animate-pulse" size={20} />
-        </div>
+
+          {/* Subtext Description */}
+          <motion.div variants={itemVariants} className="flex flex-col items-center text-center gap-3 max-w-3xl px-6 mb-16">
+            <p className="text-base md:text-lg text-white/40 font-light tracking-wide leading-relaxed">
+              Start your career in fashion with our easy sewing classes.
+            </p>
+            <p className="text-base md:text-lg text-white/70 font-medium tracking-tight leading-relaxed">
+              We help you learn professional tailoring and start your own clothing business.
+            </p>
+          </motion.div>
+
+          {/* Bottom Actions Area */}
+          <div className="w-full max-w-5xl flex flex-col items-center gap-12 pt-12 border-t border-white/5">
+            <motion.div variants={itemVariants} className="flex flex-row items-center justify-center gap-12 md:gap-24">
+              <button
+                onClick={handleAdmissionInfo}
+                className="group flex flex-col items-center gap-2"
+              >
+                <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 group-hover:text-accent transition-colors duration-500">Apply Now</span>
+                <div className="h-[1px] w-0 group-hover:w-full bg-accent/50 transition-all duration-500" />
+              </button>
+
+              <button className="group flex flex-col items-center gap-2">
+                <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-white/30 group-hover:text-white transition-colors duration-500">Visit Gallery</span>
+                <div className="h-[1px] w-0 group-hover:w-full bg-white/20 transition-all duration-500" />
+              </button>
+
+              <Link to="/courses" className="group">
+                <div className="inline-block group relative bg-gradient-to-b from-white/10 to-transparent p-px rounded-full backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-accent/10 transition-shadow duration-300">
+                  <Button
+                    variant="ghost"
+                    className="rounded-full px-10 py-7 text-[10px] font-black tracking-[0.6em] backdrop-blur-md bg-white/5 hover:bg-white/10 text-white transition-all duration-300 group-hover:-translate-y-0.5 border border-white/10 uppercase"
+                  >
+                    Explore Courses
+                    <MoveRight className="ml-4 w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" />
+                  </Button>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Minimal Scroll Indicator */}
+            <div className="flex flex-col items-center gap-4">
+              <span className="text-[8px] uppercase tracking-[1em] text-white/20 font-bold">Scroll</span>
+              <div className="relative w-[1px] h-12 bg-white/5 overflow-hidden">
+                <motion.div
+                  animate={{ y: [-48, 48] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-accent to-transparent"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
