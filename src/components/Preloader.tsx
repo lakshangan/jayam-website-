@@ -143,46 +143,53 @@ const WelcomeScreen = () => {
                             {/* Mirroring Hero Title Animation for Seamless Transition */}
                             <div className="text-center mb-10 px-4">
                                 <h1 className="flex flex-col items-center leading-[0.9]">
-                                    <span className="flex flex-wrap justify-center overflow-visible py-4">
-                                        {"Jayam".split("").map((char, i) => (
-                                            <motion.span
-                                                key={i}
-                                                custom={i}
-                                                variants={charVariants}
-                                                className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
-                                            >
-                                                {char}
-                                            </motion.span>
-                                        ))}
-                                        <span className="mx-[2vw]" />
-                                        {"Fashion".split("").map((char, i) => (
-                                            <motion.span
-                                                key={i}
-                                                custom={i + 5}
-                                                variants={charVariants}
-                                                className="text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
-                                            >
-                                                {char}
-                                            </motion.span>
-                                        ))}
+                                    <span className="flex flex-wrap justify-center overflow-visible py-4 gap-x-[2vw]">
+                                        <span className="whitespace-nowrap inline-block">
+                                            {"Jayam".split("").map((char, i) => (
+                                                <motion.span
+                                                    key={i}
+                                                    custom={i}
+                                                    variants={charVariants}
+                                                    className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
+                                                >
+                                                    {char}
+                                                </motion.span>
+                                            ))}
+                                        </span>
+                                        <span className="whitespace-nowrap inline-block">
+                                            {"Fashion".split("").map((char, i) => (
+                                                <motion.span
+                                                    key={i}
+                                                    custom={i + 5}
+                                                    variants={charVariants}
+                                                    className="text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
+                                                >
+                                                    {char}
+                                                </motion.span>
+                                            ))}
+                                        </span>
                                     </span>
                                     <span className="flex justify-center overflow-visible py-4 mt-[-2vw]">
-                                        {"Institution".split("").map((char, i) => (
-                                            <motion.span
-                                                key={i}
-                                                custom={i + 12}
-                                                variants={charVariants}
-                                                className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
-                                            >
-                                                {char}
-                                            </motion.span>
-                                        ))}
+                                        <span className="whitespace-nowrap inline-block">
+                                            {"Institution".split("").map((char, i) => (
+                                                <motion.span
+                                                    key={i}
+                                                    custom={i + 12}
+                                                    variants={charVariants}
+                                                    className="text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block"
+                                                >
+                                                    {char}
+                                                </motion.span>
+                                            ))}
+                                        </span>
                                     </span>
                                 </h1>
                             </div>
 
-                            <motion.div variants={itemVariants} className="space-y-6">
-                                <p className="text-xl md:text-2xl text-white/50 font-light italic tracking-[0.6em] leading-none">The Art of Professional Tailoring</p>
+                            <motion.div variants={itemVariants} className="space-y-6 w-full px-4">
+                                <p className="text-center text-sm md:text-2xl text-white/50 font-light italic tracking-[0.3em] md:tracking-[0.6em] leading-relaxed">
+                                    The Art of Professional Tailoring
+                                </p>
                             </motion.div>
                         </div>
 
