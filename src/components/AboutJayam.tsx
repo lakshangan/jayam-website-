@@ -69,9 +69,8 @@ const AboutJayam = () => {
                 <img
                   src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
                   alt="Founder"
-                  className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-105 group-hover:scale-100"
+                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
               </div>
 
               <motion.div
@@ -93,22 +92,22 @@ const AboutJayam = () => {
             </motion.div>
 
             <TextReveal delay={0.1}>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-[1.1]">
+              <h2 className="text-3xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-[1.1]">
                 Our History and <span className="gold-gradient-text italic font-normal">Future Goals</span>
               </h2>
             </TextReveal>
 
             <TextReveal delay={0.2}>
-              <p className="text-white/60 text-lg leading-relaxed mb-12 font-light">
+              <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-light">
                 For over 25 years, Jayam Institute has been a leader in fashion education. We started with a simple goal: to help people turn their love for sewing into a professional career. Today, we are proud to have helped thousands of students start their own businesses.
               </p>
             </TextReveal>
 
-            <motion.div variants={itemVariants} className="space-y-8 mb-16 border-l border-white/5 pl-10">
-              <p className="text-white/60 text-xl font-light leading-relaxed max-w-2xl">
+            <motion.div variants={itemVariants} className="space-y-6 md:space-y-8 mb-12 md:mb-16 border-l border-white/5 pl-6 md:pl-10">
+              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
                 Our courses blend traditional and modern sewing, preparing students for successful careers in the ever-evolving world of fashion.
               </p>
-              <p className="text-white/30 text-base leading-relaxed max-w-xl">
+              <p className="text-white/30 text-sm md:text-base leading-relaxed max-w-xl">
                 We believe in empowerement through skill. Every stitch matters, and every student has a unique story to tell.
               </p>
             </motion.div>

@@ -77,26 +77,6 @@ const CampusLife = () => {
 
       <div className="container-custom relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <Camera className="w-4 h-4 text-accent" />
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-accent">See Our Classes</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-8"
-          >
-            Modern Rooms for <br />
-            <span className="gold-gradient-text italic font-normal">Our Students</span>
-          </motion.h2>
 
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (

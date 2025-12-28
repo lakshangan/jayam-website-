@@ -38,7 +38,7 @@ const FloatingAdmissionCTA = () => {
                                 <Sparkles className="text-background w-6 h-6 animate-pulse" />
                             </div>
                             <div>
-                                <h4 className="text-white text-sm font-bold tracking-tight">Admissions Open 2024</h4>
+                                <h4 className="text-white text-sm font-bold tracking-tight">Admissions Open</h4>
                                 <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold">Limited Seats Available</p>
                             </div>
                         </div>

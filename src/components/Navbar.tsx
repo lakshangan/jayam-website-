@@ -45,70 +45,65 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-[100] transition-all duration-700 ${isScrolled
-      ? 'py-4'
-      : 'py-8'
+      ? 'py-3 md:py-4'
+      : 'py-4 md:py-6'
       }`}>
       <div className="container-custom">
-        <div className={`relative flex justify-between items-center transition-all duration-700 px-8 rounded-full border border-white/5 ${isScrolled
-          ? 'bg-secondary/80 backdrop-blur-2xl py-3 shadow-2xl border-white/10'
-          : 'bg-transparent py-4'
+        <div className={`relative flex justify-between items-center transition-all duration-700 px-4 md:px-6 rounded-full border border-white/5 ${isScrolled
+          ? 'bg-[#050508]/80 backdrop-blur-2xl py-2 md:py-3 shadow-2xl border-white/10'
+          : 'bg-transparent py-2'
           }`}>
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center space-x-3 group z-50"
+            className="flex items-center gap-3 group z-50"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[2px] bg-gradient-to-tr from-accent/40 via-transparent to-accent/40 rounded-full blur-[4px] opacity-0 group-hover:opacity-100 transition-opacity"
-              />
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
               <img
                 src="/lovable-uploads/logo.png"
                 alt="Jayam Logo"
-                className="relative w-full h-full rounded-full border border-white/10 shadow-2xl bg-white transition-transform group-hover:scale-110 duration-500 object-cover"
+                className="w-full h-full object-contain transition-transform group-hover:scale-110 duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-lg leading-tight tracking-tight text-white group-hover:text-accent transition-colors duration-300">
+              <span className="font-display font-bold text-base leading-tight tracking-tight text-white group-hover:text-accent transition-colors duration-300">
                 Jayam
               </span>
-              <span className="text-[10px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
+              <span className="text-[8px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={handleLinkClick}
-                className="relative px-5 py-2 text-sm text-white/60 font-medium transition-all duration-300 group overflow-hidden"
+                className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
               >
-                <span className="relative z-10 group-hover:text-white transition-colors duration-300">{link.label}</span>
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
-            <div className="ml-4 pl-4 border-l border-white/10">
+            <div className="ml-3 pl-3 border-l border-white/10">
               <a
                 href="#contact"
                 onClick={handleLinkClick}
-                className="px-6 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-accent transition-all duration-300"
+                className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300"
               >
-                Apply Now
+                Get Admission Info
               </a>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 z-[101]"
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 z-[101]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <AnimatePresence mode="wait">
@@ -119,7 +114,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
                 >
-                  <X className="w-5 h-5 text-white" />
+                  <X className="w-4 h-4 text-white" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -128,7 +123,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
                 >
-                  <Menu className="w-5 h-5 text-white" />
+                  <Menu className="w-4 h-4 text-white" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -139,11 +134,11 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden absolute top-[110%] left-6 right-6 p-8 bg-secondary/95 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100]"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden absolute top-full left-4 right-4 mt-2 p-6 bg-[#050508]/95 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100]"
             >
               <div className="flex flex-col space-y-4">
                 {navLinks.map((link, index) => (

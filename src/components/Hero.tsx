@@ -121,10 +121,10 @@ const Hero = () => {
           className="w-full flex-1 flex flex-col items-center justify-center relative"
         >
           {/* Main Cinematic Title - Responsive Scaling */}
-          <div className="text-center px-4 relative w-full z-20">
+          <div className="text-center px-2 relative w-full z-20">
             <div className="absolute inset-0 bg-accent/5 blur-[60px] md:blur-[120px] -z-10" />
-            <h1 className="flex flex-col items-center leading-[1.0] md:leading-[0.9]">
-              <span className="flex flex-wrap justify-center overflow-visible py-2 md:py-4">
+            <h1 className="flex flex-col items-center leading-[0.9] md:leading-[0.9]">
+              <span className="flex flex-wrap justify-center overflow-visible py-1 md:py-4">
                 {"Jayam".split("").map((char, i) => (
                   <motion.span
                     key={i}
@@ -163,7 +163,7 @@ const Hero = () => {
           </div>
 
           {/* Subtext - Improved Mobile Readability */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center text-center gap-3 max-w-[85vw] md:max-w-2xl px-2 md:px-6 mt-4 md:mt-8 z-20">
+          <motion.div variants={itemVariants} className="flex flex-col items-center text-center gap-3 w-full max-w-[90vw] md:max-w-2xl px-4 md:px-6 mt-6 md:mt-8 z-20">
             <p className="text-sm md:text-lg text-white/50 font-light tracking-wide leading-relaxed">
               Start your career in fashion with our easy sewing classes.
             </p>
@@ -173,16 +173,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Bottom Layout - Centered Primary CTA for Desktop & Mobile */}
-          <div className="w-full flex flex-col items-center gap-6 md:gap-14 pt-6 md:pt-12 border-t border-white/5 mt-6 md:mt-12 z-20">
-            <motion.div variants={itemVariants} className="flex flex-col items-center justify-center w-full px-4">
-              {/* Primary Call to Action - Centered */}
-              <Link to="/courses" className="group flex items-center justify-center gap-3 px-8 py-4">
-                <span className="text-[10px] font-bold tracking-[0.3em] text-white/60 group-hover:text-white transition-all duration-500 uppercase">
-                  Explore Courses
-                </span>
-                <MoveRight className="w-4 h-4 text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all duration-500" />
-              </Link>
-            </motion.div>
+          <div className="w-full flex flex-col items-center gap-6 md:gap-14 pt-6 md:pt-12 mt-6 md:mt-12 z-20">
 
             {/* Optimized Scroll Indicator */}
             <div className="flex flex-col items-center gap-3 md:gap-4 opacity-60">
