@@ -40,7 +40,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Specializations</h3>
             <ul className="space-y-4">
-              {['Professional Tailoring', 'Fashion Designing', 'Beautician Courses', 'Master Designer', 'Apparel Design'].map((item) => (
+              {['Professional Tailoring', 'Fashion Designing', 'Beautician Courses'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-sm text-white/40 hover:text-white transition-colors flex items-center group">
                     <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3 opacity-0 group-hover:opacity-100" />
@@ -52,9 +52,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Academic Links</h3>
+            <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white mb-8">Quick Links</h3>
             <ul className="space-y-4">
-              {['Admission Process', 'Campus Life', 'Galleria', 'Our Legacy', 'Join Faculty'].map((item) => (
+              {['Courses', 'About Us', 'Contact'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-sm text-white/40 hover:text-white transition-colors flex items-center group">
                     <span className="w-0 group-hover:w-3 h-[1px] bg-accent transition-all duration-300 mr-0 group-hover:mr-3 opacity-0 group-hover:opacity-100" />

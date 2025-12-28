@@ -178,6 +178,15 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #e2c17d;
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 .animate-ken-burns {

@@ -99,14 +99,14 @@ const WelcomeScreen = () => {
                         </svg>
 
                         {/* Floating Cinematic Dust - Ultra High Visibility */}
-                        {[...Array(80)].map((_, i) => (
+                        {[...Array(130)].map((_, i) => (
                             <motion.div
                                 key={i}
                                 initial={{
                                     opacity: 0,
                                     x: Math.random() * 100 + "%",
                                     y: Math.random() * 100 + "%",
-                                    scale: Math.random() * 2 + 0.5
+                                    scale: Math.random() * 2.5 + 0.5
                                 }}
                                 animate={{
                                     opacity: [0, 1, 0],
@@ -118,7 +118,7 @@ const WelcomeScreen = () => {
                                     ease: "linear",
                                     delay: Math.random() * 5
                                 }}
-                                className="absolute w-[3px] h-[3px] bg-accent/90 rounded-full blur-[0.2px] shadow-[0_0_10px_rgba(197,163,88,0.4)]"
+                                className="absolute w-[3px] h-[3px] bg-accent/90 rounded-full blur-[0.2px] shadow-[0_0_15px_rgba(197,163,88,0.5)]"
                             />
                         ))}
                     </div>
@@ -190,12 +190,12 @@ const WelcomeScreen = () => {
                             <div className="absolute inset-x-0 bottom-20 bg-accent/30 blur-[100px] h-32 w-full rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                             <button
                                 onClick={handleEnter}
-                                className="group relative px-24 py-10 overflow-hidden rounded-full border border-white/10 hover:border-accent transition-all duration-1000 bg-white/[0.02] backdrop-blur-md"
+                                className="group relative px-12 md:px-24 py-6 md:py-10 overflow-hidden rounded-full border border-white/10 hover:border-accent transition-all duration-1000 bg-white/[0.02] backdrop-blur-md"
                             >
                                 <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-1000 ease-[0.22,1,0.36,1]" />
-                                <div className="relative z-10 flex items-center gap-10 text-[11px] font-black tracking-[0.9em] text-white group-hover:text-background transition-colors">
+                                <div className="relative z-10 flex items-center gap-6 md:gap-10 text-[10px] md:text-[11px] font-black tracking-[0.5em] md:tracking-[0.9em] text-white group-hover:text-background transition-colors">
                                     START EXPERIENCE
-                                    <MoveRight className="w-5 h-5 group-hover:translate-x-6 transition-transform duration-700" />
+                                    <MoveRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-3 md:group-hover:translate-x-6 transition-transform duration-700" />
                                 </div>
                             </button>
                         </motion.div>

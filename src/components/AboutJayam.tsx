@@ -54,7 +54,7 @@ const AboutJayam = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="grid lg:grid-cols-12 gap-24 items-center mb-24"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center mb-12 md:mb-24"
         >
           {/* Image Side */}
           <motion.div

@@ -236,7 +236,7 @@ const Courses = () => {
           </motion.p>
         </div>
 
-        <div className="space-y-40">
+        <div className="space-y-20 md:space-y-40">
           {courseGroups.map((group, groupIdx) => (
             <div key={group.title}>
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/5 pb-12 gap-8">

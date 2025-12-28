@@ -116,7 +116,7 @@ const CampusLife = () => {
 
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 no-scrollbar"
         >
           <AnimatePresence mode="popLayout">
             {filteredImages.map((image) => (
@@ -127,16 +127,16 @@ const CampusLife = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
-                className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/5"
+                className="group relative flex-shrink-0 w-[85%] sm:w-auto aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/5 snap-center"
               >
                 <img
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="absolute inset-x-0 bottom-0 p-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 translate-y-0 sm:translate-y-4 group-hover:translate-y-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-accent mb-2 block">
                     {image.category}
                   </span>

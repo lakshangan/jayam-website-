@@ -30,7 +30,7 @@ const FloatingAdmissionCTA = () => {
                     initial={{ y: 100, opacity: 0, scale: 0.8 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
                     exit={{ y: 100, opacity: 0, scale: 0.8 }}
-                    className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md"
+                    className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md hidden md:block"
                 >
                     <div className="glass-premium p-4 md:p-6 rounded-[2.5rem] flex items-center justify-between gap-4 border-accent/20 shadow-[0_20px_50px_rgba(197,163,88,0.2)]">
                         <div className="flex items-center gap-4">

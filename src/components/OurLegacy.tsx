@@ -38,7 +38,7 @@ const OurLegacy = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] -z-10" />
 
       <div className="container-custom relative z-10">
-        <div className="max-w-3xl mb-32">
+        <div className="max-w-3xl mb-16 md:mb-32">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +74,7 @@ const OurLegacy = () => {
           {/* Vertical Timeline Line */}
           <div className="absolute left-[8px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/50 via-white/10 to-transparent" />
 
-          <div className="space-y-24 md:space-y-40">
+          <div className="space-y-16 md:space-y-40">
             {milestones.map((milestone, idx) => (
               <motion.div
                 key={idx}
@@ -116,7 +116,7 @@ const OurLegacy = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mt-40 flex flex-col items-center text-center"
+          className="mt-20 md:mt-40 flex flex-col items-center text-center"
         >
           <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-8">
             <Sparkles className="text-accent w-8 h-8" />

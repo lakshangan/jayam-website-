@@ -11,16 +11,17 @@ export function FloatingPaths({ position }: { position: number }) {
             } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position
             } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position
             } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-        color: `rgba(197, 163, 88, ${0.05 + i * 0.01})`, // Adapted to gold/accent
-        width: 0.5 + i * 0.03,
+        color: `rgba(197, 163, 88, ${0.1 + i * 0.02})`,
+        width: 0.8 + i * 0.04,
     }));
 
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-accent/20"
+                className="w-full h-full text-accent/30"
                 viewBox="0 0 696 316"
                 fill="none"
+                preserveAspectRatio="xMidYMid slice"
             >
                 <title>Background Paths</title>
                 {paths.map((path) => (
@@ -29,17 +30,17 @@ export function FloatingPaths({ position }: { position: number }) {
                         d={path.d}
                         stroke="currentColor"
                         strokeWidth={path.width}
-                        strokeOpacity={0.1 + path.id * 0.02}
-                        initial={{ pathLength: 0.3, opacity: 0.6 }}
+                        strokeOpacity={0.15 + path.id * 0.03}
+                        initial={{ pathLength: 0.3, opacity: 0.4 }}
                         animate={{
-                            pathLength: 1,
-                            opacity: [0.3, 0.6, 0.3],
+                            pathLength: [0.4, 1, 0.4],
+                            opacity: [0.2, 0.5, 0.2],
                             pathOffset: [0, 1, 0],
                         }}
                         transition={{
-                            duration: 20 + Math.random() * 10,
+                            duration: 15 + Math.random() * 10,
                             repeat: Number.POSITIVE_INFINITY,
-                            ease: "linear",
+                            ease: "easeInOut",
                         }}
                     />
                 ))}
