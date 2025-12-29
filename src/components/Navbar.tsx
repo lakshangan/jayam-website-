@@ -44,15 +44,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-[100] transition-all duration-700 ${isScrolled
-      ? 'py-3 md:py-4'
-      : 'py-4 md:py-6'
+    <nav className={`fixed w-full z-[100] transition-all duration-500 top-0 left-0 ${isScrolled
+      ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-3'
+      : 'bg-transparent py-6 bg-gradient-to-b from-black/50 to-transparent'
       }`}>
       <div className="container-custom">
-        <div className={`relative flex justify-between items-center transition-all duration-700 px-4 md:px-6 rounded-full border border-white/5 ${isScrolled
-          ? 'bg-[#050508]/80 backdrop-blur-2xl py-2 md:py-3 shadow-2xl border-white/10'
-          : 'bg-transparent py-2'
-          }`}>
+        <div className="flex justify-between items-center px-4 md:px-0">
           {/* Logo */}
           <a
             href="#"
@@ -62,48 +59,45 @@ const Navbar = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
               <img
                 src="/lovable-uploads/logo.png"
                 alt="Jayam Logo"
-                className="w-full h-full object-contain transition-transform group-hover:scale-110 duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                className="w-full h-full object-contain transition-transform group-hover:scale-110 duration-500"
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-base leading-tight tracking-tight text-white group-hover:text-accent transition-colors duration-300">
-                Jayam
+              <span className="font-display font-bold text-lg leading-none tracking-tight text-white group-hover:text-accent transition-colors duration-300">
+                JAYAM
               </span>
-              <span className="text-[8px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
+              <span className="text-[9px] uppercase tracking-[0.4em] text-white/50 group-hover:text-white/80 transition-colors duration-300">Institute</span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={handleLinkClick}
-                className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
+                className="relative text-[11px] uppercase tracking-[0.2em] font-medium text-white/70 hover:text-white transition-colors duration-300 py-2"
               >
-                <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
+                {link.label}
               </a>
             ))}
-            <div className="ml-3 pl-3 border-l border-white/10">
-              <a
-                href="#contact"
-                onClick={handleLinkClick}
-                className="px-5 py-2 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300"
-              >
-                Get Admission Info
-              </a>
-            </div>
+            <a
+              href="#contact"
+              onClick={handleLinkClick}
+              className="ml-4 px-6 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-accent hover:text-white transition-all duration-300"
+            >
+              Start Now
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 z-[101]"
+            className="lg:hidden text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <AnimatePresence mode="wait">
@@ -114,7 +108,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
                 >
-                  <X className="w-4 h-4 text-white" />
+                  <X className="w-6 h-6" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -123,7 +117,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
                 >
-                  <Menu className="w-4 h-4 text-white" />
+                  <Menu className="w-6 h-6" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -134,40 +128,32 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden absolute top-full left-4 right-4 mt-2 p-6 bg-[#050508]/95 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100]"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col p-6 space-y-6 items-center">
                 {navLinks.map((link, index) => (
                   <motion.a
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
                     key={link.href}
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-2xl font-display font-medium text-white/80 hover:text-accent transition-colors"
+                    className="text-sm uppercase tracking-[0.2em] font-medium text-white/80 hover:text-white"
                   >
                     {link.label}
                   </motion.a>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="pt-6 mt-6 border-t border-white/5"
+                <a
+                  href="#contact"
+                  onClick={handleLinkClick}
+                  className="w-full text-center px-6 py-3 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-accent transition-colors"
                 >
-                  <a
-                    href="#contact"
-                    onClick={handleLinkClick}
-                    className="block text-center py-4 bg-white text-black font-bold rounded-2xl"
-                  >
-                    Get Admission Info
-                  </a>
-                </motion.div>
+                  Get Started
+                </a>
               </div>
             </motion.div>
           )}

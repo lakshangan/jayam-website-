@@ -24,18 +24,19 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15, filter: "blur(8px)" },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any },
+      filter: "blur(0px)",
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as any },
     },
   };
 
@@ -168,14 +169,20 @@ const Hero = () => {
           </div>
 
           {/* Subtext - Improved Mobile Readability */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center text-center gap-3 w-full max-w-[90vw] md:max-w-2xl px-4 md:px-6 mt-6 md:mt-8 z-20">
-            <p className="text-sm md:text-lg text-white/50 font-light tracking-wide leading-relaxed">
+          <div className="flex flex-col items-center text-center gap-3 w-full max-w-[90vw] md:max-w-2xl px-4 md:px-6 mt-6 md:mt-8 z-20">
+            <motion.p
+              variants={itemVariants}
+              className="text-sm md:text-lg text-white/50 font-light tracking-wide leading-relaxed"
+            >
               Start your career in fashion with our easy sewing classes.
-            </p>
-            <p className="text-base md:text-xl text-white/80 font-medium tracking-tight leading-relaxed">
+            </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-base md:text-xl text-white/80 font-medium tracking-tight leading-relaxed"
+            >
               We help you learn professional tailoring and start your own clothing business.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           {/* Bottom Layout - Centered Primary CTA for Desktop & Mobile */}
           <div className="w-full flex flex-col items-center gap-6 md:gap-14 pt-6 md:pt-12 mt-6 md:mt-12 z-20">

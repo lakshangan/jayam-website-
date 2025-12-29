@@ -20,7 +20,7 @@ const App = () => (
       <SmoothScroll />
       <CustomCursor />
       <BackgroundMusic />
-      <Preloader />
+      {/* <Preloader /> */}
       <FloatingAdmissionCTA />
       <Toaster />
       <Sonner />
