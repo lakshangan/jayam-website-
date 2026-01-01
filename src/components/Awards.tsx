@@ -66,7 +66,7 @@ const Awards = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-7xl font-bold text-white mb-0"
+                            className="text-title-section font-bold text-white mb-0"
                         >
                             Our Certified <br />
                             <span className="gold-gradient-text italic font-normal">Success</span>
@@ -83,7 +83,7 @@ const Awards = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch no-scrollbar">
                     {awards.map((award, idx) => (
                         <motion.div
                             key={idx}

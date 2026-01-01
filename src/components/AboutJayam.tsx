@@ -2,6 +2,7 @@
 import { GraduationCap, Users, Heart, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TextReveal from './TextReveal';
+import SwipeIndicator from './SwipeIndicator';
 
 const AboutJayam = () => {
   const containerVariants = {
@@ -92,7 +93,7 @@ const AboutJayam = () => {
             </motion.div>
 
             <TextReveal delay={0.1}>
-              <h2 className="text-3xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-[1.1]">
+              <h2 className="text-title-section font-bold text-white mb-6 md:mb-8 leading-[1.1]">
                 Our History and <span className="gold-gradient-text italic font-normal">Future Goals</span>
               </h2>
             </TextReveal>
@@ -115,15 +116,7 @@ const AboutJayam = () => {
         </motion.div>
 
         {/* Mobile Swipe Hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="sm:hidden flex items-center justify-center gap-2 mb-4 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-        >
-          <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
-          Swipe to explore
-          <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
-        </motion.div>
+        <SwipeIndicator />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
           {features.map((feature, idx) => (

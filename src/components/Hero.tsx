@@ -132,7 +132,7 @@ const Hero = () => {
                       key={i}
                       custom={i}
                       variants={titleCharVariants}
-                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                      className="text-title-hero font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
                     >
                       {char}
                     </motion.span>
@@ -144,7 +144,7 @@ const Hero = () => {
                       key={i}
                       custom={i + 5}
                       variants={titleCharVariants}
-                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
+                      className="text-title-hero font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
                     >
                       {char}
                     </motion.span>
@@ -158,7 +158,7 @@ const Hero = () => {
                       key={i}
                       custom={i + 12}
                       variants={titleCharVariants}
-                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
+                      className="text-title-hero font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
                     >
                       {char}
                     </motion.span>

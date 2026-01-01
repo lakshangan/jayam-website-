@@ -3,6 +3,7 @@ import { PenTool, Scissors, Ruler, Shirt, CheckCircle, Sparkles, Award, ShieldCh
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from "react";
 import TextReveal from "./TextReveal";
+import SwipeIndicator from "./SwipeIndicator";
 
 const TailoringProgram = () => {
   const containerVariants = {
@@ -116,7 +117,7 @@ const TailoringProgram = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as any }}
-          className="relative py-24 px-12 rounded-[4rem] overflow-hidden border border-white/5 group"
+          className="relative py-16 md:py-24 px-6 md:px-12 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-white/5 group"
         >
           <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />
           <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] via-transparent to-primary/[0.03] -z-10" />
@@ -136,41 +137,35 @@ const TailoringProgram = () => {
           </div>
 
           {/* Mobile Swipe Hint */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-          >
-            <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
-            Swipe to see status
-            <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
-          </motion.div>
+          <div className="md:hidden">
+            <SwipeIndicator text="Swipe Credentials" />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20 max-w-6xl mx-auto mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch no-scrollbar">
             {accreditationItems.map((item, idx) => (
-              <div key={idx} className="h-auto">
+              <div key={idx} className="h-full flex">
                 <TextReveal delay={idx * 0.1} width="100%">
-                  <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-8 md:p-10 group/card text-center h-full flex flex-col justify-center">
-                    <div className="h-[1px] w-12 bg-accent/30 mx-auto mb-6 transition-all group-hover/card:w-full" />
-                    <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4">{item.title}</h4>
-                    <p className="text-white/30 text-xs md:text-sm leading-relaxed font-light">{item.content}</p>
+                  <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-8 md:p-12 group/card text-center h-[280px] md:h-full flex flex-col justify-center items-center">
+                    <div className="h-[1px] w-12 bg-accent/30 mx-auto mb-8 transition-all group-hover/card:w-20" />
+                    <h4 className="text-white text-sm md:text-xs font-bold uppercase tracking-[0.2em] mb-4">{item.title}</h4>
+                    <p className="text-white/40 text-[11px] md:text-sm leading-relaxed font-light max-w-[200px] mx-auto">{item.content}</p>
                   </div>
                 </TextReveal>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-white/10 border-t border-white/5 pt-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold text-white/10 border-t border-white/5 pt-12">
             <div className="flex items-center gap-3">
               <span className="text-white/30">Credential:</span>
               <span className="text-white/60">JC-NSDC-7742</span>
             </div>
-            <div className="w-1.5 h-1.5 bg-accent/20 rounded-full hidden md:block" />
+            <div className="w-1 h-1 bg-accent/20 rounded-full hidden md:block" />
             <div className="flex items-center gap-3">
               <span className="text-white/30">Accredited Until:</span>
               <span className="text-white/60">2026</span>
             </div>
-            <div className="w-1.5 h-1.5 bg-accent/20 rounded-full hidden md:block" />
+            <div className="w-1 h-1 bg-accent/20 rounded-full hidden md:block" />
             <div className="flex items-center gap-3">
               <span className="text-white/30">Authorized By:</span>
               <span className="text-accent/60">Skill India Board</span>

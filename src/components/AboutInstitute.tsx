@@ -2,6 +2,7 @@
 import { CheckCircle, Star, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TextReveal from './TextReveal';
+import SwipeIndicator from './SwipeIndicator';
 
 const AboutInstitute = () => {
   const containerVariants = {
@@ -76,32 +77,16 @@ const AboutInstitute = () => {
             </motion.div>
 
             <TextReveal delay={0.2} width="100%">
-              <h2 className="text-5xl md:text-8xl font-bold text-white mb-12 leading-[0.9] tracking-tighter">
+              <h2 className="text-title-section font-bold text-white mb-12 leading-[0.9] tracking-tighter">
                 Crafting <br />
                 <span className="gold-gradient-text italic font-normal text-glow">Excellence</span> Since 1995
               </h2>
             </TextReveal>
 
             {/* Mobile Swipe Hint */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="lg:hidden flex items-center justify-center gap-2 mb-4 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-            >
-              <motion.span
-                animate={{ x: [-4, 4, -4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                ←
-              </motion.span>
-              Swipe to explore
-              <motion.span
-                animate={{ x: [4, -4, 4] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                →
-              </motion.span>
-            </motion.div>
+            <div className="lg:hidden">
+              <SwipeIndicator />
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
               {features.map((item, idx) => (

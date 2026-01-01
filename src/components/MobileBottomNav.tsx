@@ -42,10 +42,15 @@ const MobileBottomNav = () => {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 100, opacity: 0 }}
-                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                    initial={{ y: 120, opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                    animate={{ y: 0, opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                    exit={{ y: 120, opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                    transition={{
+                        y: { type: 'spring', stiffness: 300, damping: 25 },
+                        scale: { type: 'spring', stiffness: 300, damping: 25 },
+                        opacity: { duration: 0.4 },
+                        filter: { duration: 0.3 }
+                    }}
                     className="fixed bottom-6 left-6 right-6 z-[90] lg:hidden"
                 >
                     <div className="bg-[#050508]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-around">

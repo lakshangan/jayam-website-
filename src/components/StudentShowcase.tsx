@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { Quote, Star } from 'lucide-react';
+import SwipeIndicator from './SwipeIndicator';
 
 const testimonials = [
     {
@@ -47,7 +48,7 @@ const StudentShowcase = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-7xl font-bold text-white mb-0"
+                            className="text-title-section font-bold text-white mb-0"
                         >
                             Stories of <br />
                             <span className="gold-gradient-text italic font-normal text-glow">Transformation</span>
@@ -65,15 +66,9 @@ const StudentShowcase = () => {
                 </div>
 
                 {/* Mobile Swipe Hint */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-                >
-                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
-                    Swipe stories
-                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
-                </motion.div>
+                <div className="md:hidden">
+                    <SwipeIndicator text="Swipe Alumni Stories" />
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
                     {testimonials.map((item, idx) => (

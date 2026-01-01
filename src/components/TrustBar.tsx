@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { Users, BookmarkCheck, Award, Briefcase } from 'lucide-react';
+import SwipeIndicator from './SwipeIndicator';
 
 const stats = [
     {
@@ -34,15 +35,9 @@ const TrustBar = () => {
         <section className="py-20 bg-background relative overflow-hidden mask-linear-t mask-linear-b">
             <div className="container-custom relative z-10">
                 {/* Mobile Swipe Hint */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-                >
-                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
-                    Swipe
-                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
-                </motion.div>
+                <div className="md:hidden">
+                    <SwipeIndicator text="Swipe Statistics" />
+                </div>
 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
                     {stats.map((stat, idx) => (

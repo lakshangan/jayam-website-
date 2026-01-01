@@ -53,7 +53,7 @@ const OurLegacy = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold bg-white bg-clip-text text-transparent mb-8"
+            className="text-title-section font-bold bg-white bg-clip-text text-transparent mb-8"
           >
             A Long History of <br />
             <span className="gold-gradient-text italic font-normal">Excellence</span>

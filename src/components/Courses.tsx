@@ -97,8 +97,9 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full"
     >
       <Collapsible open={open} onOpenChange={setOpen} className="group">
         <div className={`premium-card h-full flex flex-col transition-all duration-700 ${open ? 'border-accent/60 bg-accent/5 ring-1 ring-accent/20' : ''}`}>
@@ -241,26 +242,16 @@ const Courses = () => {
             <div key={group.title}>
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/5 pb-12 gap-8">
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-3 tracking-tight">{group.title}</h3>
+                  <h3 className="text-title-section font-bold text-white mb-3 tracking-tight">{group.title}</h3>
                   <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-6">
-                  {/* Mobile Swipe Hint */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="md:hidden flex items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
-                  >
-                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
-                    Swipe
-                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
-                  </motion.div>
                   <div className="hidden md:block px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">
                     {group.courses.length} Certified Pathways
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                 {group.courses.map((course, idx) => (
                   <CourseCard key={course.name} course={course} index={idx} />
                 ))}
