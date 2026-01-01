@@ -110,6 +110,14 @@
   .reveal-text {
     @apply relative inline-block;
   }
+
+  .title-italic-gold {
+    @apply font-display italic font-medium;
+    background: linear-gradient(to right, #c5a358, #e2c17d, #c5a358);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(197, 163, 88, 0.2));
+  }
 }
 
 @layer utilities {

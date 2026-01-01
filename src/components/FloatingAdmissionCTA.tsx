@@ -30,9 +30,9 @@ const FloatingAdmissionCTA = () => {
                     initial={{ y: 100, opacity: 0, scale: 0.8 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
                     exit={{ y: 100, opacity: 0, scale: 0.8 }}
-                    className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md hidden md:block"
+                    className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] sm:w-[90%] max-w-md"
                 >
-                    <div className="glass-premium p-4 md:p-6 rounded-[2.5rem] flex items-center justify-between gap-4 border-accent/20 shadow-[0_20px_50px_rgba(197,163,88,0.2)]">
+                    <div className="glass-premium p-3 md:p-6 rounded-[2rem] md:rounded-[2.5rem] flex items-center justify-between gap-3 md:gap-4 border-accent/20 shadow-[0_20px_50px_rgba(197,163,88,0.2)]">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center shrink-0">
                                 <Sparkles className="text-background w-6 h-6 animate-pulse" />
@@ -45,7 +45,7 @@ const FloatingAdmissionCTA = () => {
 
                         <button
                             onClick={scrollToContact}
-                            className="px-6 py-3 bg-white text-black text-xs font-black rounded-2xl hover:bg-accent transition-all duration-300 flex items-center gap-2 group"
+                            className="px-4 md:px-6 py-2.5 md:py-3 bg-white text-black text-[10px] md:text-xs font-black rounded-xl md:rounded-2xl hover:bg-accent transition-all duration-300 flex items-center gap-2 group whitespace-nowrap"
                         >
                             APPLY NOW
                             <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />

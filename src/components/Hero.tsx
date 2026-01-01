@@ -132,7 +132,7 @@ const Hero = () => {
                       key={i}
                       custom={i}
                       variants={titleCharVariants}
-                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
                     >
                       {char}
                     </motion.span>
@@ -144,21 +144,21 @@ const Hero = () => {
                       key={i}
                       custom={i + 5}
                       variants={titleCharVariants}
-                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
+                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-normal gold-gradient-text italic tracking-tighter px-0.5 inline-block"
                     >
                       {char}
                     </motion.span>
                   ))}
                 </span>
               </span>
-              <span className="flex justify-center overflow-visible py-1 md:py-4 mt-[-2vw] md:mt-[-1vw]">
+              <span className="flex justify-center overflow-visible py-1 md:py-4 mt-[-1vw] md:mt-[-1vw]">
                 <span className="whitespace-nowrap inline-block">
                   {"Institution".split("").map((char, i) => (
                     <motion.span
                       key={i}
                       custom={i + 12}
                       variants={titleCharVariants}
-                      className="text-[15vw] sm:text-[14vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
+                      className="text-[12vw] sm:text-[12vw] md:text-[10vw] font-bold text-white tracking-tighter inline-block drop-shadow-[0_4px_12_rgba(0,0,0,0.5)]"
                     >
                       {char}
                     </motion.span>

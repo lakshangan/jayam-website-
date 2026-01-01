@@ -161,36 +161,40 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden absolute top-full left-4 right-4 mt-2 p-6 bg-[#050508]/95 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-[100]"
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:hidden fixed inset-x-4 top-[80px] p-8 bg-[#050508]/90 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] z-[100] overflow-hidden"
             >
-              <div className="flex flex-col space-y-4">
+              {/* Decorative background element behind links */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+              <div className="relative flex flex-col space-y-6">
                 {navLinks.map((link, index) => (
                   <motion.a
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
                     key={link.href}
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-2xl font-display font-medium text-white/80 hover:text-accent transition-colors"
+                    className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
                   >
+                    <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
                     {link.label}
                   </motion.a>
                 ))}
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="pt-6 mt-6 border-t border-white/5"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="pt-8 mt-8 border-t border-white/10"
                 >
                   <a
                     href="#contact"
                     onClick={handleLinkClick}
-                    className="block text-center py-4 bg-white text-black font-bold rounded-full"
+                    className="block text-center py-5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-white/5"
                   >
                     Get Admission Info
                   </a>

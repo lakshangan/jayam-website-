@@ -1,5 +1,5 @@
-
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Hero from '@/components/Hero';
 import AboutInstitute from '@/components/AboutInstitute';
 import AboutJayam from '@/components/AboutJayam';
@@ -16,28 +16,39 @@ import Awards from '@/components/Awards';
 import TrustBar from '@/components/TrustBar';
 import StudentShowcase from '@/components/StudentShowcase';
 
-const Index = () => {
+const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   useEffect(() => {
     document.title = "Jayam Institute - Shaping Futures, Empowering Minds";
   }, []);
 
   return (
-    <main className="overflow-x-hidden">
+    <main className={`overflow-x-hidden ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
       <AnimationScript />
-      <Navbar />
-      <Hero />
-      <TrustBar />
-      <AboutInstitute />
-      <AboutJayam />
-      <Courses />
-      <TailoringProgram />
-      <CampusLife />
-      <OurLegacy />
-      <Awards />
-      <StudentShowcase />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <Navbar />
+          <Hero />
+          <TrustBar />
+          <AboutInstitute />
+          <AboutJayam />
+          <Courses />
+          <TailoringProgram />
+          <CampusLife />
+          <OurLegacy />
+          <Awards />
+          <StudentShowcase />
+          <Contact />
+          <Footer />
+          <ScrollToTop />
+        </motion.div>
+      )}
+      {/* Show only the Hero background or a simplified version during loading if needed, 
+          but usually the Preloader covers everything. 
+          To ensure the Preloader is visible, we keep the main content hidden. */}
     </main>
   );
 };

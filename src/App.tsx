@@ -12,26 +12,37 @@ import FloatingAdmissionCTA from "./components/FloatingAdmissionCTA";
 import SmoothScroll from "./components/SmoothScroll";
 import BackgroundMusic from "./components/BackgroundMusic";
 
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <SmoothScroll />
-      <CustomCursor />
-      <BackgroundMusic />
-      {/* <Preloader /> */}
-      <FloatingAdmissionCTA />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <SmoothScroll />
+        <CustomCursor />
+        <BackgroundMusic />
+        <AnimatePresence mode="wait">
+          {isLoading && (
+            <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
+          )}
+        </AnimatePresence>
+        {!isLoading && <FloatingAdmissionCTA />}
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index isLoading={isLoading} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
