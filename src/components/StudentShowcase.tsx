@@ -64,39 +64,51 @@ const StudentShowcase = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Mobile Swipe Hint */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
+                >
+                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
+                    Swipe stories
+                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
                     {testimonials.map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 1 }}
-                            className="premium-card group relative h-full flex flex-col"
-                        >
-                            <Quote className="absolute top-8 right-8 w-12 h-12 text-accent/5 group-hover:text-accent/20 transition-all duration-700" />
+                        <div key={idx} className="h-auto">
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1, duration: 1 }}
+                                className="premium-card group relative h-full flex flex-col p-8 md:p-10"
+                            >
+                                <Quote className="absolute top-8 right-8 w-12 h-12 text-accent/5 group-hover:text-accent/20 transition-all duration-700" />
 
-                            <div className="flex items-center gap-5 mb-10">
-                                <div className="w-16 h-16 rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10 group-hover:border-accent/30">
-                                    <img src={item.image} alt={item.name} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
+                                <div className="flex items-center gap-5 mb-10">
+                                    <div className="w-16 h-16 rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10 group-hover:border-accent/30">
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold tracking-tight text-lg group-hover:text-accent transition-colors">{item.name}</h4>
+                                        <p className="text-accent/60 text-[10px] uppercase tracking-widest font-bold">{item.role}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="text-white font-bold tracking-tight text-lg group-hover:text-accent transition-colors">{item.name}</h4>
-                                    <p className="text-accent/60 text-[10px] uppercase tracking-widest font-bold">{item.role}</p>
-                                </div>
-                            </div>
 
-                            <p className="text-white/60 text-base italic leading-relaxed font-light mb-10 flex-grow relative z-10">
-                                "{item.content}"
-                            </p>
+                                <p className="text-white/60 text-sm md:text-base italic leading-relaxed font-light mb-10 flex-grow relative z-10">
+                                    "{item.content}"
+                                </p>
 
-                            <div className="pt-8 border-t border-white/5 flex flex-col gap-2">
-                                <span className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">{item.stats}</span>
-                                <div className="flex gap-1">
-                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={10} className="text-accent fill-accent" />)}
+                                <div className="pt-8 border-t border-white/5 flex flex-col gap-2mt-auto">
+                                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold">{item.stats}</span>
+                                    <div className="flex gap-1">
+                                        {[1, 2, 3, 4, 5].map(i => <Star key={i} size={10} className="text-accent fill-accent" />)}
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

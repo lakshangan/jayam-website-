@@ -33,39 +33,51 @@ const TrustBar = () => {
     return (
         <section className="py-20 bg-background relative overflow-hidden mask-linear-t mask-linear-b">
             <div className="container-custom relative z-10">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                    {stats.map((stat, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.8 }}
-                            className="group flex flex-col items-center text-center space-y-4"
-                        >
-                            <div className="w-14 h-14 rounded-2xl bg-secondary/50 border border-white/5 flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
-                                {stat.icon}
-                            </div>
-                            <div className="space-y-1">
-                                <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                                    {stat.value}
-                                </h3>
-                                <p className="text-accent text-[10px] uppercase tracking-[0.3em] font-bold">
-                                    {stat.label}
-                                </p>
-                                <p className="text-white/20 text-[10px] md:text-xs font-light">
-                                    {stat.description}
-                                </p>
-                            </div>
+                {/* Mobile Swipe Hint */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
+                >
+                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
+                    Swipe
+                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+                </motion.div>
 
-                            {/* Decorative Line */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
+                    {stats.map((stat, idx) => (
+                        <div key={idx} className="h-auto">
                             <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "40px" }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="h-[1px] bg-accent/20 mt-4 group-hover:bg-accent/50 transition-colors"
-                            />
-                        </motion.div>
+                                transition={{ delay: idx * 0.1, duration: 0.8 }}
+                                className="group flex flex-col items-center text-center space-y-4 h-full"
+                            >
+                                <div className="w-14 h-14 rounded-2xl bg-secondary/50 border border-white/5 flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
+                                    {stat.icon}
+                                </div>
+                                <div className="space-y-1">
+                                    <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                                        {stat.value}
+                                    </h3>
+                                    <p className="text-accent text-[10px] uppercase tracking-[0.3em] font-bold">
+                                        {stat.label}
+                                    </p>
+                                    <p className="text-white/20 text-[10px] md:text-xs font-light">
+                                        {stat.description}
+                                    </p>
+                                </div>
+
+                                {/* Decorative Line */}
+                                <motion.div
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "40px" }}
+                                    viewport={{ once: true }}
+                                    className="h-[1px] bg-accent/20 mt-4 group-hover:bg-accent/50 transition-colors mx-auto"
+                                />
+                            </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -169,18 +169,18 @@ const Hero = () => {
           </div>
 
           {/* Subtext - Improved Mobile Readability */}
-          <div className="flex flex-col items-center text-center gap-3 w-full max-w-[90vw] md:max-w-2xl px-4 md:px-6 mt-6 md:mt-8 z-20">
+          <div className="flex flex-col items-center text-center gap-4 w-full max-w-[90vw] md:max-w-2xl px-4 md:px-6 mt-10 md:mt-8 z-20">
             <motion.p
               variants={itemVariants}
-              className="text-sm md:text-lg text-white/50 font-light tracking-wide leading-relaxed"
+              className="text-xs md:text-lg text-white/50 font-light tracking-widest leading-relaxed uppercase"
             >
-              Start your career in fashion with our easy sewing classes.
+              Start your career in fashion
             </motion.p>
             <motion.p
               variants={itemVariants}
-              className="text-base md:text-xl text-white/80 font-medium tracking-tight leading-relaxed"
+              className="text-lg md:text-xl text-white/80 font-medium tracking-tight leading-tight max-w-[280px] md:max-w-none"
             >
-              We help you learn professional tailoring and start your own clothing business.
+              Master Professional Tailoring & Entrepreneurship.
             </motion.p>
           </div>
 

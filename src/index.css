@@ -195,6 +195,23 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .mobile-horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  .mobile-horizontal-scroll>* {
+    min-width: 85vw;
+    scroll-snap-align: center;
+  }
 }
 
 .animate-ken-burns {

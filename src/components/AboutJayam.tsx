@@ -114,19 +114,32 @@ const AboutJayam = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        {/* Mobile Swipe Hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="sm:hidden flex items-center justify-center gap-2 mb-4 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
+        >
+          <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
+          Swipe to explore
+          <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
           {features.map((feature, idx) => (
-            <TextReveal key={feature.title} delay={idx * 0.1}>
-              <div className="premium-card group py-10 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-8 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
-                  <div className="transition-transform duration-500 group-hover:scale-110">
-                    {feature.icon}
+            <div key={feature.title} className="h-auto">
+              <TextReveal delay={idx * 0.1} width="100%">
+                <div className="premium-card group py-10 text-center h-full flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-8 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
+                    <div className="transition-transform duration-500 group-hover:scale-110">
+                      {feature.icon}
+                    </div>
                   </div>
+                  <h4 className="text-sm uppercase tracking-widest font-bold text-white mb-3">{feature.title}</h4>
+                  <p className="text-[10px] text-white/20 leading-relaxed font-medium uppercase tracking-widest">{feature.description}</p>
                 </div>
-                <h4 className="text-sm uppercase tracking-widest font-bold text-white mb-3">{feature.title}</h4>
-                <p className="text-[10px] text-white/20 leading-relaxed font-medium uppercase tracking-widest">{feature.description}</p>
-              </div>
-            </TextReveal>
+              </TextReveal>
+            </div>
           ))}
         </div>
       </div>

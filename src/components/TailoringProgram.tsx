@@ -135,15 +135,28 @@ const TailoringProgram = () => {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto">
+          {/* Mobile Swipe Hint */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="md:hidden flex items-center justify-center gap-2 mb-8 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
+          >
+            <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
+            Swipe to see status
+            <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 max-w-6xl mx-auto mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
             {accreditationItems.map((item, idx) => (
-              <TextReveal key={idx} delay={idx * 0.1}>
-                <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-10 group/card text-center">
-                  <div className="h-[1px] w-12 bg-accent/30 mx-auto mb-6 transition-all group-hover/card:w-full" />
-                  <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4">{item.title}</h4>
-                  <p className="text-white/30 text-sm leading-relaxed font-light">{item.content}</p>
-                </div>
-              </TextReveal>
+              <div key={idx} className="h-auto">
+                <TextReveal delay={idx * 0.1} width="100%">
+                  <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-8 md:p-10 group/card text-center h-full flex flex-col justify-center">
+                    <div className="h-[1px] w-12 bg-accent/30 mx-auto mb-6 transition-all group-hover/card:w-full" />
+                    <h4 className="text-white text-xs font-bold uppercase tracking-widest mb-4">{item.title}</h4>
+                    <p className="text-white/30 text-xs md:text-sm leading-relaxed font-light">{item.content}</p>
+                  </div>
+                </TextReveal>
+              </div>
             ))}
           </div>
 

@@ -15,6 +15,7 @@ import OurLegacy from '@/components/OurLegacy';
 import Awards from '@/components/Awards';
 import TrustBar from '@/components/TrustBar';
 import StudentShowcase from '@/components/StudentShowcase';
+import MobileBottomNav from '@/components/MobileBottomNav';
 
 const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   useEffect(() => {
@@ -32,9 +33,9 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
         >
           <Navbar />
           <Hero />
-          <TrustBar />
           <AboutInstitute />
           <AboutJayam />
+          <TrustBar />
           <Courses />
           <TailoringProgram />
           <CampusLife />
@@ -44,6 +45,7 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
           <Contact />
           <Footer />
           <ScrollToTop />
+          <MobileBottomNav />
         </motion.div>
       )}
       {/* Show only the Hero background or a simplified version during loading if needed, 

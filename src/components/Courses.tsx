@@ -245,12 +245,22 @@ const Courses = () => {
                   <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">
+                  {/* Mobile Swipe Hint */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="md:hidden flex items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-accent/40 font-bold"
+                  >
+                    <motion.span animate={{ x: [-4, 4, -4] }} transition={{ duration: 2, repeat: Infinity }}>←</motion.span>
+                    Swipe
+                    <motion.span animate={{ x: [4, -4, 4] }} transition={{ duration: 2, repeat: Infinity }}>→</motion.span>
+                  </motion.div>
+                  <div className="hidden md:block px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">
                     {group.courses.length} Certified Pathways
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
                 {group.courses.map((course, idx) => (
                   <CourseCard key={course.name} course={course} index={idx} />
                 ))}
