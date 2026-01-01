@@ -82,7 +82,7 @@ const Hero = () => {
         {/* Central Atmospheric Glow - Adjusted size for better performance */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[700px] h-[300px] md:h-[700px] bg-accent/5 blur-[80px] md:blur-[160px] rounded-full" />
 
-        <div className="absolute inset-0 opacity-40 md:opacity-100">
+        <div className="absolute inset-0 opacity-80 md:opacity-100">
           <FloatingPaths position={1} />
           <FloatingPaths position={-1} />
         </div>
