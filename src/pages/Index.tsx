@@ -23,7 +23,7 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   }, []);
 
   return (
-    <main className={`overflow-x-hidden ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
+    <main className={`bg-[#050508] ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
       <AnimationScript />
       {!isLoading && (
         <motion.div
@@ -48,9 +48,6 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
           <MobileBottomNav />
         </motion.div>
       )}
-      {/* Show only the Hero background or a simplified version during loading if needed, 
-          but usually the Preloader covers everything. 
-          To ensure the Preloader is visible, we keep the main content hidden. */}
     </main>
   );
 };

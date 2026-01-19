@@ -1,7 +1,8 @@
 
 import { motion } from 'framer-motion';
 import { Sparkles, Send, Award, History as HistoryIcon } from 'lucide-react';
-import { ContactForm, ContactInfo, ContactMap } from './ContactForm';
+import { ContactInfo, ContactMap } from './ContactForm';
+import Magnetic from './Magnetic';
 
 const Contact = () => {
   return (
@@ -42,60 +43,49 @@ const Contact = () => {
             Join the ranks of elite designers. Our seasonal admissions are now open for creative minds ready to transcend the ordinary.
           </motion.p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-32 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 mb-32 max-w-5xl mx-auto">
             {[
-              { icon: <Send className="w-5 h-5" />, title: "Inquire", desc: "Submit your details" },
-              { icon: <Sparkles className="w-5 h-5" />, title: "Council", desc: "Expert guidance" },
-              { icon: <Award className="w-5 h-5" />, title: "Enroll", desc: "Secure your seat" },
-              { icon: <HistoryIcon className="w-5 h-5" />, title: "Begin", desc: "Start your legacy" }
+              { icon: <Send className="w-6 h-6" />, title: "Inquire", desc: "Submit your details" },
+              { icon: <Sparkles className="w-6 h-6" />, title: "Council", desc: "Expert guidance" },
+              { icon: <Award className="w-6 h-6" />, title: "Enroll", desc: "Secure your seat" },
+              { icon: <HistoryIcon className="w-6 h-6" />, title: "Begin", desc: "Start your legacy" }
             ].map((step, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + (i * 0.1) }}
-                className="flex flex-col items-center group"
+                transition={{ delay: 0.2 + (i * 0.1), duration: 0.8 }}
+                className="flex flex-col items-center group relative mt-10 md:mt-20"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-background transition-all duration-500 group-hover:scale-110 shadow-xl shadow-accent/0 group-hover:shadow-accent/20">
-                  {step.icon}
-                </div>
-                <h4 className="text-white text-[10px] md:text-xs font-black uppercase tracking-widest mb-1">{step.title}</h4>
-                <p className="text-[9px] text-white/30 uppercase tracking-widest font-bold font-display">{step.desc}</p>
-                {i < 3 && (
-                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-4 md:w-8 h-[1px] bg-white/10" />
-                )}
+                <Magnetic strength={0.25}>
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-background transition-all duration-700 group-hover:scale-110 shadow-2xl shadow-accent/0 group-hover:shadow-accent/40 relative">
+                    <div className="absolute inset-0 bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="z-10">{step.icon}</div>
+                  </div>
+                </Magnetic>
+                <h4 className="text-white text-xs md:text-sm font-black uppercase tracking-[0.3em] mb-2">{step.title}</h4>
+                <p className="text-[9px] text-white/30 uppercase tracking-[0.2em] font-black">{step.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="premium-card p-0 overflow-hidden"
-          >
-            <ContactForm />
-          </motion.div>
-
-          <div className="space-y-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="premium-card"
             >
               <ContactInfo />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="premium-card p-0 overflow-hidden h-[300px] relative rounded-[2rem]"
+              className="h-full min-h-[500px]"
             >
               <ContactMap />
             </motion.div>

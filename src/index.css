@@ -228,6 +228,11 @@
     /* 18px - lg equivalent */
     line-height: 1.75rem;
   }
+
+  .will-change-gpu {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
 }
 
 @media (min-width: 640px) {

@@ -242,7 +242,7 @@ const Courses = () => {
             <div key={group.title}>
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/5 pb-12 gap-8">
                 <div>
-                  <h3 className="text-title-section font-bold text-white mb-3 tracking-tight">{group.title}</h3>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">{group.title}</h3>
                   <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-6">
@@ -265,4 +265,3 @@ const Courses = () => {
 };
 
 export default Courses;
-

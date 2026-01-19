@@ -46,14 +46,18 @@ const AboutJayam = () => {
   ];
 
   return (
-    <section id="about-jayam" className="section-padding bg-background relative overflow-hidden mask-linear-t mask-linear-b">
+    <motion.section
+      initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      id="about-jayam"
+      className="section-padding bg-background relative overflow-hidden mask-linear-t mask-linear-b"
+    >
       <div className="noise-overlay" />
 
       <div className="container-custom">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
           className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center mb-12 md:mb-24"
         >
@@ -115,25 +119,34 @@ const AboutJayam = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 items-stretch mt-20">
           {features.map((feature, idx) => (
-            <div key={feature.title} className="h-full">
+            <div key={feature.title} className="h-full perspective-1000">
               <TextReveal delay={idx * 0.1} width="100%">
-                <div className="premium-card group py-8 px-6 text-center h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-6 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
-                    <div className="transition-transform duration-500 group-hover:scale-110">
+                <motion.div
+                  whileHover={{
+                    y: -10,
+                    rotateX: -5,
+                    rotateY: 5,
+                    scale: 1.02
+                  }}
+                  className="premium-card group py-12 px-8 text-center h-full flex flex-col items-center justify-center border-white/5 bg-white/[0.02] hover:bg-accent/5 hover:border-accent/20 transition-all duration-700"
+                >
+                  <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-10 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-700 relative">
+                    <div className="absolute inset-0 bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="transition-transform duration-700 group-hover:scale-125 z-10 text-accent">
                       {feature.icon}
                     </div>
                   </div>
-                  <h4 className="text-sm uppercase tracking-widest font-bold text-white mb-2">{feature.title}</h4>
-                  <p className="text-[10px] text-white/20 leading-relaxed font-medium uppercase tracking-widest">{feature.description}</p>
-                </div>
+                  <h4 className="text-lg uppercase tracking-[0.2em] font-black text-white mb-4 group-hover:text-accent transition-colors duration-500">{feature.title}</h4>
+                  <p className="text-[10px] text-white/20 leading-relaxed font-bold uppercase tracking-[0.3em]">{feature.description}</p>
+                </motion.div>
               </TextReveal>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

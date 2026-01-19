@@ -1,7 +1,8 @@
 
-import { CheckCircle, Star, Award, Sparkles } from 'lucide-react';
+import { CheckCircle, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TextReveal from './TextReveal';
+import { FabricFloating } from './FashionVisual';
 
 
 const AboutInstitute = () => {
@@ -56,16 +57,20 @@ const AboutInstitute = () => {
   ];
 
   return (
-    <section id="why-choose-us" className="section-padding bg-secondary relative overflow-hidden mask-linear-t mask-linear-b">
+    <motion.section
+      initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      id="why-choose-us"
+      className="section-padding bg-secondary relative overflow-hidden mask-linear-t mask-linear-b"
+    >
       {/* Premium background with decorative elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -z-10 opacity-60" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[120px] -z-10 opacity-40" />
 
       <div className="container-custom">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
           className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
         >
@@ -83,74 +88,46 @@ const AboutInstitute = () => {
               </h2>
             </TextReveal>
 
-            <div className="grid grid-cols-2 gap-4 items-stretch">
+            <div className="grid grid-cols-2 gap-4 md:gap-8 items-stretch mt-12">
               {features.map((item, idx) => (
-                <div key={item.title} className="h-full">
+                <div key={item.title} className="h-full perspective-1000">
                   <TextReveal delay={0.3 + (idx * 0.1)} width="100%">
-                    <div className="premium-card group h-full flex flex-col justify-center p-6">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:border-accent/40 transition-colors duration-500">
-                        <CheckCircle className="w-5 h-5 text-accent" />
+                    <motion.div
+                      whileHover={{
+                        rotateY: idx % 2 === 0 ? 10 : -10,
+                        rotateX: 5,
+                        z: 50,
+                        scale: 1.05
+                      }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="premium-card group h-full flex flex-col justify-center p-6 md:p-10 border-white/5 hover:border-accent/40 bg-secondary/5 hover:bg-secondary/20 transition-all duration-500"
+                    >
+                      <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:scale-110 transition-all duration-500">
+                        <CheckCircle className="w-6 h-6 text-accent group-hover:text-background" />
                       </div>
-                      <h3 className="text-sm md:text-lg font-display font-semibold text-white mb-2 group-hover:text-accent transition-colors duration-300">
+                      <h3 className="text-lg md:text-2xl font-display font-bold text-white mb-4 group-hover:text-accent transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-[10px] md:text-sm text-white/40 leading-relaxed font-light">
+                      <p className="text-[10px] md:text-sm text-white/30 leading-relaxed font-light uppercase tracking-wider">
                         {item.description}
                       </p>
-                    </div>
+                    </motion.div>
                   </TextReveal>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Image Side */}
+          {/* Visual Side */}
           <motion.div
             variants={itemVariants}
-            className="relative order-1 lg:order-2"
+            className="relative order-1 lg:order-2 perspective-1000"
           >
-            <div className="relative aspect-square">
-              {/* Decorative Frame */}
-              <div className="absolute -inset-4 border border-white/10 rounded-[2rem] rotate-3" />
-              <div className="absolute -inset-4 border border-accent/20 rounded-[2rem] -rotate-3" />
-
-              <div className="relative h-full w-full rounded-[2rem] overflow-hidden bg-white/5 backdrop-blur-sm p-4 sm:p-8 border border-white/10">
-                <div className="relative h-full w-full flex items-center justify-center">
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      rotate: [0, 2, 0]
-                    }}
-                    transition={{
-                      duration: 20,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="w-full max-w-[300px]"
-                  >
-                    <img
-                      src="/lovable-uploads/logo.png"
-                      alt="Jayam Logo"
-                      className="w-full h-auto object-contain transition-transform duration-700"
-                    />
-                  </motion.div>
-                </div>
-
-                {/* Floating Award Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="absolute bottom-8 right-8 bg-accent rounded-full p-4 shadow-2xl z-20"
-                >
-                  <Award className="w-8 h-8 text-background" />
-                </motion.div>
-              </div>
-            </div>
+            <FabricFloating />
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

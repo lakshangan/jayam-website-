@@ -104,8 +104,8 @@ const CampusLife = () => {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-black transition-all duration-500 border ${activeCategory === cat
-                    ? "bg-accent text-background border-accent"
-                    : "bg-white/5 text-white/40 border-white/5 hover:border-white/20"
+                  ? "bg-accent text-background border-accent"
+                  : "bg-white/5 text-white/40 border-white/5 hover:border-white/20"
                   }`}
               >
                 {cat}
@@ -125,13 +125,14 @@ const CampusLife = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className={`relative rounded-[2rem] overflow-hidden group cursor-pointer border border-white/5 ${idx === 0 ? "md:col-span-2 md:row-span-2" :
-                    idx === 1 ? "md:row-span-2" :
-                      idx === 5 ? "md:col-span-2" : ""
+                  idx === 1 ? "md:row-span-2" :
+                    idx === 5 ? "md:col-span-2" : ""
                   }`}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Magnetic from './Magnetic';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -96,32 +97,35 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1 shrink-0">
             {navLinks.map((link, idx) => (
-              <motion.a
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 + (idx * 0.1), duration: 0.5 }}
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
-              >
-                <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
-              </motion.a>
+              <Magnetic key={link.href} strength={0.3}>
+                <motion.a
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
+                >
+                  <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+              </Magnetic>
             ))}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.5, duration: 0.5 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
               className="ml-3 pl-3 border-l border-white/10"
             >
-              <a
-                href="#contact"
-                onClick={handleLinkClick}
-                className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300"
-              >
-                Get Admission Info
-              </a>
+              <Magnetic strength={0.2}>
+                <a
+                  href="#contact"
+                  onClick={handleLinkClick}
+                  className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 block"
+                >
+                  Get Admission Info
+                </a>
+              </Magnetic>
             </motion.div>
           </div>
 

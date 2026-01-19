@@ -79,7 +79,7 @@ const StudentShowcase = () => {
 
                                 <div className="flex items-center gap-4 mb-8">
                                     <div className="w-14 h-14 rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10 group-hover:border-accent/30">
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
+                                        <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
                                     </div>
                                     <div>
                                         <h4 className="text-white font-bold tracking-tight text-base md:text-lg group-hover:text-accent transition-colors">{item.name}</h4>

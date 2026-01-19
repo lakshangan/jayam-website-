@@ -9,23 +9,35 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     const textRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const duration = 2500; // 2.5 seconds
-        const interval = 25;
+        let currentProgress = 0;
+        const duration = 2000; // Minimum 2s for cinematic feel
+        const interval = 20;
         const totalSteps = duration / interval;
         const increment = 100 / totalSteps;
 
         const timer = setInterval(() => {
             setProgress((prev) => {
-                if (prev >= 100) {
+                const next = prev + increment;
+                if (next >= 100) {
                     clearInterval(timer);
-                    setTimeout(onComplete, 800);
+                    setTimeout(onComplete, 500);
                     return 100;
                 }
-                return Math.min(prev + increment, 100);
+                return next;
             });
         }, interval);
 
-        return () => clearInterval(timer);
+        // If window is already loaded, we can still let the animation finish
+        // but we ensure it doesn't get stuck.
+        const handleLoad = () => {
+            // We could potentially speed up increment here
+        };
+
+        window.addEventListener('load', handleLoad);
+        return () => {
+            clearInterval(timer);
+            window.removeEventListener('load', handleLoad);
+        };
     }, [onComplete]);
 
     const circumference = 2 * Math.PI * 120;
