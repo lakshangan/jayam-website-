@@ -2,7 +2,7 @@
 import { GraduationCap, Users, Heart, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TextReveal from './TextReveal';
-import SwipeIndicator from './SwipeIndicator';
+
 
 const AboutJayam = () => {
   const containerVariants = {
@@ -115,20 +115,17 @@ const AboutJayam = () => {
           </div>
         </motion.div>
 
-        {/* Mobile Swipe Hint */}
-        <SwipeIndicator />
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
           {features.map((feature, idx) => (
-            <div key={feature.title} className="h-auto">
+            <div key={feature.title} className="h-full">
               <TextReveal delay={idx * 0.1} width="100%">
-                <div className="premium-card group py-10 text-center h-full flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-8 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
+                <div className="premium-card group py-8 px-6 text-center h-full flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-6 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
                     <div className="transition-transform duration-500 group-hover:scale-110">
                       {feature.icon}
                     </div>
                   </div>
-                  <h4 className="text-sm uppercase tracking-widest font-bold text-white mb-3">{feature.title}</h4>
+                  <h4 className="text-sm uppercase tracking-widest font-bold text-white mb-2">{feature.title}</h4>
                   <p className="text-[10px] text-white/20 leading-relaxed font-medium uppercase tracking-widest">{feature.description}</p>
                 </div>
               </TextReveal>

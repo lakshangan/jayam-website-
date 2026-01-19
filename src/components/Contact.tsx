@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Sparkles, Send } from 'lucide-react';
+import { Sparkles, Send, Award, History as HistoryIcon } from 'lucide-react';
 import { ContactForm, ContactInfo, ContactMap } from './ContactForm';
 
 const Contact = () => {
@@ -37,10 +37,37 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto"
+            className="text-white/40 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto mb-20"
           >
             Join the ranks of elite designers. Our seasonal admissions are now open for creative minds ready to transcend the ordinary.
           </motion.p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-32 max-w-5xl mx-auto">
+            {[
+              { icon: <Send className="w-5 h-5" />, title: "Inquire", desc: "Submit your details" },
+              { icon: <Sparkles className="w-5 h-5" />, title: "Council", desc: "Expert guidance" },
+              { icon: <Award className="w-5 h-5" />, title: "Enroll", desc: "Secure your seat" },
+              { icon: <HistoryIcon className="w-5 h-5" />, title: "Begin", desc: "Start your legacy" }
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 + (i * 0.1) }}
+                className="flex flex-col items-center group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-background transition-all duration-500 group-hover:scale-110 shadow-xl shadow-accent/0 group-hover:shadow-accent/20">
+                  {step.icon}
+                </div>
+                <h4 className="text-white text-[10px] md:text-xs font-black uppercase tracking-widest mb-1">{step.title}</h4>
+                <p className="text-[9px] text-white/30 uppercase tracking-widest font-bold font-display">{step.desc}</p>
+                {i < 3 && (
+                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-4 md:w-8 h-[1px] bg-white/10" />
+                )}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

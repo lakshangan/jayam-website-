@@ -2,7 +2,7 @@
 import { CheckCircle, Star, Award, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TextReveal from './TextReveal';
-import SwipeIndicator from './SwipeIndicator';
+
 
 const AboutInstitute = () => {
   const containerVariants = {
@@ -83,23 +83,18 @@ const AboutInstitute = () => {
               </h2>
             </TextReveal>
 
-            {/* Mobile Swipe Hint */}
-            <div className="lg:hidden">
-              <SwipeIndicator />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch">
+            <div className="grid grid-cols-2 gap-4 items-stretch">
               {features.map((item, idx) => (
-                <div key={item.title} className="h-auto">
+                <div key={item.title} className="h-full">
                   <TextReveal delay={0.3 + (idx * 0.1)} width="100%">
-                    <div className="premium-card group h-full flex flex-col justify-center">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-accent/40 transition-colors duration-500">
+                    <div className="premium-card group h-full flex flex-col justify-center p-6">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:border-accent/40 transition-colors duration-500">
                         <CheckCircle className="w-5 h-5 text-accent" />
                       </div>
-                      <h3 className="text-lg font-display font-semibold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                      <h3 className="text-sm md:text-lg font-display font-semibold text-white mb-2 group-hover:text-accent transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-white/40 leading-relaxed font-light">
+                      <p className="text-[10px] md:text-sm text-white/40 leading-relaxed font-light">
                         {item.description}
                       </p>
                     </div>

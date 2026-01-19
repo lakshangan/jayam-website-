@@ -83,7 +83,7 @@ const Awards = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8 mobile-horizontal-scroll md:mobile-horizontal-scroll-none overflow-x-auto md:overflow-x-visible items-stretch no-scrollbar">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     {awards.map((award, idx) => (
                         <motion.div
                             key={idx}
@@ -93,7 +93,7 @@ const Awards = () => {
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
                             className="group relative"
                         >
-                            <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden border border-white/5 mb-8">
+                            <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-[2rem] overflow-hidden border border-white/5 mb-6">
                                 <img
                                     src={award.image}
                                     alt={award.title}
@@ -102,28 +102,28 @@ const Awards = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
                                 {/* Award Type Icon Overlay */}
-                                <div className="absolute top-8 left-8 w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
+                                <div className="absolute top-6 left-6 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
                                     {award.icon}
                                 </div>
 
-                                <div className="absolute bottom-8 left-8 right-8">
-                                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-accent mb-2 block">
+                                <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-accent mb-2 block">
                                         {award.organization}
                                     </span>
-                                    <h3 className="text-2xl font-display font-semibold text-white group-hover:text-accent transition-colors duration-300">
+                                    <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
                                         {award.title}
                                     </h3>
                                 </div>
                             </div>
 
                             <div className="px-4">
-                                <p className="text-white/40 text-sm leading-relaxed font-light italic border-l-2 border-accent/20 pl-6 group-hover:border-accent transition-all duration-500">
+                                <p className="text-[11px] md:text-sm text-white/40 leading-relaxed font-light italic border-l-2 border-accent/20 pl-6 group-hover:border-accent transition-all duration-500">
                                     {award.description}
                                 </p>
                             </div>
 
-                            {/* Decorative Line (Mobile Optimization) */}
-                            <div className="h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-accent/50 to-transparent transition-all duration-1000 mt-8" />
+                            {/* Decorative Line */}
+                            <div className="h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-accent/50 to-transparent transition-all duration-1000 mt-6" />
                         </motion.div>
                     ))}
                 </div>

@@ -7,14 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 const courseGroups = [
   {
     title: "Diploma Programs",
-    subtitle: "One-Year Professional Certifications",
+    subtitle: "Professional Certifications",
     courses: [
       {
         name: "Commercial Master Designer",
-        description: "A complete program for people wanting to start their own fashion business.",
+        description: "Launch your independent fashion brand with our comprehensive business-focused curriculum.",
         duration: "1 Year",
         students: "120+",
-        highlight: "Entrepreneurship Focused",
+        highlight: "Entrepreneurship",
         modules: [
           "Advanced Couture Pattern Drafting",
           "Fashion Business & Marketing",
@@ -22,11 +22,11 @@ const courseGroups = [
           "Commercial Apparel Production",
           "Luxury Brand Positioning"
         ],
-        details: "This flagship program covers everything from initial sketch to market launch, focusing on the commercial viability of high-fashion designs."
+        details: "Covers the full spectrum from sketch to market launch, focusing on commercial viability."
       },
       {
         name: "Diploma in Fashion Designing",
-        description: "Master the fundamental pillars of fashion, from textile science to trend forecasting.",
+        description: "Master textile science, trend forecasting, and technical design pillars.",
         duration: "1 Year",
         students: "85+",
         highlight: "Technical Mastery",
@@ -37,14 +37,14 @@ const courseGroups = [
           "Garment Construction",
           "Illustrative Design Techniques"
         ],
-        details: "A foundational intensive that transforms creative passion into technical precision, recognized across the Indian fashion industry."
+        details: "An intensive program transforming creative passion into industry-standard technical precision."
       },
       {
         name: "Professional Tailoring",
-        description: "Heritage-led tailoring techniques for creating bespoke men's and women's collections.",
+        description: "Learn heritage techniques for bespoke men's and women's couture.",
         duration: "1 Year",
         students: "150+",
-        highlight: "Bespoke Specialization",
+        highlight: "Bespoke Expert",
         modules: [
           "Bespoke Menswear Tailoring",
           "Intricate Women's Couture",
@@ -52,17 +52,17 @@ const courseGroups = [
           "Pattern Manipulation",
           "Industrial Machine Handling"
         ],
-        details: "Focused on the architecture of a garment, this course ensures 100% precision in fitting and construction."
+        details: "Focuses on garment architecture for 100% precision in fitting and construction."
       }
     ]
   },
   {
     title: "Specialized Certifications",
-    subtitle: "Focused Skill Enhancement Modules",
+    subtitle: "Focus Skill Modules",
     courses: [
       {
         name: "Ethnic Wear Designing",
-        description: "Specialized in the intricate world of Indian traditional wear and bridal couture.",
+        description: "Specialized training in Indian traditional wear and bridal bridal couture.",
         highlight: "Cultural Couture",
         modules: [
           "Bridal Wear Architecture",
@@ -70,11 +70,11 @@ const courseGroups = [
           "Traditional Draping Arts",
           "Modernizing Ethnic Patterns"
         ],
-        details: "Learn to blend centuries-old Indian craftsmanship with contemporary design sensibilities for the modern bride."
+        details: "Blend centuries-old craftsmanship with modern design sensibilities for today's brides."
       },
       {
         name: "Advanced Beautician",
-        description: "Professional training in bridal makeup, skincare, and luxury salon management.",
+        description: "Professional training in bridal makeup and luxury salon management.",
         duration: "6 Months",
         students: "70+",
         highlight: "Salon Ready",
@@ -84,7 +84,7 @@ const courseGroups = [
           "Artistic Hair Styling",
           "Aesthetics & Hygiene Standards"
         ],
-        details: "A holistic approach to beauty that prepares students for the competitive luxury grooming industry."
+        details: "A holistic approach preparing students for the competitive luxury grooming industry."
       }
     ]
   },
