@@ -4,8 +4,10 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { SewingMachineScene } from '@/components/SewingMachineScene';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const SewingStory = () => {
+    const navigate = useNavigate();
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll();
@@ -134,7 +136,9 @@ const SewingStory = () => {
                     <p className="text-xl text-white/50 mb-12 font-light">
                         Join the Jayam community and master the timeless art of sewing with our professional tailoring courses.
                     </p>
-                    <button className="group relative px-12 py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] rounded-full overflow-hidden transition-transform active:scale-95">
+                    <button
+                        onClick={() => navigate('/#courses')}
+                        className="group relative px-12 py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] rounded-full overflow-hidden transition-transform active:scale-95">
                         <span className="relative z-10 group-hover:text-amber-600 transition-colors">Start Your Journey</span>
                         <div className="absolute inset-0 bg-amber-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                     </button>

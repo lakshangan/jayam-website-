@@ -20,7 +20,14 @@ const FloatingAdmissionCTA = () => {
     }, []);
 
     const scrollToContact = () => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // Since this component is outside the Router context in App.tsx, 
+            // we use window.location to navigate to the home page's contact section
+            window.location.href = '/#contact';
+        }
     };
 
     return (
