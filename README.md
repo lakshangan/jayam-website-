@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
+# Jayam Fashion Institute Website
 
-## Project info
+A modern, cinematic website for Jayam Fashion Institute featuring:
+- 3D interactive sewing machine visualization
+- Smooth scroll animations
+- Responsive design
+- Professional course catalog
+- Contact forms and admission portal
 
-**URL**: https://lovable.dev/projects/9483e5bd-e85f-49ac-a17b-ec46e76f6cb1
+## Tech Stack
 
-## How can I edit this code?
+- **Vite** - Build tool
+- **React** - UI framework
+- **TypeScript** - Type safety
+- **shadcn-ui** - Component library
+- **Tailwind CSS** - Styling
+- **Three.js (via @react-three/fiber)** - 3D graphics
+- **Framer Motion** - Animations
 
-There are several ways of editing your application.
+## Local Development
 
-**Use Lovable**
+```bash
+# Install dependencies
+npm install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9483e5bd-e85f-49ac-a17b-ec46e76f6cb1) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start dev server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is configured for deployment on Vercel:
 
-**Use GitHub Codespaces**
+1. Push your changes to GitHub
+2. Connect your GitHub repository to Vercel
+3. Vercel will automatically deploy on every push to main branch
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Manual Deployment
 
-## What technologies are used for this project?
+```bash
+# Install Vercel CLI globally
+npm i -g vercel
 
-This project is built with:
+# Deploy
+vercel
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Deploy to production
+vercel --prod
+```
 
-## How can I deploy this project?
+## Project Structure
 
-Simply open [Lovable](https://lovable.dev/projects/9483e5bd-e85f-49ac-a17b-ec46e76f6cb1) and click on Share -> Publish.
+```
+src/
+├── components/     # React components
+├── pages/          # Page components
+├── lib/            # Utility functions
+├── hooks/          # Custom React hooks
+└── main.tsx        # Application entry point
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Features
 
-Yes, you can!
+- **Home Page** - Main landing with hero section and course overview
+- **Art of Sewing** - 3D interactive storytelling experience
+- **Courses** - Detailed program information
+- **Contact** - Admission inquiries and location
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+© 2026 Jayam Fashion Institute. All rights reserved.
