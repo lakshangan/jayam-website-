@@ -17,6 +17,7 @@ import { AnimatePresence } from "framer-motion";
 
 // Lazy load the main page for better performance
 const Index = lazy(() => import("./pages/Index"));
+const SewingStory = lazy(() => import("./pages/SewingStory"));
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => {
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Index isLoading={isLoading} />} />
+              <Route path="/story" element={<SewingStory />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

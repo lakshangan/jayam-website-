@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Magnetic from './Magnetic';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -14,10 +17,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.getAttribute('href')?.replace('#', '');
-    if (targetId) {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+        return;
+      }
+      const targetId = href.replace('#', '');
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         const offset = 80;
@@ -31,16 +38,18 @@ const Navbar = () => {
           behavior: 'smooth'
         });
       }
+    } else if (href.startsWith('/')) {
+      // Handled by Link component, but we might want to close mobile menu
+      setIsMobileMenuOpen(false);
     }
     setIsMobileMenuOpen(false);
   };
 
   const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/story', label: 'Art of Sewing' },
     { href: '#why-choose-us', label: 'About' },
     { href: '#courses', label: 'Programs' },
-    { href: '#tailoring', label: 'Specialization' },
-    { href: '#campus-life', label: 'Life' },
-    { href: '#legacy', label: 'Legacy' },
     { href: '#contact', label: 'Contact' }
   ];
 
@@ -66,12 +75,12 @@ const Navbar = () => {
             }`}
         >
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="flex items-center gap-3 group z-50 shrink-0"
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMobileMenuOpen(false);
             }}
           >
             <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
@@ -92,23 +101,40 @@ const Navbar = () => {
               </span>
               <span className="text-[8px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
             </motion.div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1 shrink-0">
             {navLinks.map((link, idx) => (
               <Magnetic key={link.href} strength={0.3}>
-                <motion.a
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
-                >
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
-                </motion.a>
+                {link.href.startsWith('#') ? (
+                  <motion.a
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
+                    href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
+                  >
+                    <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
+                  </motion.a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    onClick={(e) => handleLinkClick(e as any, link.href)}
+                  >
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
+                      className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden block"
+                    >
+                      <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
+                    </motion.span>
+                  </Link>
+                )}
               </Magnetic>
             ))}
             <motion.div
@@ -120,7 +146,7 @@ const Navbar = () => {
               <Magnetic strength={0.2}>
                 <a
                   href="#contact"
-                  onClick={handleLinkClick}
+                  onClick={(e) => handleLinkClick(e, '#contact')}
                   className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 block"
                 >
                   Get Admission Info
@@ -176,18 +202,36 @@ const Navbar = () => {
 
               <div className="relative flex flex-col space-y-6">
                 {navLinks.map((link, index) => (
-                  <motion.a
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleLinkClick}
-                    className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
-                  >
-                    <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
-                    {link.label}
-                  </motion.a>
+                  <div key={link.href}>
+                    {link.href.startsWith('#') ? (
+                      <motion.a
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
+                        href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.href)}
+                        className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
+                      >
+                        <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
+                        {link.label}
+                      </motion.a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        onClick={(e) => handleLinkClick(e as any, link.href)}
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
+                          className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
+                        >
+                          <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
+                          {link.label}
+                        </motion.div>
+                      </Link>
+                    )}
+                  </div>
                 ))}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -197,7 +241,7 @@ const Navbar = () => {
                 >
                   <a
                     href="#contact"
-                    onClick={handleLinkClick}
+                    onClick={(e) => handleLinkClick(e, '#contact')}
                     className="block text-center py-5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-white/5"
                   >
                     Get Admission Info

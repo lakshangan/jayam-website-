@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 const BackgroundMusic = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    // Main cinematic theme
-    const mainMusicUrl = "https://cdn.pixabay.com/audio/2022/10/24/audio_332f1fd38a.mp3";
+    // Main cinematic theme - using a widely available public domain track
+    const mainMusicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
 
     useEffect(() => {
         const audio = new Audio(mainMusicUrl);
