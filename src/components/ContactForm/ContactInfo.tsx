@@ -6,7 +6,7 @@ const ContactInfo = () => {
     {
       icon: <MapPin className="text-accent" size={20} />,
       title: "Address",
-      content: ["Jayam Tailoring Institute, Thraspuram,", "Thoothukudi, Tamil Nadu 628001"]
+      content: ["3a/7e sundaravelapuram 7th street,", "near vattai kovil, Thoothukudi, TN 628001"]
     },
     {
       icon: <Phone className="text-accent" size={20} />,

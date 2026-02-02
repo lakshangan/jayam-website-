@@ -1,30 +1,41 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { SewingMachineScene } from '@/components/SewingMachineScene';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useNavigate } from 'react-router-dom';
 
-const StoryStep = ({ num, title, content, side }: { num: string, title: string, content: string, side: 'left' | 'right' }) => {
+const CinematicText = ({ title, subtitle, content, side, index }: any) => {
     return (
-        <section className={`min-h-[100vh] flex flex-col ${side === 'left' ? 'md:items-start' : 'md:items-end'} justify-center py-20 px-4`}>
+        <section className={`min-h-screen flex flex-col justify-center px-6 md:px-24 overflow-hidden relative ${side === 'right' ? 'items-end' : 'items-start'}`}>
             <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-20%", once: true }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className={`max-w-2xl px-4 ${side === 'right' ? 'text-right' : 'text-left'}`}
+                initial={{ opacity: 0, x: side === 'right' ? 100 : -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ margin: "-20%", once: false }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className={`max-w-xl ${side === 'right' ? 'text-right' : 'text-left'}`}
             >
-                <div className={`flex items-center gap-6 mb-8 ${side === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <span className="text-6xl md:text-8xl font-display font-black text-white/5 outline-text tracking-tighter">{num}</span>
-                    <div className="h-[2px] w-12 bg-amber-500/40" />
-                </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tight text-amber-100/90">{title}</h2>
-                <div className="relative">
-                    <div className={`absolute ${side === 'left' ? '-left-8' : '-right-8'} top-0 bottom-0 w-[1px] bg-gradient-to-b from-amber-500/50 to-transparent hidden md:block`} />
-                    <p className="text-lg md:text-2xl text-white/60 leading-relaxed font-light italic">
-                        "{content}"
-                    </p>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="flex items-center gap-4 mb-6"
+                >
+                    <div className="h-[1px] w-8 bg-amber-500/50" />
+                    <span className="text-amber-500 text-[10px] uppercase font-black tracking-[0.5em]">{subtitle}</span>
+                </motion.div>
+
+                <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-8 leading-tight tracking-[calc(-0.02em)]">
+                    {title}
+                </h2>
+
+                <p className="text-lg md:text-xl text-white/40 leading-relaxed font-light mb-12">
+                    {content}
+                </p>
+
+                <div className={`flex items-center gap-6 ${side === 'right' ? 'flex-row-reverse' : ''}`}>
+                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/20 font-display italic">
+                        0{index + 1}
+                    </div>
                 </div>
             </motion.div>
         </section>
@@ -34,135 +45,125 @@ const StoryStep = ({ num, title, content, side }: { num: string, title: string, 
 const SewingStory = () => {
     const navigate = useNavigate();
     const containerRef = useRef<HTMLDivElement>(null);
-    const [stableProgress, setStableProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"]
     });
 
-    // Use spring for UX, but sync a numeric value for the 3D renderer
+    // Spring for smooth 3D motion
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 50,
-        damping: 20,
+        stiffness: 40,
+        damping: 25,
         restDelta: 0.001
     });
 
-    // Stability Bridge: convert MotionValue to state for the R3F Canvas
     useEffect(() => {
-        return smoothProgress.onChange((v) => {
-            setStableProgress(v);
-        });
+        return smoothProgress.onChange(v => setProgress(v));
     }, [smoothProgress]);
 
-    const opacity = useTransform(smoothProgress, [0, 0.05, 0.95, 1], [1, 1, 1, 0]);
+    const canvasOpacity = useTransform(smoothProgress, [0, 0.05, 0.9, 1], [0, 1, 1, 0]);
+    const canvasScale = useTransform(smoothProgress, [0, 0.1, 0.9, 1], [0.8, 1, 1, 0.9]);
+
+    const storyPoints = [
+        {
+            subtitle: "The Origin",
+            title: "BORN IN IRON",
+            content: "In the late 19th century, precision was carved from steel. This machine represents the dawn of ready-to-wear fashion.",
+            side: "left"
+        },
+        {
+            subtitle: "The Mechanism",
+            title: "THE HEART BEAT",
+            content: "Every rotation of the wheel is a symphony of gears. At Jayam, we teach you to listen to this rhythm before you master the stitch.",
+            side: "right"
+        },
+        {
+            subtitle: "The Craft",
+            title: "MASTERING FORM",
+            content: "It's not just about joining fabrics. It's about engineering a silhouette that breathes and moves with the human body.",
+            side: "left"
+        },
+        {
+            subtitle: "The Legacy",
+            title: "ETERNAL STITCH",
+            content: "From the vintage iron heart to the digital needles of tomorrow, the art of sewing remains the soul of fashion design.",
+            side: "right"
+        }
+    ];
 
     return (
-        <div ref={containerRef} className="relative min-h-[500vh] bg-[#050508] text-white selection:bg-amber-500/30">
+        <div ref={containerRef} className="relative min-h-[500vh] bg-[#050508] transition-colors">
             <Navbar />
 
-            {/* Cinematic 3D Background - Now decoupled from reactive hooks */}
+            {/* The Cinematic Background Engine */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <motion.div
-                    style={{ opacity }}
+                    style={{ opacity: canvasOpacity, scale: canvasScale }}
                     className="w-full h-full"
                 >
-                    <SewingMachineScene scrollValue={stableProgress} />
+                    <SewingMachineScene scrollValue={progress} />
                 </motion.div>
+
+                {/* Atmospheric Glows */}
+                <div className="absolute top-1/4 -right-1/4 w-[50vw] h-[50vw] bg-amber-500/5 blur-[120px] rounded-full" />
+                <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] bg-blue-500/5 blur-[120px] rounded-full" />
             </div>
 
-            {/* Hero Section */}
-            <section className="relative h-screen flex flex-col items-center justify-center z-10 px-6">
+            {/* Immersive Intro */}
+            <section className="h-screen flex flex-col items-center justify-center relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center"
                 >
-                    <motion.span
-                        initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                        animate={{ opacity: 1, letterSpacing: "0.8em" }}
-                        transition={{ duration: 2 }}
-                        className="text-amber-500/60 text-[10px] md:text-xs uppercase font-bold mb-8 block"
-                    >
-                        Est. 1985
-                    </motion.span>
-                    <h1 className="text-6xl md:text-[10rem] font-display font-black mb-8 leading-[0.85] tracking-tighter">
-                        THE ART OF <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 to-amber-600">SEWING</span>
+                    <span className="text-amber-500/60 text-[10px] uppercase font-black tracking-[1em] mb-12 block">A Jayam Original</span>
+                    <h1 className="text-6xl md:text-[12rem] font-display font-black text-white leading-none tracking-tighter italic">
+                        STITCH <br />
+                        <span className="gold-gradient-text not-italic">THEORY</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-white/40 max-w-xl mx-auto font-light leading-relaxed">
-                        Where every stitch carries a story, and every fold holds a legacy of craftsmanship.
-                    </p>
                 </motion.div>
 
                 <motion.div
-                    animate={{ y: [0, 10, 0], opacity: [0.2, 0.5, 0.2] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="absolute bottom-12 flex flex-col items-center gap-4 group cursor-pointer"
                 >
-                    <div className="w-[1px] h-24 bg-gradient-to-b from-amber-500/50 to-transparent" />
+                    <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-white/20 group-hover:text-amber-500 transition-colors">Scroll to Discover</span>
+                    <div className="w-[1px] h-12 bg-white/10 group-hover:bg-amber-500 transition-colors" />
                 </motion.div>
             </section>
 
-            {/* Story Narrative Sections */}
-            <div className="relative z-10 pt-[20vh]">
-                <div className="container-custom">
-                    <StoryStep
-                        num="01"
-                        title="The First Stitch"
-                        content="Before the hum of motors and the glint of steel, there was only the steady rhythm of a needle and thread. A craft as old as civilization itself."
-                        side="left"
+            {/* Narrative Scroll content */}
+            <div className="relative z-10 pt-[50vh]">
+                {storyPoints.map((point, i) => (
+                    <CinematicText
+                        key={i}
+                        index={i}
+                        {...point}
                     />
-
-                    <StoryStep
-                        num="02"
-                        title="The Iron Revolution"
-                        content="The 19th century breathed life into iron. This very machine transformed the home, turning a painstaking labor into an art form."
-                        side="right"
-                    />
-
-                    <StoryStep
-                        num="03"
-                        title="Mastering the Art"
-                        content="True mastery isn't found in buttons or presets. It's in the way a tailor communicates with the machine, feeling the tension of the thread."
-                        side="left"
-                    />
-
-                    <StoryStep
-                        num="04"
-                        title="Precision in Every Thread"
-                        content="Every turn of the wheel, every drop of the needle, is a testament to precision. The hand-guided machine remains the pinnacle of bespoke craftsmanship."
-                        side="right"
-                    />
-
-                    <StoryStep
-                        num="05"
-                        title="The Future of Craft"
-                        content="As we look forward, the art of sewing continues to evolve. The human touch transforms fabric into form, forever."
-                        side="left"
-                    />
-                </div>
+                ))}
             </div>
 
-            {/* Final Call to Action */}
-            <section className="relative h-screen flex items-center justify-center z-10 px-6">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050510]/80 to-black z-0" />
+            {/* Conclusion */}
+            <section className="h-[120vh] flex items-center justify-center relative z-10 px-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2 }}
-                    className="relative z-10 text-center max-w-3xl"
+                    className="text-center max-w-4xl"
                 >
-                    <h2 className="text-5xl md:text-8xl font-display font-black mb-8 leading-tight">CONTINUE THE <br /><span className="text-amber-500">LEGACY</span></h2>
-                    <p className="text-xl text-white/50 mb-12 font-light">
-                        Join the Jayam community and master the timeless art of sewing with our professional tailoring courses.
-                    </p>
+                    <h2 className="text-5xl md:text-[8rem] font-display font-black text-white mb-12 leading-none">START YOUR <br /> <span className="text-amber-500">JOURNEY</span></h2>
+                    <p className="text-xl text-white/40 mb-16 font-light">Join the ranks of master designers at Jayam Fashion Institution.</p>
+
                     <button
                         onClick={() => navigate('/#courses')}
-                        className="group relative px-12 py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] rounded-full overflow-hidden transition-transform active:scale-95">
-                        <span className="relative z-10 group-hover:text-amber-600 transition-colors">Start Your Journey</span>
-                        <div className="absolute inset-0 bg-amber-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                        className="group relative px-16 py-6 border border-white/10 rounded-full overflow-hidden transition-all hover:border-amber-500/50"
+                    >
+                        <span className="relative z-10 text-white font-black uppercase tracking-widest text-xs group-hover:text-amber-500 transition-colors">Explore Courses</span>
+                        <div className="absolute inset-0 bg-amber-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </button>
                 </motion.div>
             </section>

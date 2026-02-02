@@ -47,7 +47,7 @@ const Navbar = () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/story', label: 'Art of Sewing' },
+    // { href: '/story', label: 'Art of Sewing' },
     { href: '#why-choose-us', label: 'About' },
     { href: '#courses', label: 'Programs' },
     { href: '#contact', label: 'Contact' }

@@ -106,8 +106,8 @@ const Footer = () => {
                 <div className="group cursor-pointer">
                   <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Visit Us</span>
                   <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors font-light leading-relaxed">
-                    123 Creative Street, <br />
-                    Chennai, TN 600001
+                    3a/7e sundaravelapuram 7th street,<br />
+                    near vattai kovil, Thoothukudi, TN 628001
                   </p>
                 </div>
                 <div className="group cursor-pointer">
