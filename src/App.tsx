@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
-import FloatingAdmissionCTA from "./components/FloatingAdmissionCTA";
+
 import SmoothScroll from "./components/SmoothScroll";
 import BackgroundMusic from "./components/BackgroundMusic";
 
@@ -35,7 +35,7 @@ const App = () => {
             <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
           )}
         </AnimatePresence>
-        {!isLoading && <FloatingAdmissionCTA />}
+        {!isLoading && null}
         <Toaster />
         <Sonner />
         <BrowserRouter>

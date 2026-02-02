@@ -1,7 +1,5 @@
-
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, LayoutGrid, Camera } from 'lucide-react';
+import { Camera } from 'lucide-react';
 
 interface CampusImage {
   id: number;
@@ -13,63 +11,43 @@ interface CampusImage {
 const campusImages: CampusImage[] = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1576495169018-bd2414046c6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Modern Design Studio",
-    category: "Studios"
+    src: "/lovable-uploads/lowangleshot.jpg",
+    alt: "Fashion Workspace",
+    category: "Institute"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1562516155-e0c1ee44059b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Digital Labs",
-    category: "Labs"
+    src: "/lovable-uploads/20241213_204558.jpg",
+    alt: "Student at Work",
+    category: "Classroom"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Resource Library",
-    category: "Library"
+    src: "https://images.unsplash.com/photo-1558584449-32dd023a8ed4?auto=format&fit=crop&q=80&w=800",
+    alt: "Professional Tailoring Unit",
+    category: "Workspace"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Collaboration Zone",
-    category: "Campus"
+    src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&q=80&w=800",
+    alt: "Pattern Making Class",
+    category: "Studio"
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Fashion Showcase",
-    category: "Events"
+    src: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800",
+    alt: "Fashion Design Gallery",
+    category: "Exhibition"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1621786030333-5a43a6c6a06f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Tailoring Workshop",
-    category: "Studios"
-  },
-  {
-    id: 7,
-    src: "https://images.unsplash.com/photo-1534187886935-1e1236e856c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Textile Lab",
-    category: "Labs"
-  },
-  {
-    id: 8,
-    src: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    alt: "Couture Suite",
-    category: "Studios"
+    src: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80&w=800",
+    alt: "Advanced Stitching Lab",
+    category: "Laboratory"
   }
 ];
 
-const categories = ["All", "Studios", "Labs", "Library", "Campus", "Events"];
-
 const CampusLife = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredImages = activeCategory === "All"
-    ? campusImages
-    : campusImages.filter(img => img.category === activeCategory);
-
   return (
     <section id="campus" className="section-padding bg-secondary relative overflow-hidden mask-linear-t mask-linear-b">
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -98,31 +76,18 @@ const CampusLife = () => {
             <span className="gold-gradient-text italic font-normal">Sanctuaries</span>
           </motion.h2>
 
-          <div className="flex flex-wrap gap-3 md:gap-6 mt-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-black transition-all duration-500 border ${activeCategory === cat
-                  ? "bg-accent text-background border-accent"
-                  : "bg-white/5 text-white/40 border-white/5 hover:border-white/20"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[300px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[300px]">
           <AnimatePresence mode="popLayout">
-            {filteredImages.map((img, idx) => (
+            {campusImages.map((img, idx) => (
               <motion.div
                 layout
                 key={img.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className={`relative rounded-[2rem] overflow-hidden group cursor-pointer border border-white/5 ${idx === 0 ? "md:col-span-2 md:row-span-2" :
                   idx === 1 ? "md:row-span-2" :
