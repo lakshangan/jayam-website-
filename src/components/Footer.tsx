@@ -59,15 +59,14 @@ const Footer = () => {
             </p>
 
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent/40 hover:bg-accent/5 transition-all duration-500 group"
-                >
-                  <Icon size={20} className="group-hover:scale-110 transition-transform" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/jayam_fashion_institute"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent/40 hover:bg-accent/5 transition-all duration-500 group"
+              >
+                <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
 
@@ -113,7 +112,7 @@ const Footer = () => {
                 </div>
                 <div className="group cursor-pointer">
                   <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Talk to Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors font-light">+91 98765 43210</p>
+                  <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors font-light">+91 89257 74434</p>
                 </div>
               </div>
             </div>

@@ -35,20 +35,20 @@ const AboutJayam = () => {
     },
     {
       icon: <Users className="w-8 h-8 text-accent" />,
-      title: "5000+ Students",
-      description: "Successful students all over the country."
+      title: "100+ Students",
+      description: "Successful alumunis over the years"
     },
     {
       icon: <Heart className="w-8 h-8 text-accent" />,
-      title: "Better Learning",
-      description: "We are here to help our students succeed."
+      title: "20+ years of experience",
+      description: "We guide the student to get succed and achieve their dreams"
     }
   ];
 
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0.98, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       id="about-jayam"

@@ -11,6 +11,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Navbar from "@/components/Navbar";
 import AnimationScript from "@/components/AnimationScript";
 import OurLegacy from "@/components/OurLegacy";
+import TrustBar from "@/components/TrustBar";
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -51,6 +52,8 @@ const Index = () => {
         <AboutJayam />
       </motion.div>
 
+      <TrustBar />
+
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -78,14 +81,14 @@ const Index = () => {
         <CampusLife />
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={fadeInUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         <OurLegacy />
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         variants={fadeInUp}

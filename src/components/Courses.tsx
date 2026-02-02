@@ -13,7 +13,7 @@ const courseGroups = [
         name: "Commercial Master Designer",
         description: "Launch your independent fashion brand with our comprehensive business-focused curriculum.",
         duration: "1 Year",
-        students: "120+",
+        certification: "Advanced",
         highlight: "Entrepreneurship",
         modules: [
           "Advanced Couture Pattern Drafting",
@@ -28,7 +28,7 @@ const courseGroups = [
         name: "Diploma in Fashion Designing",
         description: "Master textile science, trend forecasting, and technical design pillars.",
         duration: "1 Year",
-        students: "85+",
+        certification: "Technical",
         highlight: "Technical Mastery",
         modules: [
           "Textile & Fabric Science",
@@ -43,7 +43,7 @@ const courseGroups = [
         name: "Professional Tailoring",
         description: "Learn heritage techniques for bespoke men's and women's couture.",
         duration: "1 Year",
-        students: "150+",
+        certification: "Expert",
         highlight: "Bespoke Expert",
         modules: [
           "Bespoke Menswear Tailoring",
@@ -63,6 +63,8 @@ const courseGroups = [
       {
         name: "Ethnic Wear Designing",
         description: "Specialized training in Indian traditional wear and bridal bridal couture.",
+        duration: "6 Months",
+        certification: "Specialized",
         highlight: "Cultural Couture",
         modules: [
           "Bridal Wear Architecture",
@@ -76,7 +78,7 @@ const courseGroups = [
         name: "Advanced Beautician",
         description: "Professional training in bridal makeup and luxury salon management.",
         duration: "6 Months",
-        students: "70+",
+        certification: "Professional",
         highlight: "Salon Ready",
         modules: [
           "Advanced Skin Therapy",
@@ -131,10 +133,10 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
                 </div>
               </div>
               <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1">
-                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Success Rate</span>
+                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Level</span>
                 <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <Award size={14} className="text-accent" />
-                  {course.students} Alumni
+                  {course.certification}
                 </div>
               </div>
             </div>

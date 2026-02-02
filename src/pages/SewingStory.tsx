@@ -1,51 +1,73 @@
-
-import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { SewingMachineScene } from '@/components/SewingMachineScene';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useNavigate } from 'react-router-dom';
 
+const StoryStep = ({ num, title, content, side }: { num: string, title: string, content: string, side: 'left' | 'right' }) => {
+    return (
+        <section className={`min-h-[100vh] flex flex-col ${side === 'left' ? 'md:items-start' : 'md:items-end'} justify-center py-20 px-4`}>
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: "-20%", once: true }}
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                className={`max-w-2xl px-4 ${side === 'right' ? 'text-right' : 'text-left'}`}
+            >
+                <div className={`flex items-center gap-6 mb-8 ${side === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <span className="text-6xl md:text-8xl font-display font-black text-white/5 outline-text tracking-tighter">{num}</span>
+                    <div className="h-[2px] w-12 bg-amber-500/40" />
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tight text-amber-100/90">{title}</h2>
+                <div className="relative">
+                    <div className={`absolute ${side === 'left' ? '-left-8' : '-right-8'} top-0 bottom-0 w-[1px] bg-gradient-to-b from-amber-500/50 to-transparent hidden md:block`} />
+                    <p className="text-lg md:text-2xl text-white/60 leading-relaxed font-light italic">
+                        "{content}"
+                    </p>
+                </div>
+            </motion.div>
+        </section>
+    );
+};
+
 const SewingStory = () => {
     const navigate = useNavigate();
     const containerRef = useRef<HTMLDivElement>(null);
+    const [stableProgress, setStableProgress] = useState(0);
 
-    const { scrollYProgress } = useScroll();
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
 
-    const scale = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1, 1.2, 0.8, 1.1, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [1, 1, 1, 0.5]);
+    // Use spring for UX, but sync a numeric value for the 3D renderer
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 50,
+        damping: 20,
+        restDelta: 0.001
+    });
 
+    // Stability Bridge: convert MotionValue to state for the R3F Canvas
+    useEffect(() => {
+        return smoothProgress.onChange((v) => {
+            setStableProgress(v);
+        });
+    }, [smoothProgress]);
+
+    const opacity = useTransform(smoothProgress, [0, 0.05, 0.95, 1], [1, 1, 1, 0]);
 
     return (
-        <div ref={containerRef} className="relative min-h-screen bg-[#050508] text-white overflow-x-hidden selection:bg-amber-500/30">
+        <div ref={containerRef} className="relative min-h-[500vh] bg-[#050508] text-white selection:bg-amber-500/30">
             <Navbar />
 
-            {/* Side Progress Indicator */}
-            <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-6">
-                {[0, 1, 2, 3, 4, 5].map((i) => (
-                    <motion.div
-                        key={i}
-                        className="w-1 h-1 rounded-full bg-amber-500/20"
-                        style={{
-                            scale: useTransform(scrollYProgress, [i * 0.16, (i + 1) * 0.16], [1, 2.5]),
-                            backgroundColor: useTransform(
-                                scrollYProgress,
-                                [i * 0.16 - 0.05, i * 0.16, i * 0.16 + 0.05],
-                                ["rgba(245, 158, 11, 0.2)", "rgba(245, 158, 11, 1)", "rgba(245, 158, 11, 0.2)"]
-                            )
-                        }}
-                    />
-                ))}
-                <div className="absolute top-0 bottom-0 w-[1px] bg-white/5 -z-10" />
-            </div>
-
-            {/* Cinematic 3D Background */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
+            {/* Cinematic 3D Background - Now decoupled from reactive hooks */}
+            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <motion.div
                     style={{ opacity }}
                     className="w-full h-full"
                 >
-                    <SewingMachineScene scrollProgress={scrollYProgress} />
+                    <SewingMachineScene scrollValue={stableProgress} />
                 </motion.div>
             </div>
 
@@ -86,51 +108,51 @@ const SewingStory = () => {
             {/* Story Narrative Sections */}
             <div className="relative z-10 pt-[20vh]">
                 <div className="container-custom">
-                    <StorySection
+                    <StoryStep
                         num="01"
                         title="The First Stitch"
-                        content="Before the hum of motors and the glint of steel, there was only the steady rhythm of a needle and thread. A craft as old as civilization itself, binding not just fabric, but stories of survival, identity, and love."
+                        content="Before the hum of motors and the glint of steel, there was only the steady rhythm of a needle and thread. A craft as old as civilization itself."
                         side="left"
                     />
 
-                    <StorySection
+                    <StoryStep
                         num="02"
                         title="The Iron Revolution"
-                        content="The 19th century breathed life into iron. This very machine transformed the home, turning a painstaking labor into an art form. It wasn't just a tool; it was a symbol of independence and industrial grace."
+                        content="The 19th century breathed life into iron. This very machine transformed the home, turning a painstaking labor into an art form."
                         side="right"
                     />
 
-                    <StorySection
+                    <StoryStep
                         num="03"
                         title="Mastering the Art"
-                        content="True mastery isn't found in buttons or presets. It's in the way a tailor communicates with the machine, feeling the tension of the thread and the grain of the cloth. It's a conversation that has lasted for generations."
+                        content="True mastery isn't found in buttons or presets. It's in the way a tailor communicates with the machine, feeling the tension of the thread."
                         side="left"
                     />
 
-                    <StorySection
+                    <StoryStep
                         num="04"
                         title="Precision in Every Thread"
-                        content="Every turn of the wheel, every drop of the needle, is a testament to precision. In an age of mass production, the hand-guided machine remains the pinnacle of bespoke craftsmanship."
+                        content="Every turn of the wheel, every drop of the needle, is a testament to precision. The hand-guided machine remains the pinnacle of bespoke craftsmanship."
                         side="right"
                     />
 
-                    <StorySection
+                    <StoryStep
                         num="05"
                         title="The Future of Craft"
-                        content="As we look forward, the art of sewing continues to evolve. From vintage iron to carbon fiber, the spirit remains the same: the human touch that transforms fabric into form."
+                        content="As we look forward, the art of sewing continues to evolve. The human touch transforms fabric into form, forever."
                         side="left"
                     />
                 </div>
             </div>
 
             {/* Final Call to Action */}
-            <section className="relative h-screen flex items-center justify-center z-10">
+            <section className="relative h-screen flex items-center justify-center z-10 px-6">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050510]/80 to-black z-0" />
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2 }}
-                    className="relative z-10 text-center px-6 max-w-3xl"
+                    className="relative z-10 text-center max-w-3xl"
                 >
                     <h2 className="text-5xl md:text-8xl font-display font-black mb-8 leading-tight">CONTINUE THE <br /><span className="text-amber-500">LEGACY</span></h2>
                     <p className="text-xl text-white/50 mb-12 font-light">
@@ -147,32 +169,6 @@ const SewingStory = () => {
 
             <Footer />
         </div>
-    );
-};
-
-const StorySection = ({ num, title, content, side }: { num: string, title: string, content: string, side: 'left' | 'right' }) => {
-    return (
-        <section className={`min-h-[80vh] flex flex-col ${side === 'left' ? 'md:items-start' : 'md:items-end'} justify-center py-20`}>
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-10%" }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-2xl"
-            >
-                <div className="flex items-center gap-6 mb-8">
-                    <span className="text-6xl md:text-8xl font-display font-black text-white/5 outline-text tracking-tighter">{num}</span>
-                    <div className="h-[2px] w-12 bg-amber-500/40" />
-                </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tight text-amber-100/90">{title}</h2>
-                <div className="relative">
-                    <div className="absolute -left-8 top-0 bottom-0 w-[1px] bg-gradient-to-b from-amber-500/50 to-transparent hidden md:block" />
-                    <p className="text-lg md:text-2xl text-white/60 leading-relaxed font-light italic">
-                        "{content}"
-                    </p>
-                </div>
-            </motion.div>
-        </section>
     );
 };
 

@@ -23,9 +23,9 @@ const MobileBottomNav = () => {
     }, [lastScrollY]);
 
     const navItems = [
-        { icon: Phone, label: 'Call', href: 'tel:+919876543210' },
+        { icon: Phone, label: 'Call', href: 'tel:+918925774434' },
         { icon: GraduationCap, label: 'Courses', href: '#courses' },
-        { icon: MessageSquare, label: 'WhatsApp', href: 'https://wa.me/919876543210' },
+        { icon: MessageSquare, label: 'WhatsApp', href: 'https://wa.me/918925774434' },
     ];
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

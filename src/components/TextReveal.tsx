@@ -13,15 +13,14 @@ export const TextReveal = ({ children, delay = 0, className = "", width = "fit-c
     return (
         <div style={{ position: "relative", width, overflow: "visible" }} className={className}>
             <motion.div
-                initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
-                whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-50px" }}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-20px" }}
+                style={{ willChange: "transform, opacity" }}
                 transition={{
-                    duration: 1.2,
-                    ease: [0.16, 1, 0.3, 1], // Custom cinematic cubic-bezier
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
                     delay: delay,
-                    opacity: { duration: 0.8 },
-                    filter: { duration: 1.0 }
                 }}
             >
                 {children}

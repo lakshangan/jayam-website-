@@ -6,7 +6,7 @@ import { Users, BookmarkCheck, Award, Briefcase } from 'lucide-react';
 const stats = [
     {
         icon: <Users className="w-6 h-6 text-accent" />,
-        value: "5000+",
+        value: "100+",
         label: "Successful Alumni",
         description: "Empowered women in fashion"
     },
@@ -14,7 +14,7 @@ const stats = [
         icon: <BookmarkCheck className="w-6 h-6 text-accent" />,
         value: "25+",
         label: "Years of Legacy",
-        description: "Excellence since 1995"
+        // description: "Excellence since 1995"
     },
     {
         icon: <Award className="w-6 h-6 text-accent" />,
@@ -24,9 +24,9 @@ const stats = [
     },
     {
         icon: <Briefcase className="w-6 h-6 text-accent" />,
-        value: "10+",
+        value: "20+",
         label: "Industry Partners",
-        description: "Placement support"
+        // description: "Placement support"
     }
 ];
 

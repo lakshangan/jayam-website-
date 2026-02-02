@@ -58,8 +58,8 @@ const AboutInstitute = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
       id="why-choose-us"

@@ -118,7 +118,7 @@ const AboutJayam = () => {
                   },
                   {
                     icon: <Users className="w-8 h-8 sm:w-10 sm:h-10 text-[#46256c]" />,
-                    title: "5000+ Alumni",
+                    title: "100+ Alumni",
                     description: "Successful graduates across the country",
                   },
                   {

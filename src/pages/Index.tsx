@@ -39,7 +39,7 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
           <Courses />
           <TailoringProgram />
           <CampusLife />
-          <OurLegacy />
+          {/* <OurLegacy /> */}
           <Awards />
           <StudentShowcase />
           <Contact />

@@ -57,12 +57,6 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                 <div className="relative flex items-center justify-center w-[280px] h-[280px] md:w-[450px] md:h-[450px]">
                     {/* SVG Progress Circle */}
                     <svg viewBox="0 0 300 300" className="absolute inset-0 w-full h-full -rotate-90">
-                        <defs>
-                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="4" result="blur" />
-                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                            </filter>
-                        </defs>
                         <circle
                             cx="150"
                             cy="150"
@@ -83,7 +77,6 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                             initial={{ strokeDashoffset: circumference }}
                             animate={{ strokeDashoffset }}
                             transition={{ duration: 0.1, ease: "linear" }}
-                            filter="url(#glow)"
                             strokeLinecap="round"
                         />
                     </svg>
