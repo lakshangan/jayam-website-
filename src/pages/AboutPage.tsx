@@ -5,6 +5,8 @@ import AboutInstitute from "@/components/AboutInstitute";
 import AboutJayam from "@/components/AboutJayam";
 import FounderCredentials from "@/components/FounderCredentials";
 import Awards from "@/components/Awards";
+import CampusLife from "@/components/CampusLife";
+import StudentShowcase from "@/components/StudentShowcase";
 import Contact from "@/components/Contact";
 import { motion } from "framer-motion";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -23,6 +25,8 @@ const AboutPage = () => {
                 <AboutJayam />
                 <FounderCredentials />
                 <Awards />
+                <CampusLife />
+                <StudentShowcase />
                 <Contact />
             </motion.div>
             <Footer />

@@ -49,7 +49,6 @@ const Navbar = () => {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/courses', label: 'Programs' },
-    { href: '/campus', label: 'Campus' },
     { href: '#contact', label: 'Contact' }
   ];
 

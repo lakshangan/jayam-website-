@@ -20,7 +20,6 @@ import { AnimatePresence } from "framer-motion";
 const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const CoursesPage = lazy(() => import("./pages/CoursesPage"));
-const CampusPage = lazy(() => import("./pages/CampusPage"));
 const CourseDetailsPage = lazy(() => import("./pages/CourseDetailsPage"));
 
 const queryClient = new QueryClient();
@@ -48,7 +47,6 @@ const App = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/courses" element={<CoursesPage />} />
               <Route path="/course/:id" element={<CourseDetailsPage />} />
-              <Route path="/campus" element={<CampusPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
