@@ -1,96 +1,9 @@
-
 import { useState } from 'react';
-import { Clock, ChevronDown, Users, BookOpen, Sparkles, Layout, PenTool, Scissors, Award } from 'lucide-react';
+import { Clock, ChevronDown, Users, BookOpen, Sparkles, Layout, PenTool, Scissors, Award, ArrowRight } from 'lucide-react';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { motion, AnimatePresence } from 'framer-motion';
-
-const courseGroups = [
-  {
-    title: "Diploma Programs",
-    subtitle: "Professional Certifications",
-    courses: [
-      {
-        name: "Commercial Master Designer",
-        description: "Launch your independent fashion brand with our comprehensive business-focused curriculum.",
-        duration: "1 Year",
-        certification: "Advanced",
-        highlight: "Entrepreneurship",
-        modules: [
-          "Advanced Couture Pattern Drafting",
-          "Fashion Business & Marketing",
-          "Digital Design Portfolio",
-          "Commercial Apparel Production",
-          "Luxury Brand Positioning"
-        ],
-        details: "Covers the full spectrum from sketch to market launch, focusing on commercial viability."
-      },
-      {
-        name: "Diploma in Fashion Designing",
-        description: "Master textile science, trend forecasting, and technical design pillars.",
-        duration: "1 Year",
-        certification: "Technical",
-        highlight: "Technical Mastery",
-        modules: [
-          "Textile & Fabric Science",
-          "Basic & Advanced Sewing",
-          "Trend Analysis & Forecasting",
-          "Garment Construction",
-          "Illustrative Design Techniques"
-        ],
-        details: "An intensive program transforming creative passion into industry-standard technical precision."
-      },
-      {
-        name: "Professional Tailoring",
-        description: "Learn heritage techniques for bespoke men's and women's couture.",
-        duration: "1 Year",
-        certification: "Expert",
-        highlight: "Bespoke Expert",
-        modules: [
-          "Bespoke Menswear Tailoring",
-          "Intricate Women's Couture",
-          "Alteration & Fitting Mastery",
-          "Pattern Manipulation",
-          "Industrial Machine Handling"
-        ],
-        details: "Focuses on garment architecture for 100% precision in fitting and construction."
-      }
-    ]
-  },
-  {
-    title: "Specialized Certifications",
-    subtitle: "Focus Skill Modules",
-    courses: [
-      {
-        name: "Ethnic Wear Designing",
-        description: "Specialized training in Indian traditional wear and bridal bridal couture.",
-        duration: "6 Months",
-        certification: "Specialized",
-        highlight: "Cultural Couture",
-        modules: [
-          "Bridal Wear Architecture",
-          "Embroidery & Surface Design",
-          "Traditional Draping Arts",
-          "Modernizing Ethnic Patterns"
-        ],
-        details: "Blend centuries-old craftsmanship with modern design sensibilities for today's brides."
-      },
-      {
-        name: "Advanced Beautician",
-        description: "Professional training in bridal makeup and luxury salon management.",
-        duration: "6 Months",
-        certification: "Professional",
-        highlight: "Salon Ready",
-        modules: [
-          "Advanced Skin Therapy",
-          "HD & Airbrush Bridal Makeup",
-          "Artistic Hair Styling",
-          "Aesthetics & Hygiene Standards"
-        ],
-        details: "A holistic approach preparing students for the competitive luxury grooming industry."
-      }
-    ]
-  },
-];
+import { courseGroups } from '@/data/courses';
+import { Link } from 'react-router-dom';
 
 const CourseCard = ({ course, index }: { course: any; index: number }) => {
   const [open, setOpen] = useState(false);
@@ -103,8 +16,8 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="w-full"
     >
-      <Collapsible open={open} onOpenChange={setOpen} className="group">
-        <div className={`premium-card h-full flex flex-col transition-all duration-700 ${open ? 'border-accent/60 bg-accent/5 ring-1 ring-accent/20' : ''}`}>
+      <div className="group">
+        <div className={`premium-card h-full flex flex-col transition-all duration-700 hover:border-accent/40`}>
           <div className="flex-1">
             <div className="flex items-start justify-between mb-8">
               <div className="flex items-center gap-5">
@@ -142,56 +55,15 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
             </div>
           </div>
 
-          <CollapsibleTrigger asChild>
-            <button className="flex items-center justify-between w-full pt-8 border-t border-white/5 text-[10px] uppercase tracking-[0.5em] font-black text-white/30 hover:text-accent transition-all duration-500 group/btn">
-              <span>{open ? "Close Blueprint" : "Explore Curriculum"}</span>
-              <motion.div
-                animate={{ rotate: open ? 180 : 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <ChevronDown size={14} className="text-accent" />
-              </motion.div>
-            </button>
-          </CollapsibleTrigger>
-
-          <AnimatePresence>
-            {open && (
-              <CollapsibleContent forceMount>
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-10 space-y-8">
-                    <div className="space-y-4">
-                      <span className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-bold">Specialized Modules</span>
-                      <div className="grid grid-cols-1 gap-3">
-                        {course.modules.map((module: string, mIdx: number) => (
-                          <motion.div
-                            initial={{ x: -10, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: mIdx * 0.1 }}
-                            key={mIdx}
-                            className="flex items-center gap-4 text-xs text-white/60 font-medium"
-                          >
-                            <div className="w-1.5 h-1.5 rounded-full bg-accent/40" />
-                            {module}
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-xs text-white/40 leading-relaxed font-light italic border-l border-accent/20 pl-6">
-                      {course.details}
-                    </p>
-                  </div>
-                </motion.div>
-              </CollapsibleContent>
-            )}
-          </AnimatePresence>
+          <Link
+            to={`/course/${course.id}`}
+            className="flex items-center justify-between w-full pt-8 border-t border-white/5 text-[10px] uppercase tracking-[0.5em] font-black text-white/30 hover:text-accent transition-all duration-500 group/btn"
+          >
+            <span>Explore Full Program</span>
+            <ArrowRight size={14} className="text-accent group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
         </div>
-      </Collapsible>
+      </div>
     </motion.div>
   );
 };

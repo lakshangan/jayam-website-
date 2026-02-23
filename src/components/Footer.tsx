@@ -103,17 +103,28 @@ const Footer = () => {
             <div className="space-y-8 col-span-2 sm:col-span-1">
               <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-accent/50">Contact</h3>
               <div className="space-y-6">
-                <div className="group cursor-pointer">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=7th+St+Sundaravelpuram+West+Thalamuthu+Nagar+Thoothukudi+Tamil+Nadu+628002"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group cursor-pointer block"
+                >
                   <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Visit Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors font-light leading-relaxed">
-                    3a/7e sundaravelapuram 7th street,<br />
-                    near vattai kovil, Thoothukudi, TN 628001
+                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light leading-relaxed">
+                    7th St, Sundaravelpuram West,<br />
+                    Thalamuthu Nagar, Thoothukudi, TN 628002
                   </p>
-                </div>
-                <div className="group cursor-pointer">
+                </a>
+                <a href="tel:+918925774434" className="group cursor-pointer block">
                   <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Talk to Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-white/60 transition-colors font-light">+91 89257 74434</p>
-                </div>
+                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light">+91 89257 74434</p>
+                </a>
+                <a href="mailto:jayamfashioninstitution@gmail.com" className="group cursor-pointer block">
+                  <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Email Us</span>
+                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light whitespace-normal overflow-hidden break-words">
+                    jayamfashioninstitution@gmail.com
+                  </p>
+                </a>
               </div>
             </div>
           </div>

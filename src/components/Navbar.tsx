@@ -47,9 +47,9 @@ const Navbar = () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    // { href: '/story', label: 'Art of Sewing' },
-    { href: '#why-choose-us', label: 'About' },
-    { href: '#courses', label: 'Programs' },
+    { href: '/about', label: 'About' },
+    { href: '/courses', label: 'Programs' },
+    { href: '/campus', label: 'Campus' },
     { href: '#contact', label: 'Contact' }
   ];
 
@@ -144,13 +144,12 @@ const Navbar = () => {
               className="ml-3 pl-3 border-l border-white/10"
             >
               <Magnetic strength={0.2}>
-                <a
-                  href="#contact"
-                  onClick={(e) => handleLinkClick(e, '#contact')}
-                  className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 block"
+                <Link
+                  to="/courses"
+                  className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 block text-center"
                 >
                   Get Admission Info
-                </a>
+                </Link>
               </Magnetic>
             </motion.div>
           </div>
@@ -239,13 +238,13 @@ const Navbar = () => {
                   transition={{ delay: 0.4 }}
                   className="pt-8 mt-8 border-t border-white/10"
                 >
-                  <a
-                    href="#contact"
-                    onClick={(e) => handleLinkClick(e, '#contact')}
+                  <Link
+                    to="/courses"
+                    onClick={() => setIsMobileMenuOpen(false)}
                     className="block text-center py-5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-white/5"
                   >
                     Get Admission Info
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

@@ -30,18 +30,18 @@ const AboutJayam = () => {
   const features = [
     {
       icon: <GraduationCap className="w-8 h-8 text-accent" />,
-      title: "Qualified Teachers",
-      description: "Teachers with many years of experience in the fashion world."
+      title: "Expert Mentors",
+      description: "Learn from designers with decades of real-world industry experience."
     },
     {
       icon: <Users className="w-8 h-8 text-accent" />,
-      title: "100+ Students",
-      description: "Successful alumunis over the years"
+      title: "1000+ Graduates",
+      description: "A growing community of successful fashion entrepreneurs."
     },
     {
       icon: <Heart className="w-8 h-8 text-accent" />,
-      title: "20+ years of experience",
-      description: "We guide the student to get succed and achieve their dreams"
+      title: "25+ Years of Legacy",
+      description: "A proven track record of helping students achieve their dreams."
     }
   ];
 
@@ -93,27 +93,34 @@ const AboutJayam = () => {
           <div className="lg:col-span-7">
             <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
               <div className="w-8 h-[1px] bg-accent/50" />
-              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-accent">Who We Are</span>
+              <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-accent">Our Founder</span>
             </motion.div>
 
             <TextReveal delay={0.1}>
-              <h2 className="text-title-section font-bold text-white mb-6 md:mb-8 leading-[1.1]">
-                Our History and <span className="gold-gradient-text italic font-normal">Future Goals</span>
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-[1.1]">
+                Dr. G. <span className="gold-gradient-text italic font-normal">Sahayaselvam</span>
               </h2>
             </TextReveal>
 
             <TextReveal delay={0.2}>
+              <p className="text-white/80 text-xl font-medium mb-8">
+                Founder & Director — Honorary Doctorate in Sewing
+              </p>
+            </TextReveal>
+
+            <TextReveal delay={0.3}>
               <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-light">
-                For over 25 years, Jayam Institute has been a leader in fashion education. We started with a simple goal: to help people turn their love for sewing into a professional career. Today, we are proud to have helped thousands of students start their own businesses.
+                A Visionary Tailoring Educator and Master Designer with over 20+ years of experience.
+                Awarded an Honorary Doctorate for outstanding contributions to tailoring education,
+                Dr. Sahayaselvam has dedicated his life to empowering women through skill-based education
+                and entrepreneurship.
               </p>
             </TextReveal>
 
             <motion.div variants={itemVariants} className="space-y-6 md:space-y-8 mb-12 md:mb-16 border-l border-white/5 pl-6 md:pl-10">
-              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-                Our courses blend traditional and modern sewing, preparing students for successful careers in the ever-evolving world of fashion.
-              </p>
-              <p className="text-white/30 text-sm md:text-base leading-relaxed max-w-xl">
-                We believe in empowerement through skill. Every stitch matters, and every student has a unique story to tell.
+              <p className="text-white/30 text-sm md:text-base leading-relaxed max-w-xl italic">
+                "Our mission is to transform simple skills into sustainable livelihoods,
+                creating a world where every woman has the opportunity to be a successful entrepreneur."
               </p>
             </motion.div>
           </div>

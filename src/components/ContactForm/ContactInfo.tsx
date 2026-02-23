@@ -6,17 +6,20 @@ const ContactInfo = () => {
     {
       icon: <MapPin className="text-accent" size={20} />,
       title: "Address",
-      content: ["3a/7e sundaravelapuram 7th street,", "near vattai kovil, Thoothukudi, TN 628001"]
+      content: ["7th St, Sundaravelpuram West,", "Thalamuthu Nagar, Thoothukudi, TN 628002"],
+      link: "https://www.google.com/maps/search/?api=1&query=7th+St+Sundaravelpuram+West+Thalamuthu+Nagar+Thoothukudi+Tamil+Nadu+628002"
     },
     {
       icon: <Phone className="text-accent" size={20} />,
       title: "Phone",
-      content: ["+91 89257 74434"]
+      content: ["+91 89257 74434"],
+      link: "tel:+918925774434"
     },
     {
       icon: <Mail className="text-accent" size={20} />,
       title: "Email",
-      content: ["admissions@jayaminstitute.edu", "info@jayaminstitute.edu"]
+      content: ["jayamfashioninstitution@gmail.com"],
+      link: "mailto:jayamfashioninstitution@gmail.com"
     }
   ];
 
@@ -24,7 +27,13 @@ const ContactInfo = () => {
     <div className="space-y-12">
       <div className="space-y-10">
         {contactDetails.map((item, idx) => (
-          <div key={idx} className="flex gap-8 group">
+          <a
+            key={idx}
+            href={item.link}
+            target={item.title === "Address" ? "_blank" : undefined}
+            rel={item.title === "Address" ? "noopener noreferrer" : undefined}
+            className="flex gap-8 group cursor-pointer"
+          >
             <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
               {item.icon}
             </div>
@@ -38,7 +47,7 @@ const ContactInfo = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 

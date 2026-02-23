@@ -17,7 +17,10 @@ import { AnimatePresence } from "framer-motion";
 
 // Lazy load the main page for better performance
 const Index = lazy(() => import("./pages/Index"));
-// const SewingStory = lazy(() => import("./pages/SewingStory"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const CoursesPage = lazy(() => import("./pages/CoursesPage"));
+const CampusPage = lazy(() => import("./pages/CampusPage"));
+const CourseDetailsPage = lazy(() => import("./pages/CourseDetailsPage"));
 
 const queryClient = new QueryClient();
 
@@ -35,14 +38,16 @@ const App = () => {
             <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
           )}
         </AnimatePresence>
-        {!isLoading && null}
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Index isLoading={isLoading} />} />
-              {/* <Route path="/story" element={<SewingStory />} /> */}
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/course/:id" element={<CourseDetailsPage />} />
+              <Route path="/campus" element={<CampusPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

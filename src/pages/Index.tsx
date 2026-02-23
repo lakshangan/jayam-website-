@@ -1,20 +1,17 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Hero from '@/components/Hero';
-import AboutInstitute from '@/components/AboutInstitute';
-import AboutJayam from '@/components/AboutJayam';
-import Courses from '@/components/Courses';
-import TailoringProgram from '@/components/TailoringProgram';
-import CampusLife from '@/components/CampusLife';
+import AboutSummary from '@/components/AboutSummary';
+import TrustBar from '@/components/TrustBar';
+import ProgramsPreview from '@/components/ProgramsPreview';
+import AdmissionSection from '@/components/AdmissionSection';
+import AccreditationSection from '@/components/AccreditationSection';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import AnimationScript from '@/components/AnimationScript';
-import OurLegacy from '@/components/OurLegacy';
-import Awards from '@/components/Awards';
-import TrustBar from '@/components/TrustBar';
-import StudentShowcase from '@/components/StudentShowcase';
 import MobileBottomNav from '@/components/MobileBottomNav';
 
 const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
@@ -33,15 +30,11 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
         >
           <Navbar />
           <Hero />
-          <AboutInstitute />
-          <AboutJayam />
           <TrustBar />
-          <Courses />
-          <TailoringProgram />
-          <CampusLife />
-          {/* <OurLegacy /> */}
-          <Awards />
-          <StudentShowcase />
+          <AboutSummary />
+          <ProgramsPreview />
+          <AccreditationSection />
+          <AdmissionSection />
           <Contact />
           <Footer />
           <ScrollToTop />
