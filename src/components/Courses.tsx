@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Clock, ChevronDown, Users, BookOpen, Sparkles, Layout, PenTool, Scissors, Award, ArrowRight } from 'lucide-react';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { motion, AnimatePresence } from 'framer-motion';
-import { courseGroups } from '@/data/courses';
+import { getCourseGroups } from '@/data/courses';
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../context/AppContext';
 
 const CourseCard = ({ course, index }: { course: any; index: number }) => {
   const [open, setOpen] = useState(false);
@@ -69,6 +70,9 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
 };
 
 const Courses = () => {
+  const { language } = useAppContext();
+  const courseGroups = getCourseGroups(language);
+
   return (
     <section id="courses" className="section-padding bg-background relative overflow-hidden mask-linear-t mask-linear-b">
       <div className="noise-overlay" />

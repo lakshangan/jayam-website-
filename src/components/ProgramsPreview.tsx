@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion';
 import { BookOpen, ArrowRight, Layout } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { allCourses } from '@/data/courses';
+import { getAllCourses } from '@/data/courses';
 import { useAppContext } from '../context/AppContext';
 
 const ProgramsPreview = () => {
-    const { t } = useAppContext();
+    const { t, language } = useAppContext();
 
+    const courses = getAllCourses(language);
     const programs = [
-        allCourses[0],
-        allCourses[1],
-        allCourses[2],
-        allCourses[3]
+        courses[0],
+        courses[1],
+        courses[2],
+        courses[3]
     ];
 
     return (

@@ -1,6 +1,7 @@
 
 import { useParams, Link } from "react-router-dom";
-import { allCourses } from "@/data/courses";
+import { getAllCourses } from "@/data/courses";
+import { useAppContext } from "../context/AppContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -10,7 +11,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 const CourseDetailsPage = () => {
     const { id } = useParams();
-    const course = allCourses.find((c) => c.id === id);
+    const { language } = useAppContext();
+    const course = getAllCourses(language).find((c) => c.id === id);
 
     if (!course) {
         return (

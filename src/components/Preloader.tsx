@@ -9,7 +9,6 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     const textRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        let currentProgress = 0;
         const duration = 2000; // Minimum 2s for cinematic feel
         const interval = 20;
         const totalSteps = duration / interval;
