@@ -4,10 +4,11 @@ import { SewingMachineScene } from '@/components/SewingMachineScene';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '@/context/AppContext';
 
 const CinematicText = ({ title, subtitle, content, side, index }: any) => {
     return (
-        <section className={`min-h-screen flex flex-col justify-center px-6 md:px-24 overflow-hidden relative ${side === 'right' ? 'items-end' : 'items-start'}`}>
+        <section className={`min-h-[80vh] flex flex-col justify-center px-6 md:px-24 overflow-hidden relative ${side === 'right' ? 'items-end' : 'items-start'}`}>
             <motion.div
                 initial={{ opacity: 0, x: side === 'right' ? 100 : -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -18,22 +19,22 @@ const CinematicText = ({ title, subtitle, content, side, index }: any) => {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="flex items-center gap-4 mb-6"
+                    className={`flex items-center gap-4 mb-6 ${side === 'right' ? 'flex-row-reverse' : ''}`}
                 >
-                    <div className="h-[1px] w-8 bg-amber-500/50" />
-                    <span className="text-amber-500 text-[10px] uppercase font-black tracking-[0.5em]">{subtitle}</span>
+                    <div className="h-[1px] w-8 bg-accent/50" />
+                    <span className="text-accent text-[10px] uppercase font-black tracking-[0.5em]">{subtitle}</span>
                 </motion.div>
 
-                <h2 className="text-5xl md:text-8xl font-display font-black text-white mb-8 leading-tight tracking-[calc(-0.02em)]">
+                <h2 className="text-5xl md:text-8xl font-display font-black text-foreground mb-8 leading-tight tracking-tighter">
                     {title}
                 </h2>
 
-                <p className="text-lg md:text-xl text-white/40 leading-relaxed font-light mb-12">
+                <p className="text-lg md:text-xl text-foreground/50 leading-relaxed font-light mb-12">
                     {content}
                 </p>
 
                 <div className={`flex items-center gap-6 ${side === 'right' ? 'flex-row-reverse' : ''}`}>
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/20 font-display italic">
+                    <div className="w-14 h-14 rounded-full border border-black/[0.05] flex items-center justify-center text-accent/40 font-display italic font-bold">
                         0{index + 1}
                     </div>
                 </div>
@@ -43,6 +44,7 @@ const CinematicText = ({ title, subtitle, content, side, index }: any) => {
 };
 
 const SewingStory = () => {
+    const { t } = useAppContext();
     const navigate = useNavigate();
     const containerRef = useRef<HTMLDivElement>(null);
     const [progress, setProgress] = useState(0);
@@ -52,7 +54,6 @@ const SewingStory = () => {
         offset: ["start start", "end end"]
     });
 
-    // Spring for smooth 3D motion
     const smoothProgress = useSpring(scrollYProgress, {
         stiffness: 40,
         damping: 25,
@@ -68,36 +69,35 @@ const SewingStory = () => {
 
     const storyPoints = [
         {
-            subtitle: "The Origin",
-            title: "BORN IN IRON",
-            content: "In the late 19th century, precision was carved from steel. This machine represents the dawn of ready-to-wear fashion.",
+            subtitle: t('story.origin.subtitle'),
+            title: t('story.origin.title'),
+            content: t('story.origin.content'),
             side: "left"
         },
         {
-            subtitle: "The Mechanism",
-            title: "THE HEART BEAT",
-            content: "Every rotation of the wheel is a symphony of gears. At Jayam, we teach you to listen to this rhythm before you master the stitch.",
+            subtitle: t('story.mechanism.subtitle'),
+            title: t('story.mechanism.title'),
+            content: t('story.mechanism.content'),
             side: "right"
         },
         {
-            subtitle: "The Craft",
-            title: "MASTERING FORM",
-            content: "It's not just about joining fabrics. It's about engineering a silhouette that breathes and moves with the human body.",
+            subtitle: t('story.craft.subtitle'),
+            title: t('story.craft.title'),
+            content: t('story.craft.content'),
             side: "left"
         },
         {
-            subtitle: "The Legacy",
-            title: "ETERNAL STITCH",
-            content: "From the vintage iron heart to the digital needles of tomorrow, the art of sewing remains the soul of fashion design.",
+            subtitle: t('story.legacy.subtitle'),
+            title: t('story.legacy.title'),
+            content: t('story.legacy.content'),
             side: "right"
         }
     ];
 
     return (
-        <div ref={containerRef} className="relative min-h-[500vh] bg-[#050508] transition-colors">
+        <div ref={containerRef} className="relative min-h-[500vh] bg-background transition-colors">
             <Navbar />
 
-            {/* The Cinematic Background Engine */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
                 <motion.div
                     style={{ opacity: canvasOpacity, scale: canvasScale }}
@@ -106,12 +106,10 @@ const SewingStory = () => {
                     <SewingMachineScene scrollValue={progress} />
                 </motion.div>
 
-                {/* Atmospheric Glows */}
-                <div className="absolute top-1/4 -right-1/4 w-[50vw] h-[50vw] bg-amber-500/5 blur-[120px] rounded-full" />
-                <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] bg-blue-500/5 blur-[120px] rounded-full" />
+                <div className="absolute top-1/4 -right-1/4 w-[50vw] h-[50vw] bg-accent/5 blur-[120px] rounded-full" />
+                <div className="absolute -bottom-1/4 -left-1/4 w-[40vw] h-[40vw] bg-primary/5 blur-[120px] rounded-full" />
             </div>
 
-            {/* Immersive Intro */}
             <section className="h-screen flex flex-col items-center justify-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -119,8 +117,8 @@ const SewingStory = () => {
                     transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
                     className="text-center"
                 >
-                    <span className="text-amber-500/60 text-[10px] uppercase font-black tracking-[1em] mb-12 block">A Jayam Original</span>
-                    <h1 className="text-6xl md:text-[12rem] font-display font-black text-white leading-none tracking-tighter italic">
+                    <span className="text-accent/60 text-[10px] uppercase font-black tracking-[1em] mb-12 block">A Jayam Original</span>
+                    <h1 className="text-6xl md:text-[12rem] font-display font-black text-foreground leading-none tracking-tighter italic">
                         STITCH <br />
                         <span className="gold-gradient-text not-italic">THEORY</span>
                     </h1>
@@ -131,12 +129,11 @@ const SewingStory = () => {
                     transition={{ repeat: Infinity, duration: 2 }}
                     className="absolute bottom-12 flex flex-col items-center gap-4 group cursor-pointer"
                 >
-                    <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-white/20 group-hover:text-amber-500 transition-colors">Scroll to Discover</span>
-                    <div className="w-[1px] h-12 bg-white/10 group-hover:bg-amber-500 transition-colors" />
+                    <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-foreground/20 group-hover:text-accent transition-colors">{t('common.scroll')}</span>
+                    <div className="w-[1px] h-12 bg-black/10 group-hover:bg-accent transition-colors" />
                 </motion.div>
             </section>
 
-            {/* Narrative Scroll content */}
             <div className="relative z-10 pt-[50vh]">
                 {storyPoints.map((point, i) => (
                     <CinematicText
@@ -147,23 +144,26 @@ const SewingStory = () => {
                 ))}
             </div>
 
-            {/* Conclusion */}
             <section className="h-[120vh] flex items-center justify-center relative z-10 px-6">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background pointer-events-none" />
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     className="text-center max-w-4xl"
                 >
-                    <h2 className="text-5xl md:text-[8rem] font-display font-black text-white mb-12 leading-none">START YOUR <br /> <span className="text-amber-500">JOURNEY</span></h2>
-                    <p className="text-xl text-white/40 mb-16 font-light">Join the ranks of master designers at Jayam Fashion Institution.</p>
+                    <h2 className="text-5xl md:text-[8rem] font-display font-black text-foreground mb-12 leading-none tracking-tighter">
+                        {t('story.conclusion.title').split(' ').slice(0, 2).join(' ')} <br />
+                        <span className="text-accent">{t('story.conclusion.title').split(' ').slice(2).join(' ')}</span>
+                    </h2>
+                    <p className="text-xl text-foreground/40 mb-16 font-light">{t('story.conclusion.subtitle')}</p>
 
                     <button
-                        onClick={() => navigate('/#courses')}
-                        className="group relative px-16 py-6 border border-white/10 rounded-full overflow-hidden transition-all hover:border-amber-500/50"
+                        onClick={() => navigate('/courses')}
+                        className="group relative px-16 py-6 bg-foreground text-background rounded-full overflow-hidden transition-all hover:pr-20"
                     >
-                        <span className="relative z-10 text-white font-black uppercase tracking-widest text-xs group-hover:text-amber-500 transition-colors">Explore Courses</span>
-                        <div className="absolute inset-0 bg-amber-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                        <span className="relative z-10 font-black uppercase tracking-widest text-xs">{t('story.conclusion.cta')}</span>
+                        <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </button>
                 </motion.div>
             </section>

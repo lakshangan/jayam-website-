@@ -21,11 +21,11 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
           <div className="flex-1">
             <div className="flex items-start justify-between mb-8">
               <div className="flex items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-accent/40 transition-all duration-500">
+                <div className="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center border border-black/10 group-hover:border-accent/40 transition-all duration-500">
                   <BookOpen size={24} className="text-accent" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-foreground group-hover:text-accent transition-colors duration-300">
                     {course.name}
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.3em] text-accent/60 font-black">{course.highlight}</span>
@@ -33,21 +33,21 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
               </div>
             </div>
 
-            <p className="text-white/40 text-sm leading-relaxed mb-10 font-light">
+            <p className="text-foreground/40 text-sm leading-relaxed mb-10 font-light">
               {course.description}
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-10">
-              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1">
-                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Duration</span>
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-black/[0.02]">
+                <span className="text-[9px] uppercase tracking-widest text-foreground/20 font-bold">Duration</span>
+                <div className="flex items-center gap-2 text-foreground font-bold text-sm">
                   <Clock size={14} className="text-accent" />
                   {course.duration}
                 </div>
               </div>
-              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1">
-                <span className="text-[9px] uppercase tracking-widest text-white/20 font-bold">Level</span>
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-black/[0.02]">
+                <span className="text-[9px] uppercase tracking-widest text-foreground/20 font-bold">Level</span>
+                <div className="flex items-center gap-2 text-foreground font-bold text-sm">
                   <Award size={14} className="text-accent" />
                   {course.certification}
                 </div>
@@ -57,7 +57,7 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
 
           <Link
             to={`/course/${course.id}`}
-            className="flex items-center justify-between w-full pt-8 border-t border-white/5 text-[10px] uppercase tracking-[0.5em] font-black text-white/30 hover:text-accent transition-all duration-500 group/btn"
+            className="flex items-center justify-between w-full pt-8 border-t border-black/5 text-[10px] uppercase tracking-[0.5em] font-black text-foreground/30 hover:text-accent transition-all duration-500 group/btn"
           >
             <span>Explore Full Program</span>
             <ArrowRight size={14} className="text-accent group-hover/btn:translate-x-1 transition-transform" />
@@ -94,7 +94,7 @@ const Courses = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl font-bold text-white mb-10 leading-[0.9] tracking-tighter"
+            className="text-5xl md:text-8xl font-bold text-foreground mb-10 leading-[0.9] tracking-tighter"
           >
             Explore Our <br />
             <span className="gold-gradient-text italic font-normal text-glow">Courses</span>
@@ -104,23 +104,23 @@ const Courses = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/45 font-light leading-snug max-w-2xl border-l-2 border-accent/20 pl-10"
+            className="text-xl md:text-2xl text-foreground/45 font-light leading-snug max-w-2xl border-l-2 border-accent/20 pl-10"
           >
             Learn the art of fashion from the best teachers. <br className="hidden md:block" />
-            <span className="text-white/70">Empowering students to build successful careers in the fashion world.</span>
+            <span className="text-foreground/70">Empowering students to build successful careers in the fashion world.</span>
           </motion.p>
         </div>
 
         <div className="space-y-20 md:space-y-40">
           {courseGroups.map((group, groupIdx) => (
             <div key={group.title}>
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-white/5 pb-12 gap-8">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-black/5 pb-12 gap-8">
                 <div>
-                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">{group.title}</h3>
+                  <h3 className="text-3xl md:text-5xl font-bold text-foreground mb-3 tracking-tight">{group.title}</h3>
                   <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="hidden md:block px-5 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">
+                  <div className="hidden md:block px-5 py-2 rounded-full border border-black/10 bg-black/5 text-[10px] uppercase tracking-[0.3em] text-foreground/40 font-bold">
                     {group.courses.length} Certified Pathways
                   </div>
                 </div>

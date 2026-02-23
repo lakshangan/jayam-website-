@@ -52,7 +52,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                     y: -100,
                     transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
                 }}
-                className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#050508] overflow-hidden"
+                className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background overflow-hidden"
             >
                 <div className="relative flex items-center justify-center w-[280px] h-[280px] md:w-[450px] md:h-[450px]">
                     {/* SVG Progress Circle */}
@@ -61,7 +61,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                             cx="150"
                             cy="150"
                             r="120"
-                            stroke="rgba(197, 163, 88, 0.05)"
+                            stroke="rgba(0, 0, 0, 0.05)"
                             strokeWidth="1"
                             fill="none"
                         />
@@ -107,8 +107,8 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                 </motion.div>
 
                 {/* Background Text Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-[0.015] pointer-events-none select-none">
-                    <span className="text-[25vw] md:text-[30vw] font-bold text-white whitespace-nowrap">JAYAM</span>
+                <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
+                    <span className="text-[25vw] md:text-[30vw] font-bold text-black whitespace-nowrap">JAYAM</span>
                 </div>
             </motion.div>
         </AnimatePresence>

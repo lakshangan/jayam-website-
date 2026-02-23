@@ -14,7 +14,7 @@ const CourseDetailsPage = () => {
 
     if (!course) {
         return (
-            <div className="min-h-screen bg-background text-white flex items-center justify-center">
+            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
                     <Link to="/courses" className="text-accent hover:underline">Back to Programs</Link>
@@ -24,7 +24,7 @@ const CourseDetailsPage = () => {
     }
 
     return (
-        <main className="bg-[#050508] min-h-screen">
+        <main className="bg-background min-h-screen">
             <Navbar />
             <motion.div
                 initial={{ opacity: 0 }}
@@ -33,7 +33,7 @@ const CourseDetailsPage = () => {
                 className="pt-32 pb-20"
             >
                 <div className="container-custom">
-                    <Link to="/courses" className="inline-flex items-center gap-2 text-white/40 hover:text-accent mb-12 transition-colors uppercase text-[10px] font-black tracking-widest">
+                    <Link to="/courses" className="inline-flex items-center gap-2 text-foreground/40 hover:text-accent mb-12 transition-colors uppercase text-[10px] font-black tracking-widest">
                         <ArrowLeft size={14} /> Back to All Programs
                     </Link>
 
@@ -48,28 +48,28 @@ const CourseDetailsPage = () => {
                                 <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-accent">{course.highlight}</span>
                             </motion.div>
 
-                            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-8 leading-tight">
                                 {course.name.split(' ').slice(0, -1).join(' ')} <span className="gold-gradient-text italic font-normal">{course.name.split(' ').slice(-1)}</span>
                             </h1>
 
-                            <p className="text-white/60 text-xl font-light leading-relaxed mb-12">
+                            <p className="text-foreground/60 text-xl font-light leading-relaxed mb-12">
                                 {course.description}
                             </p>
 
                             <div className="grid grid-cols-2 gap-6 mb-12">
-                                <div className="premium-card p-6 bg-white/[0.02]">
+                                <div className="premium-card p-6 bg-black/[0.02]">
                                     <div className="flex items-center gap-3 text-accent mb-2">
                                         <Clock size={16} />
                                         <span className="text-[10px] uppercase tracking-widest font-black">Duration</span>
                                     </div>
-                                    <div className="text-white font-bold">{course.duration}</div>
+                                    <div className="text-foreground font-bold">{course.duration}</div>
                                 </div>
-                                <div className="premium-card p-6 bg-white/[0.02]">
+                                <div className="premium-card p-6 bg-black/[0.02]">
                                     <div className="flex items-center gap-3 text-accent mb-2">
                                         <Award size={16} />
                                         <span className="text-[10px] uppercase tracking-widest font-black">Certification</span>
                                     </div>
-                                    <div className="text-white font-bold">{course.certification}</div>
+                                    <div className="text-foreground font-bold">{course.certification}</div>
                                 </div>
                             </div>
 
@@ -82,7 +82,7 @@ const CourseDetailsPage = () => {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="relative rounded-[3rem] overflow-hidden border border-white/10 aspect-[4/5] shadow-2xl"
+                            className="relative rounded-[3rem] overflow-hidden border border-black/10 aspect-[4/5] shadow-2xl"
                         >
                             <img src={course.image} alt={course.name} className="w-full h-full object-cover" />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
@@ -91,14 +91,14 @@ const CourseDetailsPage = () => {
 
                     <div className="grid md:grid-cols-3 gap-12 mb-32">
                         <div className="md:col-span-2">
-                            <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-4">
+                            <h2 className="text-3xl font-bold text-foreground mb-12 flex items-center gap-4">
                                 <BookOpen className="text-accent" /> Program Curriculum
                             </h2>
                             <div className="grid gap-4">
                                 {course.modules.map((module, idx) => (
-                                    <div key={idx} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-6 group hover:border-accent/30 transition-all">
+                                    <div key={idx} className="p-6 rounded-2xl bg-black/[0.02] border border-black/5 flex items-center gap-6 group hover:border-accent/30 transition-all">
                                         <span className="text-accent/40 font-black text-xs">0{idx + 1}</span>
-                                        <span className="text-white/80 font-medium">{module}</span>
+                                        <span className="text-foreground/80 font-medium">{module}</span>
                                         <CheckCircle size={16} className="ml-auto text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </div>
                                 ))}
@@ -106,8 +106,8 @@ const CourseDetailsPage = () => {
                         </div>
 
                         <div className="bg-accent/5 rounded-[2.5rem] p-10 border border-accent/20 h-fit">
-                            <h3 className="text-xl font-bold text-white mb-6">Course Outcome</h3>
-                            <p className="text-white/50 text-sm leading-relaxed mb-8">
+                            <h3 className="text-xl font-bold text-foreground mb-6">Course Outcome</h3>
+                            <p className="text-foreground/50 text-sm leading-relaxed mb-8">
                                 {course.details}
                             </p>
                             <div className="space-y-4">

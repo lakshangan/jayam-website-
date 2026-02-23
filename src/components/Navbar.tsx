@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Magnetic from './Magnetic';
+import { useAppContext } from '../context/AppContext';
 
 const Navbar = () => {
+  const { theme, toggleTheme, language, setLanguage, t } = useAppContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -46,10 +48,10 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/courses', label: 'Programs' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/', label: t('nav.home') },
+    { href: '/about', label: t('nav.about') },
+    { href: '/courses', label: t('nav.programs') },
+    { href: '#contact', label: t('nav.contact') }
   ];
 
   return (
@@ -69,8 +71,8 @@ const Navbar = () => {
             delay: 0.2
           }}
           className={`relative flex justify-between items-center rounded-full border overflow-hidden transition-all duration-500 ${isScrolled
-            ? 'bg-[#050508]/80 backdrop-blur-2xl px-3 py-2 shadow-2xl border-white/10'
-            : 'bg-white/5 backdrop-blur-xl px-4 py-3 border-white/10 shadow-lg'
+            ? 'bg-background/80 backdrop-blur-2xl px-3 py-2 shadow-2xl border-black/5'
+            : 'bg-black/5 backdrop-blur-xl px-4 py-3 border-black/5 shadow-lg'
             }`}
         >
           {/* Logo */}
@@ -95,10 +97,10 @@ const Navbar = () => {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="flex flex-col whitespace-nowrap overflow-hidden"
             >
-              <span className="font-display font-bold text-base leading-tight tracking-tight text-white group-hover:text-accent transition-colors duration-300">
+              <span className="font-display font-bold text-base leading-tight tracking-tight text-foreground group-hover:text-accent transition-colors duration-300">
                 Jayam
               </span>
-              <span className="text-[8px] uppercase tracking-[0.3em] font-medium text-white/40">Institute</span>
+              <span className="text-[8px] uppercase tracking-[0.3em] font-medium text-foreground/40">Institute</span>
             </motion.div>
           </Link>
 
@@ -113,9 +115,9 @@ const Navbar = () => {
                     transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden"
+                    className="relative px-4 py-2 text-xs text-foreground/60 font-medium transition-all duration-300 group overflow-hidden"
                   >
-                    <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                    <span className="relative z-10 group-hover:text-foreground transition-colors duration-300 tracking-wide">{link.label}</span>
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
                   </motion.a>
                 ) : (
@@ -127,30 +129,49 @@ const Navbar = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 + (idx * 0.1), duration: 0.5 }}
-                      className="relative px-4 py-2 text-xs text-white/60 font-medium transition-all duration-300 group overflow-hidden block"
+                      className="relative px-4 py-2 text-xs text-foreground/60 font-medium transition-all duration-300 group overflow-hidden block"
                     >
-                      <span className="relative z-10 group-hover:text-white transition-colors duration-300 tracking-wide">{link.label}</span>
+                      <span className="relative z-10 group-hover:text-foreground transition-colors duration-300 tracking-wide">{link.label}</span>
                       <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
                     </motion.span>
                   </Link>
                 )}
               </Magnetic>
             ))}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-              className="ml-3 pl-3 border-l border-white/10"
-            >
+            <div className="flex items-center gap-4 ml-6 border-l border-black/10 pl-6">
+              {/* Language Switcher */}
+              <div className="flex bg-black/[0.03] rounded-full p-1 border border-black/5">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage('ta')}
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'ta' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                >
+                  தமிழ்
+                </button>
+              </div>
+
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-black/[0.03] border border-black/5 text-foreground/60 hover:text-accent transition-all"
+              >
+                {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+              </button>
+
               <Magnetic strength={0.2}>
                 <Link
                   to="/courses"
-                  className="px-5 py-2.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded-full hover:bg-accent transition-all duration-300 block text-center"
+                  className="px-6 py-2.5 bg-foreground text-background text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-accent hover:text-white transition-all duration-300 block text-center"
                 >
-                  Get Admission Info
+                  {t('nav.admission')}
                 </Link>
               </Magnetic>
-            </motion.div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -169,7 +190,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
                 >
-                  <X className="w-4 h-4 text-white" />
+                  <X className="w-4 h-4 text-foreground" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -178,7 +199,7 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
                 >
-                  <Menu className="w-4 h-4 text-white" />
+                  <Menu className="w-4 h-4 text-foreground" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -193,7 +214,7 @@ const Navbar = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:hidden fixed inset-x-4 top-[80px] p-8 bg-[#050508]/90 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] z-[100] overflow-hidden"
+              className="lg:hidden fixed inset-x-4 top-[80px] p-8 bg-background/95 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 shadow-[0_40px_100px_rgba(0,0,0,0.2)] z-[100] overflow-hidden"
             >
               {/* Decorative background element behind links */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -222,7 +243,7 @@ const Navbar = () => {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
-                          className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
+                          className="text-3xl font-display font-medium text-foreground/90 active:text-accent transition-colors flex items-center gap-4"
                         >
                           <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
                           {link.label}
@@ -231,20 +252,37 @@ const Navbar = () => {
                     )}
                   </div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="pt-8 mt-8 border-t border-white/10"
-                >
-                  <Link
-                    to="/courses"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-center py-5 bg-white text-black text-sm font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-white/5"
-                  >
-                    Get Admission Info
-                  </Link>
-                </motion.div>
+                <div className="flex flex-col gap-4 py-8 mt-8 border-t border-black/5">
+                  <div className="flex bg-black/[0.03] rounded-2xl p-1">
+                    <button
+                      onClick={() => setLanguage('en')}
+                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => setLanguage('ta')}
+                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'ta' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                    >
+                      தமிழ்
+                    </button>
+                  </div>
+                  <div className="flex gap-4">
+                    <button
+                      onClick={toggleTheme}
+                      className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center text-foreground border border-black/5"
+                    >
+                      {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                    </button>
+                    <Link
+                      to="/courses"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex-1 flex items-center justify-center bg-foreground text-background text-xs font-black uppercase tracking-widest rounded-2xl"
+                    >
+                      {t('nav.admission')}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}

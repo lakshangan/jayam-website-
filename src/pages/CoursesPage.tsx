@@ -9,7 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 const CoursesPage = () => {
     return (
-        <main className="bg-[#050508] min-h-screen">
+        <main className="bg-background min-h-screen">
             <Navbar />
             <motion.div
                 initial={{ opacity: 0 }}

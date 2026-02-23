@@ -1,9 +1,10 @@
-
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, GraduationCap, MessageSquare, Menu } from 'lucide-react';
+import { Phone, GraduationCap, MessageSquare } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useAppContext } from '../context/AppContext';
 
 const MobileBottomNav = () => {
+    const { t } = useAppContext();
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -24,7 +25,7 @@ const MobileBottomNav = () => {
 
     const navItems = [
         { icon: Phone, label: 'Call', href: 'tel:+918925774434' },
-        { icon: GraduationCap, label: 'Courses', href: '#courses' },
+        { icon: GraduationCap, label: t('nav.programs'), href: '/courses' },
         { icon: MessageSquare, label: 'WhatsApp', href: 'https://wa.me/918925774434' },
     ];
 
@@ -42,27 +43,25 @@ const MobileBottomNav = () => {
         <AnimatePresence>
             {isVisible && (
                 <motion.div
-                    initial={{ y: 120, opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                    animate={{ y: 0, opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                    exit={{ y: 120, opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                    initial={{ y: 120, opacity: 0, scale: 0.9 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={{ y: 120, opacity: 0, scale: 0.9 }}
                     transition={{
-                        y: { type: 'spring', stiffness: 300, damping: 25 },
-                        scale: { type: 'spring', stiffness: 300, damping: 25 },
-                        opacity: { duration: 0.4 },
-                        filter: { duration: 0.3 }
+                        y: { type: 'spring', stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.4 }
                     }}
                     className="fixed bottom-6 left-6 right-6 z-[90] lg:hidden"
                 >
-                    <div className="bg-[#050508]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-around">
+                    <div className="bg-background/80 backdrop-blur-3xl border border-black/[0.05] rounded-3xl p-2 shadow-premium flex items-center justify-around">
                         {navItems.map((item, index) => (
                             <a
                                 key={index}
                                 href={item.href}
                                 onClick={(e) => handleClick(e, item.href)}
-                                className="flex flex-col items-center gap-1 p-3 px-5 transition-all active:scale-90 group"
+                                className="flex flex-col items-center gap-1.5 p-3 px-5 transition-all active:scale-95 group"
                             >
-                                <item.icon className="w-5 h-5 text-white/60 group-active:text-accent" />
-                                <span className="text-[9px] uppercase tracking-widest font-black text-white/30 group-active:text-accent/60">
+                                <item.icon className="w-5 h-5 text-foreground/40 group-active:text-accent group-hover:text-accent transition-colors" />
+                                <span className="text-[9px] uppercase tracking-[0.2em] font-black text-foreground/30 group-active:text-accent group-hover:text-accent transition-colors">
                                     {item.label}
                                 </span>
                             </a>

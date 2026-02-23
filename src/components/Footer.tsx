@@ -1,8 +1,10 @@
-import { Facebook, Instagram, Twitter, Linkedin, Mail, MapPin, Phone, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Instagram, ArrowUpRight, Sparkles } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useAppContext } from '../context/AppContext';
 
 const Footer = () => {
+  const { t } = useAppContext();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -16,69 +18,68 @@ const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="bg-[#050508] text-white pt-24 pb-12 relative overflow-hidden"
+      className="bg-background text-foreground pt-32 pb-16 relative overflow-hidden"
     >
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-secondary/10 pointer-events-none" />
+
       {/* Massive Background Text Component (Parallax) */}
       <motion.div
         style={{ y, opacity }}
-        className="absolute bottom-0 left-0 w-full pointer-events-none z-0 hidden lg:block"
+        className="absolute bottom-[-5vw] left-0 w-full pointer-events-none z-0 hidden lg:block"
       >
-        <h2 className="text-[25vw] font-display font-black text-white/[0.02] leading-[0.7] tracking-tighter text-center uppercase italic">
+        <h2 className="text-[25vw] font-display font-black text-foreground/[0.02] leading-[0.7] tracking-tighter text-center uppercase italic">
           Jayam
         </h2>
       </motion.div>
 
-      {/* Decorative Orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] -z-10" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] -z-10" />
-
       <div className="container-custom relative z-10">
         <motion.div
           style={{ scale, opacity }}
-          className="flex flex-col lg:flex-row justify-between items-start gap-20 mb-32"
+          className="flex flex-col lg:flex-row justify-between items-start gap-24 mb-32"
         >
           {/* Brand Presence */}
-          <div className="lg:max-w-md space-y-10">
-            <div className="flex items-center gap-5">
+          <div className="lg:max-w-md space-y-12">
+            <div className="flex items-center gap-6">
               <div className="relative group">
-                <div className="absolute -inset-1 bg-accent/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -inset-2 bg-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img
                   src="/lovable-uploads/logo.png"
                   alt="Jayam Logo"
-                  className="relative w-16 h-16 rounded-full border border-white/10 p-1.5 bg-white shadow-2xl"
+                  className="relative w-20 h-20 rounded-full border border-black/[0.05] p-2 bg-white shadow-premium transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div>
-                <span className="text-3xl font-display font-black text-white tracking-tight block">JAYAM</span>
-                <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-accent">Institute of Design</span>
+                <span className="text-3xl font-display font-black text-foreground tracking-tight block">JAYAM</span>
+                <span className="text-[10px] uppercase tracking-[0.6em] font-black text-accent">{t('footer.tagline')}</span>
               </div>
             </div>
 
-            <p className="text-xl md:text-2xl text-white/40 font-light leading-relaxed">
-              Redefining the boundaries of <span className="text-white italic">couture education</span> and creative entrepreneurship since 1995.
+            <p className="text-xl md:text-2xl text-foreground/50 font-light leading-relaxed">
+              Redefining the boundaries of <span className="text-foreground italic">couture education</span> and creative entrepreneurship since 1995.
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 pt-4">
               <a
                 href="https://www.instagram.com/jayam_fashion_institute"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:border-accent/40 hover:bg-accent/5 transition-all duration-500 group"
+                className="w-14 h-14 rounded-2xl bg-secondary border border-black/[0.03] flex items-center justify-center text-accent hover:bg-accent hover:text-background transition-all duration-700 group shadow-premium"
               >
-                <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+                <Instagram size={24} className="group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 lg:gap-24">
-            <div className="space-y-8">
-              <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-accent/50">Programs</h3>
-              <ul className="space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-16 lg:gap-32">
+            <div className="space-y-10">
+              <h3 className="text-[11px] uppercase tracking-[0.4em] font-black text-accent/60">{t('footer.programs')}</h3>
+              <ul className="space-y-6">
                 {['Tailoring', 'Fashion Design', 'Beautician', 'Master Class'].map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-sm text-white/30 hover:text-white transition-all flex items-center gap-2 group">
-                      <ArrowUpRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                    <a href="#" className="text-sm text-foreground/40 hover:text-accent transition-all flex items-center gap-3 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent/20 group-hover:bg-accent transition-colors" />
                       {item}
                     </a>
                   </li>
@@ -86,13 +87,13 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="space-y-8">
-              <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-accent/50">Legacy</h3>
-              <ul className="space-y-4">
+            <div className="space-y-10">
+              <h3 className="text-[11px] uppercase tracking-[0.4em] font-black text-accent/60">{t('footer.quickLinks')}</h3>
+              <ul className="space-y-6">
                 {['History', 'Alumni', 'Awards', 'Contact'].map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-sm text-white/30 hover:text-white transition-all flex items-center gap-2 group">
-                      <ArrowUpRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                    <a href="#" className="text-sm text-foreground/40 hover:text-accent transition-all flex items-center gap-3 group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent/20 group-hover:bg-accent transition-colors" />
                       {item}
                     </a>
                   </li>
@@ -100,30 +101,24 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="space-y-8 col-span-2 sm:col-span-1">
-              <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-accent/50">Contact</h3>
-              <div className="space-y-6">
+            <div className="space-y-10 col-span-2 md:col-span-1">
+              <h3 className="text-[11px] uppercase tracking-[0.4em] font-black text-accent/60">Contact</h3>
+              <div className="space-y-10">
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=7th+St+Sundaravelpuram+West+Thalamuthu+Nagar+Thoothukudi+Tamil+Nadu+628002"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group cursor-pointer block"
                 >
-                  <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Visit Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light leading-relaxed">
+                  <span className="text-[9px] uppercase tracking-widest text-accent font-black block mb-3">Visit Us</span>
+                  <p className="text-sm text-foreground/50 group-hover:text-foreground transition-colors font-light leading-relaxed">
                     7th St, Sundaravelpuram West,<br />
                     Thalamuthu Nagar, Thoothukudi, TN 628002
                   </p>
                 </a>
                 <a href="tel:+918925774434" className="group cursor-pointer block">
-                  <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Talk to Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light">+91 89257 74434</p>
-                </a>
-                <a href="mailto:jayamfashioninstitution@gmail.com" className="group cursor-pointer block">
-                  <span className="text-[9px] uppercase tracking-widest text-white/20 block mb-1">Email Us</span>
-                  <p className="text-sm text-white/40 group-hover:text-accent transition-colors font-light whitespace-normal overflow-hidden break-words">
-                    jayamfashioninstitution@gmail.com
-                  </p>
+                  <span className="text-[9px] uppercase tracking-widest text-accent font-black block mb-3">Talk to Us</span>
+                  <p className="text-lg text-foreground/60 group-hover:text-foreground transition-colors font-bold">+91 89257 74434</p>
                 </a>
               </div>
             </div>
@@ -131,17 +126,17 @@ const Footer = () => {
         </motion.div>
 
         {/* Bottom Bar */}
-        <div className="pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <p className="text-[9px] uppercase tracking-[0.5em] text-white/20 font-black">
+        <div className="pt-20 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <p className="text-[10px] uppercase tracking-[0.5em] text-foreground/30 font-black">
               &copy; {new Date().getFullYear()} Jayam Institute of Design.
             </p>
-            <div className="flex gap-6 text-[8px] uppercase tracking-widest text-white/10">
-              <span className="flex items-center gap-1"><Sparkles size={8} className="text-accent/20" /> Excellence in every stitch</span>
+            <div className="flex gap-6 text-[9px] uppercase tracking-widest text-foreground/20 italic font-medium">
+              <span className="flex items-center gap-2"><Sparkles size={10} className="text-accent/40" /> Excellence in every stitch</span>
             </div>
           </div>
 
-          <div className="flex gap-10 text-[9px] uppercase tracking-[0.3em] font-black text-white/20">
+          <div className="flex gap-10 text-[10px] uppercase tracking-[0.3em] font-black text-foreground/30">
             <a href="#" className="hover:text-accent transition-all">Privacy</a>
             <a href="#" className="hover:text-accent transition-all">Terms</a>
             <a href="#" className="hover:text-accent transition-all">Cookies</a>
@@ -153,4 +148,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

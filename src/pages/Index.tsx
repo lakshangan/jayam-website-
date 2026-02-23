@@ -20,7 +20,7 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   }, []);
 
   return (
-    <main className={`bg-[#050508] relative ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
+    <main className={`bg-background relative ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
       <AnimationScript />
       {!isLoading && (
         <motion.div

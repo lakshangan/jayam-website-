@@ -6,8 +6,31 @@
 
 @layer base {
   :root {
+    --background: 35 30% 96%;
+    /* Slightly deeper cream for better contrast */
+    --foreground: 165 40% 4%;
+    --primary: 40 46% 56%;
+    --primary-foreground: 40 30% 98%;
+    --secondary: 35 25% 92%;
+    /* Slightly darker for section contrast */
+    --secondary-foreground: 165 40% 10%;
+    --muted: 35 15% 90%;
+    --muted-foreground: 165 10% 40%;
+    --accent: 40 46% 56%;
+    --accent-foreground: 165 40% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 165 40% 4%;
+    --jayam-blue: #061411;
+    --jayam-gold: #c5a358;
+    --modern-light: #fefaf3;
+    --border: 35 15% 88%;
+  }
+
+  .dark {
     --background: 165 40% 4%;
     --foreground: 45 20% 98%;
+    --card: 165 40% 6%;
+    --card-foreground: 45 20% 98%;
     --primary: 47 46% 56%;
     --primary-foreground: 165 40% 4%;
     --secondary: 165 30% 12%;
@@ -16,28 +39,7 @@
     --muted-foreground: 165 5% 60%;
     --accent: 47 46% 56%;
     --accent-foreground: 165 40% 4%;
-    --card: 165 40% 6%;
-    --card-foreground: 45 20% 98%;
-    --jayam-blue: #061411;
-    --jayam-gold: #c5a358;
-    --modern-light: #fdfbf7;
     --border: 165 20% 15%;
-  }
-
-  .light {
-    --background: 45 30% 98%;
-    --foreground: 165 40% 4%;
-    --card: 45 30% 98%;
-    --card-foreground: 165 40% 4%;
-    --primary: 47 46% 56%;
-    --primary-foreground: 45 30% 98%;
-    --secondary: 165 20% 90%;
-    --secondary-foreground: 165 40% 10%;
-    --muted: 165 10% 92%;
-    --muted-foreground: 165 10% 40%;
-    --accent: 47 46% 56%;
-    --accent-foreground: 165 40% 4%;
-    --border: 165 20% 85%;
   }
 }
 
@@ -79,12 +81,12 @@
 
 @layer components {
   .btn-premium {
-    @apply relative overflow-hidden px-8 py-3.5 rounded-full font-medium transition-all duration-500 bg-white text-black hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98];
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    @apply relative overflow-hidden px-8 py-3.5 rounded-full font-medium transition-all duration-500 bg-[#1a1a1a] text-white hover:bg-black hover:scale-[1.02] active:scale-[0.98];
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
 
   .btn-premium:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   }
 
   .btn-outline-premium {
@@ -92,16 +94,16 @@
   }
 
   .premium-card {
-    @apply relative p-8 rounded-3xl bg-secondary/15 backdrop-blur-md border border-white/5 transition-all duration-700 hover:border-accent/30 hover:bg-secondary/25 shadow-2xl;
+    @apply relative p-8 rounded-3xl bg-secondary/50 backdrop-blur-md border border-black/5 transition-all duration-700 hover:border-accent/40 hover:bg-secondary/80 shadow-xl shadow-black/[0.02];
     will-change: transform, opacity;
   }
 
   .premium-input {
-    @apply w-full h-14 bg-white/[0.03] border border-white/10 rounded-2xl px-6 text-white placeholder:text-white/20 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all duration-500 font-light;
+    @apply w-full h-14 bg-black/[0.03] border border-black/10 rounded-2xl px-6 text-black placeholder:text-black/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all duration-500 font-light;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-white via-white/80 to-white/40 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-black via-black/80 to-black/60 bg-clip-text text-transparent;
   }
 
   .gold-gradient-text {
@@ -137,7 +139,7 @@
   }
 
   .mask-radial {
-    mask-image: radial-gradient(circle at center, black 0%, transparent 100%);
+    mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
   }
 
   .mask-linear-b {
@@ -176,13 +178,13 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #061411;
+    background: #fbfaf8;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #c5a358;
     border-radius: 10px;
-    border: 2px solid #061411;
+    border: 2px solid #fbfaf8;
   }
 
   ::-webkit-scrollbar-thumb:hover {
