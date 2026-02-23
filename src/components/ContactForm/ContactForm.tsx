@@ -85,12 +85,12 @@ const ContactForm = () => {
     <div className="bg-secondary p-10 relative group">
       <div className="flex justify-between items-center mb-10">
         <div className="space-y-1">
-          <h3 className="text-2xl font-display font-semibold text-white">Admission Application</h3>
+          <h3 className="text-2xl font-display font-semibold text-foreground">Admission Application</h3>
           <p className="text-xs text-accent uppercase tracking-widest font-bold">Session 2024-25 • Limited Availability</p>
         </div>
         <button
           onClick={handleSetGoogleSheetUrl}
-          className="p-2 rounded-lg bg-white/5 border border-white/10 text-white/20 hover:text-accent transition-colors"
+          className="p-2 rounded-lg bg-foreground/5 border border-foreground/10 text-foreground/30 hover:text-accent transition-colors"
         >
           <Sparkles size={14} />
         </button>
@@ -104,7 +104,7 @@ const ContactForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black">Full Name</FormLabel>
+                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-foreground/70 font-black">Full Name</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter your name"
@@ -122,7 +122,7 @@ const ContactForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black">Email Address</FormLabel>
+                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-foreground/70 font-black">Email Address</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -143,7 +143,7 @@ const ContactForm = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black">Phone Number</FormLabel>
+                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-foreground/70 font-black">Phone Number</FormLabel>
                   <FormControl>
                     <Input
                       type="tel"
@@ -162,7 +162,7 @@ const ContactForm = () => {
               name="program"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black">Interest Area</FormLabel>
+                  <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-foreground/70 font-black">Interest Area</FormLabel>
                   <FormControl>
                     <select
                       {...field}
@@ -186,7 +186,7 @@ const ContactForm = () => {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black">Aspirations / Questions</FormLabel>
+                <FormLabel className="text-[10px] uppercase tracking-[0.2em] text-foreground/70 font-black">Aspirations / Questions</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Tell us what you want to achieve..."
@@ -203,7 +203,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+            className="w-full h-14 rounded-2xl bg-foreground text-background font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               {isSubmitting ? (

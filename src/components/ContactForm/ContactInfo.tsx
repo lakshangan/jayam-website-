@@ -34,14 +34,14 @@ const ContactInfo = () => {
             rel={item.title === "Address" ? "noopener noreferrer" : undefined}
             className="flex gap-8 group cursor-pointer"
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
+            <div className="w-14 h-14 rounded-2xl bg-foreground/[0.03] border border-foreground/10 flex items-center justify-center shrink-0 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-500">
               {item.icon}
             </div>
             <div className="pt-2">
-              <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-bold mb-3">{item.title}</h4>
+              <h4 className="text-[10px] uppercase tracking-[0.4em] text-foreground/40 font-bold mb-3">{item.title}</h4>
               <div className="space-y-1">
                 {item.content.map((line, lIdx) => (
-                  <p key={lIdx} className="text-white/60 text-sm md:text-base font-light leading-relaxed">
+                  <p key={lIdx} className="text-foreground/70 text-sm md:text-base font-light leading-relaxed">
                     {line}
                   </p>
                 ))}
@@ -51,15 +51,15 @@ const ContactInfo = () => {
         ))}
       </div>
 
-      <div className="pt-10 border-t border-white/5">
-        <h4 className="text-[10px] uppercase tracking-[0.4em] text-white/20 font-bold mb-8">Direct Channels</h4>
+      <div className="pt-10 border-t border-foreground/10">
+        <h4 className="text-[10px] uppercase tracking-[0.4em] text-foreground/40 font-bold mb-8">Direct Channels</h4>
         <div className="flex gap-4">
           <Magnetic strength={0.3}>
             <a
               href="https://www.instagram.com/jayam_fashion_institute"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/40 hover:text-accent hover:bg-accent/10 hover:border-accent/30 transition-all duration-500"
+              className="w-12 h-12 rounded-full bg-foreground/[0.03] border border-foreground/10 flex items-center justify-center text-foreground/50 hover:text-accent hover:bg-accent/10 hover:border-accent/30 transition-all duration-500"
               aria-label="Instagram"
             >
               <Instagram size={20} />
