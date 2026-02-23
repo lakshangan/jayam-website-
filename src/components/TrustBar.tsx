@@ -41,7 +41,7 @@ const TrustBar = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
-                            className="group flex flex-col items-center text-center p-8 md:p-12 rounded-[3.5rem] bg-secondary/30 border border-black/[0.03] hover:border-accent/40 hover:bg-white dark:hover:bg-card transition-all duration-700 shadow-premium hover:shadow-2xl"
+                            className="group flex flex-col items-center text-center p-8 md:p-12 rounded-[3.5rem] bg-card border border-black/[0.03] hover:border-accent/40 hover:scale-[1.02] transition-all duration-700 shadow-premium hover:shadow-2xl"
                         >
                             <div className="w-16 h-16 rounded-3xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-xl">
                                 {stat.icon}

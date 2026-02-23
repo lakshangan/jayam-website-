@@ -23,7 +23,7 @@ const AboutSummary = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="relative aspect-video lg:aspect-square flex items-center justify-center bg-secondary/40 rounded-[3rem] border border-black/[0.03] shadow-premium overflow-hidden">
+                        <div className="relative aspect-video lg:aspect-square flex items-center justify-center bg-card rounded-[3rem] border border-black/[0.03] shadow-premium overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent pointer-events-none" />
                             <AnimatedLogo />
                         </div>

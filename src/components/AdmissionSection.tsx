@@ -32,7 +32,7 @@ const AdmissionSection = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[160px] pointer-events-none" />
 
             <div className="container-custom relative z-10">
-                <div className="rounded-[4rem] bg-secondary/30 border border-black/[0.03] p-8 md:p-20 overflow-hidden relative shadow-premium">
+                <div className="rounded-[4rem] bg-card border border-black/[0.03] p-8 md:p-20 overflow-hidden relative shadow-premium">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-10">
                             <div>

@@ -78,7 +78,7 @@ const AccreditationSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group p-10 rounded-[3rem] bg-secondary/30 border border-black/[0.03] hover:bg-white dark:hover:bg-card hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700"
+                            className="group p-10 rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 hover:scale-[1.01]"
                         >
                             <div className="w-16 h-16 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg">
                                 {item.icon}
@@ -97,7 +97,7 @@ const AccreditationSection = () => {
                     viewport={{ once: true }}
                     className="mt-32 flex justify-center"
                 >
-                    <div className="px-10 py-4 rounded-full bg-secondary/50 border border-black/[0.05] flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-premium">
+                    <div className="px-10 py-4 rounded-full bg-card border border-black/[0.05] flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-premium">
                         <span className="text-[10px] uppercase font-black text-foreground/30 tracking-[0.2em] italic">
                             Certificate No: <span className="text-accent">JC2024-5892 (Official Partner)</span>
                         </span>

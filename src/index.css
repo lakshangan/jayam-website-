@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    --background: 35 30% 96%;
-    /* Slightly deeper cream for better contrast */
+    --background: 40 25% 94%;
+    /* A soft cream/beige for better contrast with white cards */
     --foreground: 165 40% 4%;
     --primary: 40 46% 56%;
     --primary-foreground: 40 30% 98%;
-    --secondary: 35 25% 92%;
+    --secondary: 40 20% 88%;
     /* Slightly darker for section contrast */
     --secondary-foreground: 165 40% 10%;
-    --muted: 35 15% 90%;
+    --muted: 40 15% 90%;
     --muted-foreground: 165 10% 40%;
     --accent: 40 46% 56%;
     --accent-foreground: 165 40% 4%;
@@ -23,7 +23,7 @@
     --jayam-blue: #061411;
     --jayam-gold: #c5a358;
     --modern-light: #fefaf3;
-    --border: 35 15% 88%;
+    --border: 40 15% 88%;
   }
 
   .dark {
@@ -97,7 +97,7 @@
   }
 
   .premium-card {
-    @apply relative p-8 rounded-3xl bg-secondary/50 backdrop-blur-md border border-black/5 transition-all duration-700 hover:border-accent/40 hover:bg-secondary/80 shadow-xl shadow-black/[0.02];
+    @apply relative p-8 rounded-3xl bg-card border border-black/5 transition-all duration-700 hover:border-accent/40 hover:scale-[1.01] shadow-xl shadow-black/[0.04];
     will-change: transform, opacity;
   }
 

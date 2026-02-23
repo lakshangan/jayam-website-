@@ -84,7 +84,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-secondary/30 p-8 md:p-12 rounded-[3.5rem] border border-black/[0.03] shadow-premium"
+              className="bg-card p-8 md:p-12 rounded-[3.5rem] border border-black/[0.03] shadow-premium"
             >
               <ContactInfo />
             </motion.div>
