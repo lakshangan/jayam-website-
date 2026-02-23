@@ -57,7 +57,7 @@ const AboutSummary = () => {
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
                         >
-                            <Link to="/about" className="group flex items-center gap-4 text-white font-bold tracking-widest uppercase text-[11px] hover:text-accent transition-colors">
+                            <Link to="/courses" className="group flex items-center gap-4 text-white font-bold tracking-widest uppercase text-[11px] hover:text-accent transition-colors">
                                 <span className="w-12 h-[1px] bg-accent/50 group-hover:w-16 transition-all" />
                                 Start Your Journey
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

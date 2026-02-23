@@ -12,6 +12,7 @@ import Preloader from "./components/Preloader";
 
 import SmoothScroll from "./components/SmoothScroll";
 import BackgroundMusic from "./components/BackgroundMusic";
+import RouterScrollRestorer from "./components/RouterScrollRestorer";
 
 import { useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -41,6 +42,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <RouterScrollRestorer />
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Index isLoading={isLoading} />} />
