@@ -17,32 +17,32 @@ const AccreditationSection = () => {
         {
             title: "National Certification",
             description: "NSDC Approved Training Partner providing government-recognized excellence.",
-            icon: <Shield className="w-6 h-6 text-accent" />
+            icon: <Shield className="w-6 h-6 transition-colors duration-500" />
         },
         {
             title: "Global Standards",
             description: "Industry-aligned curriculum and pedagogy matching international fashion benchmarks.",
-            icon: <Star className="w-6 h-6 text-accent" />
+            icon: <Star className="w-6 h-6 transition-colors duration-500" />
         },
         {
             title: "Empowerment",
             description: "A strong focus on women entrepreneurship and professional self-reliance.",
-            icon: <Users className="w-6 h-6 text-accent" />
+            icon: <Users className="w-6 h-6 transition-colors duration-500" />
         },
         {
             title: "Strategic Partners",
             description: "Recognized by Skill India and the Ministry of Skill Development & Entrepreneurship.",
-            icon: <Handshake className="w-6 h-6 text-accent" />
+            icon: <Handshake className="w-6 h-6 transition-colors duration-500" />
         },
         {
             title: "Recognition",
             description: "Hold nationally valid professional credentials that certify your expertise.",
-            icon: <Award className="w-6 h-6 text-accent" />
+            icon: <Award className="w-6 h-6 transition-colors duration-500" />
         },
         {
             title: "Official Support",
             description: "Direct access to various government skill upgradation and support schemes.",
-            icon: <CheckCircle2 className="w-6 h-6 text-accent" />
+            icon: <CheckCircle2 className="w-6 h-6 transition-colors duration-500" />
         }
     ];
 
@@ -78,9 +78,9 @@ const AccreditationSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group p-10 rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 hover:scale-[1.01]"
+                            className="group p-10 rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-colors transition-shadow duration-700"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg">
+                            <div className="w-16 h-16 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
                                 {item.icon}
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-4 uppercase tracking-widest leading-tight group-hover:text-accent transition-colors">{item.title}</h3>

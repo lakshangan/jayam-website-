@@ -137,7 +137,7 @@ const AboutJayam = () => {
                     rotateY: 5,
                     scale: 1.02
                   }}
-                  className="premium-card group py-12 px-8 text-center h-full flex flex-col items-center justify-center border-white/5 bg-white/[0.02] hover:bg-accent/5 hover:border-accent/20 transition-all duration-700"
+                  className="premium-card group py-12 px-8 text-center h-full flex flex-col items-center justify-center border-white/5 bg-white/[0.02] hover:bg-accent/5 hover:border-accent/20 transition-colors transition-shadow duration-700"
                 >
                   <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-10 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-700 relative">
                     <div className="absolute inset-0 bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

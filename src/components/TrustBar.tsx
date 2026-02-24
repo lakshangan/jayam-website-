@@ -7,24 +7,24 @@ const TrustBar = () => {
 
     const stats = [
         {
-            icon: <Users className="w-6 h-6 text-accent" />,
+            icon: <Users className="w-6 h-6 transition-colors duration-500" />,
             value: "100+",
             label: t('stats.alumni'),
             description: "Empowered women in fashion"
         },
         {
-            icon: <BookmarkCheck className="w-6 h-6 text-accent" />,
+            icon: <BookmarkCheck className="w-6 h-6 transition-colors duration-500" />,
             value: "25+",
             label: t('stats.legacy'),
         },
         {
-            icon: <Award className="w-6 h-6 text-accent" />,
+            icon: <Award className="w-6 h-6 transition-colors duration-500" />,
             value: "100%",
             label: t('stats.nsdc'),
             description: "National recognition"
         },
         {
-            icon: <Briefcase className="w-6 h-6 text-accent" />,
+            icon: <Briefcase className="w-6 h-6 transition-colors duration-500" />,
             value: "20+",
             label: t('stats.partners'),
         }
@@ -41,9 +41,9 @@ const TrustBar = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
-                            className="group flex flex-col items-center text-center p-8 md:p-12 rounded-[3.5rem] bg-card border border-black/[0.03] hover:border-accent/40 hover:scale-[1.02] transition-all duration-700 shadow-premium hover:shadow-2xl"
+                            className="group flex flex-col items-center text-center p-8 md:p-12 rounded-[3.5rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-colors transition-shadow duration-700"
                         >
-                            <div className="w-16 h-16 rounded-3xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-xl">
+                            <div className="w-16 h-16 rounded-3xl bg-background border border-black/[0.03] flex items-center justify-center mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-xl text-accent group-hover:text-white">
                                 {stat.icon}
                             </div>
                             <div className="space-y-4">

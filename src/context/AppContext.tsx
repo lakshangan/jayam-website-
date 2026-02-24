@@ -16,7 +16,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(() => {
         const saved = localStorage.getItem('theme');
-        return (saved as Theme) || 'light';
+        return (saved as Theme) || 'dark';
     });
 
     const [language, setLanguageState] = useState<Language>(() => {

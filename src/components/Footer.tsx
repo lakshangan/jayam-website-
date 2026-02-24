@@ -28,7 +28,7 @@ const Footer = () => {
         style={{ y, opacity }}
         className="absolute bottom-[-5vw] left-0 w-full pointer-events-none z-0 hidden lg:block"
       >
-        <h2 className="text-[25vw] font-display font-black text-foreground/[0.02] leading-[0.7] tracking-tighter text-center uppercase italic">
+        <h2 className="text-[25vw] font-display font-black text-black/[0.03] dark:text-white/[0.02] leading-[0.7] tracking-tighter text-center uppercase italic">
           Jayam
         </h2>
       </motion.div>
