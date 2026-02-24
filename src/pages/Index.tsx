@@ -12,8 +12,6 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import AnimationScript from '@/components/AnimationScript';
-import MobileBottomNav from '@/components/MobileBottomNav';
-
 const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   useEffect(() => {
     document.title = "Jayam Institute - Shaping Futures, Empowering Minds";
@@ -38,7 +36,6 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
           <Contact />
           <Footer />
           <ScrollToTop />
-          <MobileBottomNav />
         </motion.div>
       )}
     </main>
