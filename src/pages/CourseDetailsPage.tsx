@@ -1,5 +1,5 @@
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getAllCourses } from "@/data/courses";
 import { useAppContext } from "../context/AppContext";
 import Navbar from "@/components/Navbar";
@@ -14,12 +14,14 @@ const CourseDetailsPage = () => {
     const { language } = useAppContext();
     const course = getAllCourses(language).find((c) => c.id === id);
 
+    const navigate = useNavigate();
+
     if (!course) {
         return (
             <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-4">Course Not Found</h1>
-                    <Link to="/courses" className="text-accent hover:underline">Back to Programs</Link>
+                    <button onClick={() => navigate(-1)} className="text-accent hover:underline">Go Back</button>
                 </div>
             </div>
         );
@@ -35,9 +37,9 @@ const CourseDetailsPage = () => {
                 className="pt-32 pb-20"
             >
                 <div className="container-custom">
-                    <Link to="/courses" className="inline-flex items-center gap-2 text-foreground/40 hover:text-accent mb-12 transition-colors uppercase text-[10px] font-black tracking-widest">
-                        <ArrowLeft size={14} /> Back to All Programs
-                    </Link>
+                    <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 text-foreground/40 hover:text-accent mb-12 transition-colors uppercase text-[10px] font-black tracking-widest">
+                        <ArrowLeft size={14} /> Back
+                    </button>
 
                     <div className="grid lg:grid-cols-2 gap-20 items-start mb-32">
                         <div>
