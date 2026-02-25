@@ -18,8 +18,8 @@ const ContactInfo = () => {
     {
       icon: <Mail className="text-accent" size={20} />,
       title: "Email",
-      content: ["jayamfashioninstitution@gmail.com"],
-      link: "mailto:jayamfashioninstitution@gmail.com"
+      content: ["jayamfashioninstitute@gmail.com"],
+      link: "mailto:jayamfashioninstitute@gmail.com"
     }
   ];
 

@@ -63,18 +63,20 @@ const ProgramsPreview = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group p-10 rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 hover:scale-[1.01]"
+                            className="group p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 hover:scale-[1.01] flex flex-col"
                         >
-                            <div className="w-14 h-14 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 mb-10 transition-all duration-500 shadow-lg">
+                            <div className="w-14 h-14 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 mb-8 transition-all duration-500 shadow-lg">
                                 <BookOpen size={20} className="text-accent group-hover:text-background" />
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">{program.name}</h3>
                             <span className="text-[9px] uppercase tracking-[0.2em] text-accent font-black block mb-6">{program.highlight}</span>
                             <p className="text-foreground/50 text-sm leading-relaxed mb-8 font-light line-clamp-3">{program.description}</p>
 
-                            <Link to={`/course/${program.id}`} className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-black text-foreground/30 hover:text-accent transition-colors">
-                                {t('common.learnMore')} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <div className="mt-auto pt-4">
+                                <Link to={`/course/${program.id}`} className="w-full flex items-center justify-center gap-2 py-4 bg-secondary border border-black/[0.05] hover:border-accent/40 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-black text-foreground/70 hover:text-accent hover:bg-black/5 transition-all">
+                                    {t('common.learnMore')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

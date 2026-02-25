@@ -110,13 +110,13 @@ const FounderCredentials = () => {
                                         <p className="text-white font-bold group-hover:text-accent transition-colors">+91 89257 74434</p>
                                     </div>
                                 </a>
-                                <a href="mailto:jayamfashioninstitution@gmail.com" className="flex items-center gap-6 group/link cursor-pointer">
+                                <a href="mailto:jayamfashioninstitute@gmail.com" className="flex items-center gap-6 group/link cursor-pointer">
                                     <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
                                         <Mail size={20} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-black text-white/20 tracking-widest">Email Address</p>
-                                        <p className="text-white font-bold group-hover:text-accent transition-colors break-all">jayamfashioninstitution@gmail.com</p>
+                                        <p className="text-white font-bold group-hover:text-accent transition-colors break-all">jayamfashioninstitute@gmail.com</p>
                                     </div>
                                 </a>
                                 <a
