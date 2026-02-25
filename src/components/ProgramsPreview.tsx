@@ -21,13 +21,13 @@ const ProgramsPreview = () => {
             <div className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -z-10" />
 
             <div className="container-custom relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                    <div className="max-w-2xl">
+                <div className="flex flex-col items-center text-center mb-20 gap-8 mx-auto">
+                    <div className="max-w-2xl flex flex-col items-center">
                         <motion.div
-                            initial={{ opacity: 0, x: -25 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="flex items-center gap-4 mb-6"
+                            className="flex items-center justify-center gap-4 mb-6"
                         >
                             <Layout className="w-4 h-4 text-accent" />
                             <span className="text-[10px] uppercase tracking-[0.6em] font-bold text-accent">{t('nav.programs')}</span>
@@ -42,9 +42,10 @@ const ProgramsPreview = () => {
                         </motion.h2>
                     </div>
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        className="mt-4"
                     >
                         <Link to="/courses" className="group relative inline-flex items-center gap-4 px-8 py-4 bg-secondary border border-black/[0.05] text-foreground rounded-full overflow-hidden transition-all hover:border-accent/30">
                             <span className="relative z-10 font-bold tracking-widest uppercase text-[10px]">{t('programs.cta')}</span>

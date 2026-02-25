@@ -41,17 +41,17 @@ const Footer = () => {
           {/* Brand Presence */}
           <div className="lg:max-w-md space-y-12">
             <div className="flex items-center gap-6">
-              <div className="relative group">
+              <div className="relative group shrink-0">
                 <div className="absolute -inset-2 bg-accent/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img
                   src="/lovable-uploads/logo.png"
                   alt="Jayam Logo"
-                  className="relative w-20 h-20 rounded-full border border-black/[0.05] p-2 bg-white shadow-premium transition-transform duration-500 group-hover:scale-110"
+                  className="relative w-20 h-20 object-contain transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div>
-                <span className="text-3xl font-display font-black text-foreground tracking-tight block">JAYAM</span>
-                <span className="text-[10px] uppercase tracking-[0.6em] font-black text-accent">{t('footer.tagline')}</span>
+              <div className="flex-1">
+                <span className="text-3xl font-display font-black text-foreground tracking-tight block mb-1">JAYAM</span>
+                <span className="text-[10px] uppercase tracking-[0.4em] font-black text-accent leading-loose block">{t('footer.tagline')}</span>
               </div>
             </div>
 

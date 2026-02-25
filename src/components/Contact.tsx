@@ -23,15 +23,6 @@ const Contact = () => {
 
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black tracking-[0.4em] uppercase mb-10"
-          >
-            <Sparkles className="w-4 h-4" /> Admission Portal 2024-25
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
