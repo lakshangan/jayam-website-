@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Sparkles, Send, Award, History as HistoryIcon } from 'lucide-react';
 import { ContactInfo, ContactMap } from './ContactForm';
-import Magnetic from './Magnetic';
 import { useAppContext } from '../context/AppContext';
 
 const Contact = () => {
@@ -61,17 +60,14 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + (i * 0.1), duration: 0.8 }}
-                className="flex flex-col items-center group relative"
+                className="flex flex-col items-center"
               >
-                <Magnetic strength={0.25}>
-                  <div className="w-20 h-20 rounded-[2rem] bg-secondary border border-black/[0.03] flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-background transition-all duration-700 group-hover:scale-110 shadow-premium relative">
-                    <div className="absolute inset-0 bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
-                    <div className="relative z-10">{step.icon}</div>
-                  </div>
-                </Magnetic>
+                <div className="w-16 h-16 rounded-full bg-secondary border border-black/5 flex items-center justify-center text-accent mb-6 shadow-sm">
+                  {step.icon}
+                </div>
                 <div className="space-y-2">
-                  <h4 className="text-foreground text-xs md:text-sm font-black uppercase tracking-[0.35em]">{step.title}</h4>
-                  <p className="text-[10px] text-foreground/30 uppercase tracking-[0.2em] font-medium">{step.desc}</p>
+                  <h4 className="text-foreground text-xs md:text-sm font-bold uppercase tracking-[0.2em]">{step.title}</h4>
+                  <p className="text-[10px] text-foreground/50 uppercase tracking-[0.1em] font-medium">{step.desc}</p>
                 </div>
               </motion.div>
             ))}

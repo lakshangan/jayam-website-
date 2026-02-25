@@ -28,8 +28,8 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
         >
           <Navbar />
           <Hero />
-          <TrustBar />
           <AboutSummary />
+          <TrustBar />
           <ProgramsPreview />
           <AccreditationSection />
           <AdmissionSection />

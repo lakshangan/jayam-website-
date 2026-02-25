@@ -38,7 +38,7 @@ const ProgramsPreview = () => {
                             viewport={{ once: true }}
                             className="text-4xl md:text-7xl font-bold text-foreground leading-tight"
                         >
-                            {t('programs.title.part1')} <span className="gold-gradient-text italic font-normal">{t('programs.title.highlight')}</span>
+                            {t('programs.title.part1')} <span className="text-accent">{t('programs.title.highlight')}</span>
                         </motion.h2>
                     </div>
                     <motion.div

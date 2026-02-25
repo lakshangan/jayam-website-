@@ -17,8 +17,8 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="w-full"
     >
-      <div className="group">
-        <div className={`premium-card h-full flex flex-col transition-all duration-700 hover:border-accent/40`}>
+      <div className="h-full flex flex-col">
+        <div className={`premium-card flex-1 flex flex-col`}>
           <div className="flex-1">
             <div className="flex items-start justify-between mb-8">
               <div className="flex items-center gap-5">
@@ -55,14 +55,15 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
               </div>
             </div>
           </div>
-
-          <Link
-            to={`/course/${course.id}`}
-            className="flex items-center justify-between w-full pt-8 border-t border-black/5 text-[10px] uppercase tracking-[0.5em] font-black text-foreground/30 hover:text-accent transition-all duration-500 group/btn"
-          >
-            <span>Explore Full Program</span>
-            <ArrowRight size={14} className="text-accent group-hover/btn:translate-x-1 transition-transform" />
-          </Link>
+          <div className="pt-6 mt-6">
+            <Link
+              to={`/course/${course.id}`}
+              className="btn-premium w-full flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.2em]"
+            >
+              <span>Explore Full Program</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     </motion.div>

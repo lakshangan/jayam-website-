@@ -33,10 +33,10 @@ const AboutSummary = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.5 }}
-                            className="absolute -bottom-10 -right-10 bg-accent p-8 rounded-3xl shadow-2xl hidden md:block border border-white/10"
+                            className="absolute -bottom-8 -right-8 bg-card p-6 rounded-2xl shadow-lg hidden md:block border border-black/5"
                         >
-                            <div className="text-4xl font-bold text-background mb-1">25+</div>
-                            <div className="text-[10px] uppercase tracking-widest font-black text-background/80">{t('stats.legacy')}</div>
+                            <div className="text-4xl font-bold text-foreground mb-1">25+</div>
+                            <div className="text-[10px] uppercase tracking-widest font-bold text-foreground/50">{t('stats.legacy')}</div>
                         </motion.div>
                     </motion.div>
 
@@ -53,7 +53,7 @@ const AboutSummary = () => {
 
                         <TextReveal delay={0.2}>
                             <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-tight">
-                                {t('about.title.part1')} <span className="gold-gradient-text italic font-normal">{t('about.title.highlight')}</span> <br /> {t('about.title.part2')}
+                                {t('about.title.part1')} <span className="text-accent">{t('about.title.highlight')}</span> <br /> {t('about.title.part2')}
                             </h2>
                         </TextReveal>
 
