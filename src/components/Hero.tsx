@@ -176,18 +176,7 @@ const Hero = () => {
 
           <div className="w-full flex flex-col items-center gap-6 md:gap-14 pt-6 md:pt-12 mt-6 md:mt-12 z-20">
 
-            <Link to="/experience" className="group relative">
-              <motion.button
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-3 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm text-accent hover:text-white transition-colors duration-300"
-              >
-                <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Interactive 3D Experience</span>
-                <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/30 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-              </motion.button>
-            </Link>
+
 
             <div className="flex flex-col items-center gap-3 md:gap-4 opacity-60">
               <span className="text-[8px] md:text-[9px] uppercase tracking-[0.8em] md:tracking-[1.5em] text-foreground/20 font-black">{t('common.scroll')}</span>

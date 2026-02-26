@@ -12,6 +12,7 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import AnimationScript from '@/components/AnimationScript';
+import ExperienceCTA from '@/components/ExperienceCTA';
 const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   useEffect(() => {
     document.title = "Jayam Institute - Shaping Futures, Empowering Minds";
@@ -33,6 +34,7 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
           <ProgramsPreview />
           <AccreditationSection />
           <AdmissionSection />
+          <ExperienceCTA />
           <Contact />
           <Footer />
           <ScrollToTop />

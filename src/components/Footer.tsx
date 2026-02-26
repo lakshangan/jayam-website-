@@ -64,6 +64,7 @@ const Footer = () => {
                 href="https://www.instagram.com/jayam_fashion_institute"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit our Instagram page"
                 className="w-14 h-14 rounded-2xl bg-secondary border border-black/[0.03] flex items-center justify-center text-accent hover:bg-accent hover:text-background transition-all duration-700 group shadow-premium"
               >
                 <Instagram size={24} className="group-hover:scale-110 transition-transform" />
@@ -79,6 +80,7 @@ const Footer = () => {
                 href="https://www.google.com/maps/search/?api=1&query=7th+St+Sundaravelpuram+West+Thalamuthu+Nagar+Thoothukudi+Tamil+Nadu+628002"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Find us on Google Maps"
                 className="group cursor-pointer block"
               >
                 <span className="text-[9px] uppercase tracking-widest text-accent font-black block mb-3">Visit Us</span>
@@ -87,11 +89,11 @@ const Footer = () => {
                   Thalamuthu Nagar, Thoothukudi, TN 628002
                 </p>
               </a>
-              <a href="tel:+918925774434" className="group cursor-pointer block">
+              <a href="tel:+918925774434" aria-label="Call us" className="group cursor-pointer block">
                 <span className="text-[9px] uppercase tracking-widest text-accent font-black block mb-3">Talk to Us</span>
                 <p className="text-lg text-foreground/60 group-hover:text-foreground transition-colors font-bold">+91 89257 74434</p>
               </a>
-              <a href="mailto:jayamfashioninstitute@gmail.com" className="group cursor-pointer block">
+              <a href="mailto:jayamfashioninstitute@gmail.com" aria-label="Email us" className="group cursor-pointer block">
                 <span className="text-[9px] uppercase tracking-widest text-accent font-black block mb-3">Email Us</span>
                 <p className="text-sm text-foreground/60 group-hover:text-foreground transition-colors font-bold break-all">jayamfashioninstitute@gmail.com</p>
               </a>

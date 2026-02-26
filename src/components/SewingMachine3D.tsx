@@ -1,11 +1,12 @@
 import React, { useRef, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, Environment, ContactShadows, Center, Html, useProgress, SpotLight } from '@react-three/drei';
+import { useGLTF, Environment, ContactShadows, Center, Html, useProgress, SpotLight, Backdrop } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,17 @@ const ExperienceScene = ({ animData }: { animData: React.MutableRefObject<any> }
                     <primitive object={scene} />
                 </Center>
             </group>
+
+            {/* Real 3D Studio Backdrop */}
+            <Backdrop
+                receiveShadow
+                floor={2} // offset to intersection
+                segments={20} // resolution of the curve
+                scale={[50, 20, 10]}
+                position={[0, -2.5, -6]}
+            >
+                <meshStandardMaterial color="#020617" roughness={0.8} />
+            </Backdrop>
         </group>
     );
 };
@@ -102,57 +114,110 @@ export default function SewingMachine3D() {
     });
 
     useGSAP(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top top",
-                end: "+=500%",
-                scrub: 1.5,
-                pin: true,
-            }
+        const data = animData.current;
+        let mm = gsap.matchMedia();
+
+        mm.add("(min-width: 768px)", () => {
+            // DESKTOP ANIMATION
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "+=500%",
+                    scrub: 1.5,
+                    pin: true,
+                }
+            });
+
+            // --- CHAPTER 1: Precision Engineered ---
+            // Model framed to the right (LookAt offset left)
+            tl.to("#scroll-indicator", { opacity: 0, duration: 0.5 }, 0)
+                .to("#text-chap-1", { opacity: 1, y: 0, duration: 1 }, 0)
+                .to(data.cameraPos, { x: 2, y: 1.5, z: 4.5, duration: 1 }, 0)
+                .to(data.cameraLookAt, { x: -0.5, y: 0, z: 0, duration: 1 }, 0)
+                .to(data.modelRot, { y: Math.PI / 3, duration: 1 }, 0)
+                .to(data.modelScale, { value: 1.3, duration: 1 }, 0)
+                .to(data.lightIntensity, { value: 300, duration: 1 }, 0)
+                .to(data.lightPos, { x: 3, y: 5, z: 2, duration: 1 }, 0);
+
+            tl.to(data.cameraPos, { x: 2.5, duration: 0.5 }, 1);
+
+            // --- CHAPTER 2: Timeless Rhythm ---
+            // Model framed to the left (LookAt offset right)
+            tl.to("#text-chap-1", { opacity: 0, y: -40, duration: 1 }, 1.5)
+                .to("#text-chap-2", { opacity: 1, y: 0, duration: 1 }, 1.5)
+                .to(data.cameraPos, { x: -2, y: 2, z: 4, duration: 1.5 }, 1.5)
+                .to(data.cameraLookAt, { x: 0.5, y: 0, z: 0, duration: 1.5 }, 1.5)
+                .to(data.modelRot, { x: 0.1, y: Math.PI * 1.5, z: 0.05, duration: 1.5 }, 1.5)
+                .to(data.modelScale, { value: 1.4, duration: 1.5 }, 1.5)
+                .to(data.lightPos, { x: -3, y: 6, z: 4, duration: 1.5 }, 1.5)
+                .to(data.lightIntensity, { value: 400, duration: 1.5 }, 1.5);
+
+            tl.to(data.cameraPos, { z: 4.5, duration: 0.5 }, 3);
+
+            // --- CHAPTER 3: Master Your Craft ---
+            // Model centered
+            tl.to("#text-chap-2", { opacity: 0, y: -40, duration: 1 }, 3.5)
+                .to("#text-chap-3", { opacity: 1, y: 0, duration: 1 }, 3.5)
+                .to(data.cameraPos, { x: 0, y: 1, z: 7, duration: 1.5 }, 3.5)
+                .to(data.cameraLookAt, { x: 0, y: 0.5, z: 0, duration: 1.5 }, 3.5)
+                .to(data.modelRot, { x: 0, y: Math.PI * 2.5, z: 0, duration: 1.5 }, 3.5)
+                .to(data.modelScale, { value: 1.1, duration: 1.5 }, 3.5)
+                .to(data.lightPos, { x: 0, y: 10, z: 5, duration: 1.5 }, 3.5)
+                .to(data.lightIntensity, { value: 600, duration: 1.5 }, 3.5);
+
+            return () => tl.kill();
         });
 
-        const data = animData.current;
+        mm.add("(max-width: 767px)", () => {
+            // MOBILE ANIMATION
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: "+=400%",
+                    scrub: 1.5,
+                    pin: true,
+                }
+            });
 
-        // --- CHAPTER 1: Precision Engineered ---
-        // Slide text in, animate camera wrapping around the right
-        tl.to("#text-chap-1", { opacity: 1, y: 0, duration: 1 }, 0)
-            .to(data.cameraPos, { x: 3, y: 1.5, z: 4, duration: 1 }, 0)
-            .to(data.modelRot, { y: Math.PI / 3, duration: 1 }, 0)
-            .to(data.modelScale, { value: 1.2, duration: 1 }, 0)
-            .to(data.lightIntensity, { value: 300, duration: 1 }, 0)
-            .to(data.lightPos, { x: 3, y: 5, z: 2, duration: 1 }, 0);
+            // --- CHAPTER 1: Precision Engineered ---
+            // Frame it a bit higher
+            tl.to("#scroll-indicator", { opacity: 0, duration: 0.5 }, 0)
+                .to("#text-chap-1", { opacity: 1, y: 0, duration: 1 }, 0)
+                .to(data.cameraPos, { x: 1, y: 2, z: 5.5, duration: 1 }, 0)
+                .to(data.cameraLookAt, { x: 0, y: 0, z: 0, duration: 1 }, 0)
+                .to(data.modelRot, { y: Math.PI / 3, duration: 1 }, 0)
+                .to(data.modelScale, { value: 0.9, duration: 1 }, 0)
+                .to(data.lightIntensity, { value: 300, duration: 1 }, 0)
+                .to(data.lightPos, { x: 2, y: 4, z: 2, duration: 1 }, 0);
 
-        // Hold Chapter 1
-        tl.to(data.cameraPos, { x: 3.5, duration: 0.5 }, 1);
+            tl.to(data.cameraPos, { z: 6, duration: 0.5 }, 1);
 
-        // --- CHAPTER 2: Timeless Rhythm ---
-        // Fade out Ch 1
-        tl.to("#text-chap-1", { opacity: 0, y: -40, duration: 1 }, 1.5)
-            // Fade in Ch 2
-            .to("#text-chap-2", { opacity: 1, y: 0, duration: 1 }, 1.5)
-            // Pan camera wide across the front to the left side
-            .to(data.cameraPos, { x: -3, y: 2, z: 3.5, duration: 1.5 }, 1.5)
-            .to(data.modelRot, { x: 0.1, y: Math.PI * 1.5, z: 0.05, duration: 1.5 }, 1.5)
-            .to(data.modelScale, { value: 1.4, duration: 1.5 }, 1.5)
-            .to(data.lightPos, { x: -3, y: 6, z: 4, duration: 1.5 }, 1.5)
-            .to(data.lightIntensity, { value: 400, duration: 1.5 }, 1.5);
+            // --- CHAPTER 2: Timeless Rhythm ---
+            tl.to("#text-chap-1", { opacity: 0, y: -20, duration: 1 }, 1.5)
+                .to("#text-chap-2", { opacity: 1, y: 0, duration: 1 }, 1.5)
+                .to(data.cameraPos, { x: -1, y: 2.5, z: 5.5, duration: 1.5 }, 1.5)
+                .to(data.cameraLookAt, { x: 0, y: 0, z: 0, duration: 1.5 }, 1.5)
+                .to(data.modelRot, { x: 0.1, y: Math.PI * 1.5, z: 0.05, duration: 1.5 }, 1.5)
+                .to(data.modelScale, { value: 1.0, duration: 1.5 }, 1.5)
+                .to(data.lightPos, { x: -2, y: 5, z: 4, duration: 1.5 }, 1.5)
+                .to(data.lightIntensity, { value: 400, duration: 1.5 }, 1.5);
 
-        // Hold Chapter 2
-        tl.to(data.cameraPos, { z: 4, duration: 0.5 }, 3);
+            tl.to(data.cameraPos, { z: 6, duration: 0.5 }, 3);
 
-        // --- CHAPTER 3: Master Your Craft ---
-        // Fade out Ch 2
-        tl.to("#text-chap-2", { opacity: 0, y: -40, duration: 1 }, 3.5)
-            // Fade in final CTA
-            .to("#text-chap-3", { opacity: 1, y: 0, duration: 1 }, 3.5)
-            // Camera pulls wide, framing perfectly center
-            .to(data.cameraPos, { x: 0, y: 3, z: 7, duration: 1.5 }, 3.5)
-            .to(data.cameraLookAt, { x: 0, y: 1, z: 0, duration: 1.5 }, 3.5)
-            .to(data.modelRot, { x: 0, y: Math.PI * 2.5, z: 0, duration: 1.5 }, 3.5)
-            .to(data.modelScale, { value: 1.0, duration: 1.5 }, 3.5)
-            .to(data.lightPos, { x: 0, y: 10, z: 5, duration: 1.5 }, 3.5)
-            .to(data.lightIntensity, { value: 600, duration: 1.5 }, 3.5);
+            // --- CHAPTER 3: Master Your Craft ---
+            tl.to("#text-chap-2", { opacity: 0, y: -20, duration: 1 }, 3.5)
+                .to("#text-chap-3", { opacity: 1, y: 0, duration: 1 }, 3.5)
+                .to(data.cameraPos, { x: 0, y: 1.5, z: 8, duration: 1.5 }, 3.5)
+                .to(data.cameraLookAt, { x: 0, y: 0.5, z: 0, duration: 1.5 }, 3.5)
+                .to(data.modelRot, { x: 0, y: Math.PI * 2.5, z: 0, duration: 1.5 }, 3.5)
+                .to(data.modelScale, { value: 0.8, duration: 1.5 }, 3.5)
+                .to(data.lightPos, { x: 0, y: 10, z: 5, duration: 1.5 }, 3.5)
+                .to(data.lightIntensity, { value: 600, duration: 1.5 }, 3.5);
+
+            return () => tl.kill();
+        });
 
     }, { scope: containerRef });
 
@@ -201,7 +266,7 @@ export default function SewingMachine3D() {
                     {/* Scene 3 */}
                     <div
                         id="text-chap-3"
-                        className="absolute left-1/2 -translate-x-1/2 top-1/4 md:top-1/3 max-w-3xl text-center w-full px-4 flex flex-col items-center opacity-0 translate-y-10"
+                        className="absolute left-1/2 -translate-x-1/2 top-[10%] md:top-1/4 max-w-3xl text-center w-full px-4 flex flex-col items-center opacity-0 translate-y-10"
                     >
                         <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-transparent drop-shadow-[0_20px_40px_rgba(197,163,88,0.2)] mb-8 pb-4">
                             Shape The Future of Fashion.
@@ -214,6 +279,24 @@ export default function SewingMachine3D() {
                         </div>
                     </div>
                 </div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    id="scroll-indicator"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 1 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none"
+                >
+                    <span className="text-[#c5a358] text-[9px] uppercase tracking-[0.4em] font-medium mb-4">Scroll to Explore</span>
+                    <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+                        <motion.div
+                            animate={{ y: ['-100%', '200%'] }}
+                            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#c5a358] to-transparent"
+                        />
+                    </div>
+                </motion.div>
 
                 {/* 3D Canvas */}
                 <div className="absolute inset-0 z-0 bg-[#020617]">
