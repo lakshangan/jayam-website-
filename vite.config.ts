@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
           ui: ["framer-motion", "lucide-react", "clsx", "tailwind-merge"],
+          three_ecosystem: ["three", "@react-three/fiber", "@react-three/drei"]
         },
       },
     },

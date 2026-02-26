@@ -22,6 +22,7 @@ const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const CoursesPage = lazy(() => import("./pages/CoursesPage"));
 const CourseDetailsPage = lazy(() => import("./pages/CourseDetailsPage"));
+const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/courses" element={<CoursesPage />} />
               <Route path="/course/:id" element={<CourseDetailsPage />} />
+              <Route path="/experience" element={<ExperiencePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
