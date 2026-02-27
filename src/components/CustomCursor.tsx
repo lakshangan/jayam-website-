@@ -1,15 +1,40 @@
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [clickState, setClickState] = useState(false);
+    const [isMobile, setIsMobile] = useState(true); // Default to true to prevent hydration mismatch lag
+
+    // Motion values instead of state
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+
+    // Spring physics
+    const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+    const springX = useSpring(cursorX, springConfig);
+    const springY = useSpring(cursorY, springConfig);
+
+    const springSlowConfig = { damping: 40, stiffness: 200, mass: 1.5 };
+    const springSlowX = useSpring(cursorX, springSlowConfig);
+    const springSlowY = useSpring(cursorY, springSlowConfig);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile, { passive: true });
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (isMobile) return;
+
         const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
         const handleMouseDown = () => setClickState(true);
@@ -31,10 +56,10 @@ const CustomCursor = () => {
             }
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("mouseover", handleMouseOver);
-        window.addEventListener("mousedown", handleMouseDown);
-        window.addEventListener("mouseup", handleMouseUp);
+        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        window.addEventListener("mouseover", handleMouseOver, { passive: true });
+        window.addEventListener("mousedown", handleMouseDown, { passive: true });
+        window.addEventListener("mouseup", handleMouseUp, { passive: true });
 
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
@@ -42,16 +67,22 @@ const CustomCursor = () => {
             window.removeEventListener("mousedown", handleMouseDown);
             window.removeEventListener("mouseup", handleMouseUp);
         };
-    }, []);
+    }, [isMobile, cursorX, cursorY]);
+
+    if (isMobile) return null;
 
     return (
         <>
             {/* Outer Ring */}
             <motion.div
-                className="fixed top-0 left-0 w-12 h-12 rounded-full border border-accent/30 pointer-events-none z-[9999] hidden md:block"
+                className="fixed top-0 left-0 w-12 h-12 rounded-full border pointer-events-none z-[9999]"
+                style={{
+                    x: springSlowX,
+                    y: springSlowY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                }}
                 animate={{
-                    x: mousePosition.x - 24,
-                    y: mousePosition.y - 24,
                     scale: clickState ? 0.8 : (isHovering ? 1.5 : 1),
                     opacity: isHovering ? 1 : 0.4,
                     borderColor: isHovering ? "rgba(197, 163, 88, 1)" : "rgba(197, 163, 88, 0.3)",
@@ -61,10 +92,14 @@ const CustomCursor = () => {
 
             {/* Inner Dot with Blur */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-accent rounded-full pointer-events-none z-[9999] hidden md:block mix-blend-screen overflow-hidden"
+                className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] mix-blend-screen overflow-hidden"
+                style={{
+                    x: springX,
+                    y: springY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                }}
                 animate={{
-                    x: mousePosition.x - 4,
-                    y: mousePosition.y - 4,
                     scale: isHovering ? 4 : 1,
                     backgroundColor: isHovering ? "rgba(197, 163, 88, 0.8)" : "rgba(197, 163, 88, 1)",
                 }}
@@ -82,11 +117,12 @@ const CustomCursor = () => {
             {/* Trailing Glow Spotlight */}
             <motion.div
                 className="fixed top-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none z-[0] hidden lg:block"
-                animate={{
-                    x: mousePosition.x - 200,
-                    y: mousePosition.y - 200,
+                style={{
+                    x: springSlowX,
+                    y: springSlowY,
+                    translateX: "-50%",
+                    translateY: "-50%",
                 }}
-                transition={{ type: "spring", stiffness: 50, damping: 30, mass: 2 }}
             />
         </>
     );

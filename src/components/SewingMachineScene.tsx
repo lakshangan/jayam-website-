@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
@@ -19,14 +19,24 @@ function Model({ scrollValue }: { scrollValue: number }) {
 }
 
 export const SewingMachineScene = ({ scrollValue }: { scrollValue: number }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile, { passive: true });
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className="w-full h-full bg-transparent">
             <Canvas
-                gl={{ antialias: true, alpha: true }}
+                gl={{ antialias: !isMobile, alpha: true, powerPreference: "high-performance" }}
                 camera={{ position: [0, 0, 10], fov: 40 }}
+                dpr={isMobile ? [1, 1] : [1, 2]}
             >
                 <ambientLight intensity={1.5} />
-                <pointLight position={[10, 10, 10]} intensity={1.5} />
+                <pointLight position={[10, 10, 10]} intensity={isMobile ? 1.0 : 1.5} />
                 <Suspense fallback={null}>
                     <Model scrollValue={scrollValue} />
                 </Suspense>

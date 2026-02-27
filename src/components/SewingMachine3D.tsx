@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from 'react';
+import React, { useRef, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Environment, ContactShadows, Center, Html, useProgress, SpotLight, Backdrop } from '@react-three/drei';
 import * as THREE from 'three';
@@ -22,7 +22,7 @@ function Loader() {
     );
 }
 
-const ExperienceScene = ({ animData }: { animData: React.MutableRefObject<any> }) => {
+const ExperienceScene = ({ animData, isMobile }: { animData: React.MutableRefObject<any>, isMobile: boolean }) => {
     const { scene } = useGLTF('/sewing-machine.glb');
     const { camera } = useThree();
     const modelGroup = useRef<THREE.Group>(null);
@@ -75,7 +75,7 @@ const ExperienceScene = ({ animData }: { animData: React.MutableRefObject<any> }
                 ref={spotLightRef}
                 angle={0.5}
                 penumbra={1}
-                castShadow
+                castShadow={!isMobile}
                 color="#c5a358"
                 distance={40}
                 intensity={0}
@@ -90,7 +90,7 @@ const ExperienceScene = ({ animData }: { animData: React.MutableRefObject<any> }
             <Backdrop
                 receiveShadow
                 floor={2} // offset to intersection
-                segments={20} // resolution of the curve
+                segments={isMobile ? 8 : 20} // resolution of the curve
                 scale={[50, 20, 10]}
                 position={[0, -2.5, -6]}
             >
@@ -102,6 +102,17 @@ const ExperienceScene = ({ animData }: { animData: React.MutableRefObject<any> }
 
 export default function SewingMachine3D() {
     const containerRef = useRef<HTMLElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        // Initial check
+        checkMobile();
+        window.addEventListener('resize', checkMobile, { passive: true });
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Shared state proxy object between GSAP timeline and R3F animation loop
     const animData = useRef({
@@ -300,27 +311,27 @@ export default function SewingMachine3D() {
 
                 {/* 3D Canvas */}
                 <div className="absolute inset-0 z-0 bg-[#020617]">
-                    <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 8], fov: 35 }} gl={{ antialias: true, alpha: false, toneMapping: THREE.ACESFilmicToneMapping }}>
+                    <Canvas shadows dpr={isMobile ? [1, 1] : [1, 2]} camera={{ position: [0, 0, 8], fov: 35 }} gl={{ antialias: !isMobile, alpha: false, toneMapping: THREE.ACESFilmicToneMapping, powerPreference: "high-performance" }}>
                         <color attach="background" args={['#020617']} />
 
                         {/* Dramatic Lighting Pipeline */}
-                        <ambientLight intensity={0.2} />
-                        <directionalLight position={[-5, 5, 5]} intensity={1} color="#ffffff" castShadow shadow-mapSize={2048} />
-                        <directionalLight position={[5, -2, -5]} intensity={0.5} color="#c5a358" />
+                        <ambientLight intensity={isMobile ? 0.3 : 0.2} />
+                        <directionalLight position={[-5, 5, 5]} intensity={1} color="#ffffff" castShadow shadow-mapSize={isMobile ? 512 : 2048} shadow-bias={-0.0001} />
+                        {!isMobile && <directionalLight position={[5, -2, -5]} intensity={0.5} color="#c5a358" />}
 
-                        <Environment preset="studio" environmentIntensity={0.8} />
+                        <Environment preset="studio" environmentIntensity={0.8} resolution={isMobile ? 256 : 512} />
 
                         <Suspense fallback={<Loader />}>
-                            <ExperienceScene animData={animData} />
+                            <ExperienceScene animData={animData} isMobile={isMobile} />
 
                             {/* Cinematic shadow floor */}
                             <ContactShadows
                                 position={[0, -2.5, 0]}
                                 opacity={1}
                                 scale={25}
-                                blur={3}
+                                blur={isMobile ? 2 : 3}
                                 far={5}
-                                resolution={1024}
+                                resolution={isMobile ? 256 : 1024}
                                 color="#000000"
                             />
                         </Suspense>
