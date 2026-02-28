@@ -142,7 +142,7 @@ export default function SewingMachine3D() {
 
             // --- CHAPTER 1: Precision Engineered ---
             // Model framed to the right (LookAt offset left)
-            tl.to("#scroll-indicator", { opacity: 0, duration: 0.5 }, 0)
+            tl.to("#scroll-wrapper, #nav-overlay", { opacity: 0, duration: 0.5 }, 0)
                 .to("#text-chap-1", { opacity: 1, y: 0, duration: 1 }, 0)
                 .to(data.cameraPos, { x: 2, y: 1.5, z: 4.5, duration: 1 }, 0)
                 .to(data.cameraLookAt, { x: -0.5, y: 0, z: 0, duration: 1 }, 0)
@@ -194,7 +194,7 @@ export default function SewingMachine3D() {
 
             // --- CHAPTER 1: Precision Engineered ---
             // Frame it a bit higher
-            tl.to("#scroll-indicator", { opacity: 0, duration: 0.5 }, 0)
+            tl.to("#scroll-wrapper, #nav-overlay", { opacity: 0, duration: 0.5 }, 0)
                 .to("#text-chap-1", { opacity: 1, y: 0, duration: 1 }, 0)
                 .to(data.cameraPos, { x: 1, y: 2, z: 5.5, duration: 1 }, 0)
                 .to(data.cameraLookAt, { x: 0, y: 0, z: 0, duration: 1 }, 0)
@@ -292,22 +292,24 @@ export default function SewingMachine3D() {
                 </div>
 
                 {/* Scroll Indicator */}
-                <motion.div
-                    id="scroll-indicator"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2, duration: 1 }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none"
-                >
-                    <span className="text-[#c5a358] text-[9px] uppercase tracking-[0.4em] font-medium mb-4">Scroll to Explore</span>
-                    <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
-                        <motion.div
-                            animate={{ y: ['-100%', '200%'] }}
-                            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#c5a358] to-transparent"
-                        />
-                    </div>
-                </motion.div>
+                <div id="scroll-wrapper" className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none">
+                    <motion.div
+                        id="scroll-indicator"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2, duration: 1 }}
+                        className="flex flex-col items-center"
+                    >
+                        <span className="text-[#c5a358] text-[9px] uppercase tracking-[0.4em] font-medium mb-4">Scroll to Explore</span>
+                        <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+                            <motion.div
+                                animate={{ y: ['-100%', '200%'] }}
+                                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                                className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#c5a358] to-transparent"
+                            />
+                        </div>
+                    </motion.div>
+                </div>
 
                 {/* 3D Canvas */}
                 <div className="absolute inset-0 z-0 bg-[#020617]">
