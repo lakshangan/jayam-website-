@@ -27,28 +27,28 @@ const SpecialistSection = () => {
                                 viewport={{ once: true }}
                                 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight"
                             >
-                                Specialist <span className="gold-gradient-text italic font-normal">Craftsmanship</span>
+                                Professional <span className="gold-gradient-text italic font-normal">Training</span>
                             </motion.h2>
 
                             <p className="text-white/40 text-xl font-light leading-relaxed mb-12">
-                                Our Professional Tailoring program is the diamond in our crown.
-                                We teach the physics of fabric and the geometry of fit,
-                                turning students into elite couture architects.
+                                Our Professional Tailoring course is designed for everyone to easily understand.
+                                We teach you step-by-step how to measure, cut, and stitch perfectly,
+                                helping you start your own successful tailoring business.
                             </p>
 
                             <div className="flex flex-wrap gap-8 mb-16">
                                 <div className="flex items-center gap-4">
                                     <div className="w-2 h-2 rounded-full bg-accent" />
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-white/60">NSDC Accredited</span>
+                                    <span className="text-[10px] uppercase tracking-widest font-black text-white/60">Government Certified</span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="w-2 h-2 rounded-full bg-accent" />
-                                    <span className="text-[10px] uppercase tracking-widest font-black text-white/60">Global Standards</span>
+                                    <span className="text-[10px] uppercase tracking-widest font-black text-white/60">Easy to Learn</span>
                                 </div>
                             </div>
 
                             <Link to="/courses" className="btn-premium px-10 py-5 group flex items-center gap-3 w-fit">
-                                View Specialist Program
+                                View Our Course
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
@@ -61,9 +61,9 @@ const SpecialistSection = () => {
                         >
                             <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 aspect-[4/5]">
                                 <img
-                                    src="https://images.unsplash.com/photo-1593030942428-a5451dca4b42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                    alt="Specialist Tailoring"
-                                    className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 transition-all duration-1000"
+                                    src="/lovable-uploads/tamil_students_sewing.png"
+                                    alt="Professional Tailoring Training"
+                                    className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
                                 />
                             </div>
                         </motion.div>

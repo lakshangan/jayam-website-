@@ -110,10 +110,10 @@ const AboutJayam = () => {
 
             <TextReveal delay={0.3}>
               <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-light">
-                A Visionary Tailoring Educator and Master Designer with over 20+ years of experience.
-                Awarded an Honorary Doctorate for outstanding contributions to tailoring education,
-                Dr. Sahayaselvam has dedicated his life to empowering women through skill-based education
-                and entrepreneurship.
+                A great teacher and master tailor with over 20+ years of experience.
+                Honored with a Doctorate for his excellent work in tailoring education,
+                Dr. Sahayaselvam has spent his life helping women learn simple tailoring skills
+                so they can start their own businesses and become independent.
               </p>
             </TextReveal>
 

@@ -14,32 +14,38 @@ const AccreditationSection = () => {
         {
             title: "Certified by",
             description: "National Skill Development Corporation (NSDC)",
-            icon: <Shield className="w-6 h-6 transition-colors duration-500" />
+            icon: <Shield className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/modern_indian_fashion_designer.png"
         },
         {
             title: "Certification",
             description: "Training Center for tailoring & fashion design",
-            icon: <Award className="w-6 h-6 transition-colors duration-500" />
+            icon: <Award className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/modern_indian_fashion_studio.png"
         },
         {
             title: "Accredited for",
             description: "Women Empowerment & Skill Development",
-            icon: <Users className="w-6 h-6 transition-colors duration-500" />
+            icon: <Users className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/tamil_student_1.png"
         },
         {
             title: "Partners",
-            description: "Skill India, Ministry of Skill Development & Entrepreneurship",
-            icon: <Handshake className="w-6 h-6 transition-colors duration-500" />
+            description: "Skill India, Ministry of Skill Development",
+            icon: <Handshake className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/tamil_student_3.png"
         },
         {
             title: "Recognition",
             description: "Nationally recognized certifications",
-            icon: <Star className="w-6 h-6 transition-colors duration-500" />
+            icon: <Star className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/tamil_tailor_1.png"
         },
         {
             title: "Support",
             description: "Government skill upgradation schemes",
-            icon: <CheckCircle2 className="w-6 h-6 transition-colors duration-500" />
+            icon: <CheckCircle2 className="w-6 h-6 transition-colors duration-500" />,
+            image: "/lovable-uploads/tamil_tailoring_class.png"
         }
     ];
 
@@ -68,7 +74,7 @@ const AccreditationSection = () => {
                     </motion.h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {accreditations.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -76,14 +82,17 @@ const AccreditationSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-colors transition-shadow duration-700 flex flex-row md:flex-col items-center md:items-start text-left gap-6 md:gap-0"
+                            className="group p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-colors transition-shadow duration-700 flex flex-col text-left overflow-hidden relative"
                         >
-                            <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl md:rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center md:mb-10 group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
-                                {item.icon}
+                            <div className="w-full aspect-[4/3] rounded-2xl md:rounded-[2rem] overflow-hidden mb-6 md:mb-8 border border-black/[0.03] relative shadow-sm shrink-0">
+                                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                <div className="absolute top-4 left-4 w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-background/90 backdrop-blur-md border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
+                                    {item.icon}
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="text-sm md:text-xl font-bold text-foreground mb-1 md:mb-4 uppercase tracking-widest leading-tight group-hover:text-accent transition-colors">{item.title}</h3>
-                                <p className="text-foreground/50 text-xs md:text-sm leading-relaxed font-light">
+                            <div className="flex-1 flex flex-col justify-end relative z-10 px-2">
+                                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 uppercase tracking-widest leading-tight group-hover:text-accent transition-colors">{item.title}</h3>
+                                <p className="text-foreground/60 text-sm leading-relaxed font-light">
                                     {item.description}
                                 </p>
                             </div>

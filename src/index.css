@@ -304,6 +304,28 @@
   animation: ken-burns 20s linear infinite alternate;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.fill-mode-both {
+  animation-fill-mode: both;
+}
+
 @keyframes float {
 
   0%,

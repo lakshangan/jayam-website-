@@ -293,12 +293,9 @@ export default function SewingMachine3D() {
 
                 {/* Scroll Indicator */}
                 <div id="scroll-wrapper" className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none">
-                    <motion.div
+                    <div
                         id="scroll-indicator"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2, duration: 1 }}
-                        className="flex flex-col items-center"
+                        className="flex flex-col items-center animate-fade-in delay-1000 fill-mode-both"
                     >
                         <span className="text-[#c5a358] text-[9px] uppercase tracking-[0.4em] font-medium mb-4">Scroll to Explore</span>
                         <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
@@ -308,7 +305,7 @@ export default function SewingMachine3D() {
                                 className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-[#c5a358] to-transparent"
                             />
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* 3D Canvas */}

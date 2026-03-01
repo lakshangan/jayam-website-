@@ -6,24 +6,24 @@ import { Quote, Star } from 'lucide-react';
 const testimonials = [
     {
         name: "Anjali Menon",
-        role: "Boutique Owner, Kochi",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-        content: "Jayam Institute didn't just teach me how to stitch; they taught me how to build a brand. Today, my designer boutique is a direct outcome of the confidence I gained here.",
-        stats: "Joined 2018 • Placement: Self-Employed"
+        role: "Shop Owner, Kochi",
+        image: "/lovable-uploads/tamil_student_1.png",
+        content: "Jayam Institute taught me everything perfectly. Thanks to their clear teaching, I easily started my own clothing shop.",
+        stats: "Joined 2018 • Placement: Own Business"
     },
     {
         name: "Priya Lakshmi",
-        role: "Production Lead at Zara",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-        content: "The technical precision I learned in the Tailoring Program is far superior to any other course. It gave me the edge I needed to work in international fashion houses.",
-        stats: "Joined 2015 • Placement: Zara Hub"
+        role: "Professional Tailor",
+        image: "/lovable-uploads/tamil_student_2.png",
+        content: "I learned the best tailoring methods here. It was so simple to understand, and now I work successfully as a professional designer.",
+        stats: "Joined 2015 • Placement: Designer"
     },
     {
         name: "Meera Nair",
         role: "Independent Designer",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-        content: "Coming from a non-creative background, I was nervous. The mentors at Jayam made the transition so smooth. I am now launching my first bridal collection.",
-        stats: "Joined 2021 • Placement: Award Winner"
+        image: "/lovable-uploads/tamil_student_3.png",
+        content: "I didn't know anything about tailoring before. The teachers were so helpful, and now I make beautiful dresses for others.",
+        stats: "Joined 2021 • Placement: Own Business"
     }
 ];
 
@@ -42,7 +42,7 @@ const StudentShowcase = () => {
                             className="flex items-center gap-3 mb-4"
                         >
                             <Star className="w-4 h-4 text-accent fill-accent" />
-                            <span className="text-xs uppercase tracking-[0.3em] font-medium text-accent">Alumni Success</span>
+                            <span className="text-xs uppercase tracking-[0.3em] font-medium text-accent">Student Stories</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -50,8 +50,8 @@ const StudentShowcase = () => {
                             viewport={{ once: true }}
                             className="text-title-section font-bold text-white mb-0"
                         >
-                            Stories of <br />
-                            <span className="gold-gradient-text italic font-normal text-glow">Transformation</span>
+                            Happy <br />
+                            <span className="gold-gradient-text italic font-normal text-glow">Students</span>
                         </motion.h2>
                     </div>
                     <motion.p
@@ -61,7 +61,7 @@ const StudentShowcase = () => {
                         transition={{ delay: 0.2 }}
                         className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right"
                     >
-                        Meet the creators who defined their destiny at Jayam Institute. Join a community of over 5,000 successful designers.
+                        Meet the students who changed their lives at Jayam Institute. Join over 5,000 successful learners.
                     </motion.p>
                 </div>
 
@@ -78,7 +78,7 @@ const StudentShowcase = () => {
                                 <Quote className="absolute top-6 right-6 w-10 h-10 text-accent/5 group-hover:text-accent/20 transition-all duration-700" />
 
                                 <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-14 h-14 rounded-2xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-white/10 group-hover:border-accent/30">
+                                    <div className="w-14 h-14 rounded-2xl overflow-hidden transition-all duration-700 border border-white/10 group-hover:border-accent/30">
                                         <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
                                     </div>
                                     <div>

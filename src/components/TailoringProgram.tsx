@@ -1,5 +1,5 @@
 
-import { PenTool, Scissors, Ruler, Shirt, CheckCircle, Sparkles, Award, ShieldCheck, Zap } from 'lucide-react';
+import { PenTool, Scissors, Ruler, Shirt, CheckCircle, Sparkles, Award, ShieldCheck, Zap, Shield, BookOpen, Users, Handshake, Star } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from "react";
 import TextReveal from "./TextReveal";
@@ -29,12 +29,12 @@ const TailoringProgram = () => {
   };
 
   const accreditationItems = [
-    { title: "National Certification", content: "NSDC Approved Training Partner" },
-    { title: "Global Standards", content: "Industry-aligned curriculum & pedagogy" },
-    { title: "Empowerment", content: "Focus on entrepreneurship & self-reliance" },
-    { title: "Strategic Partners", content: "Skill India & MSDE recognized" },
-    { title: "Recognition", content: "Nationally valid professional credentials" },
-    { title: "Support", content: "Access to government skill initiatives" }
+    { title: "Govt Certified", content: "NSDC Approved Training Center", icon: <Shield className="w-6 h-6" /> },
+    { title: "Easy Learning", content: "Simple and clear teaching methods", icon: <Award className="w-6 h-6" /> },
+    { title: "Empowerment", content: "Learn to start your own business", icon: <Users className="w-6 h-6" /> },
+    { title: "Recognized", content: "Skill India approved certificates", icon: <Handshake className="w-6 h-6" /> },
+    { title: "High Value", content: "Certificates valid across Tamil Nadu", icon: <Star className="w-6 h-6" /> },
+    { title: "Full Support", content: "Guidance to get government support", icon: <CheckCircle className="w-6 h-6" /> }
   ];
 
   return (
@@ -63,24 +63,24 @@ const TailoringProgram = () => {
 
             <TextReveal delay={0.1}>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-10 leading-[1.1]">
-                Learn the Art of <span className="gold-gradient-text italic font-normal">Modern Tailoring</span>
+                Master the Art of <span className="gold-gradient-text italic font-normal">Modern Tailoring</span>
               </h2>
             </TextReveal>
 
             <TextReveal delay={0.2}>
               <div className="space-y-8 mb-16 border-l border-white/5 pl-10">
                 <p className="text-white/60 text-xl font-light leading-relaxed max-w-2xl">
-                  For over 25 years, Jayam Institute has been the gold standard for tailoring education. Our program merges traditional craftsmanship with bold, modern silhouettes.
+                  For over 25 years, Jayam Institute has been teaching tailoring in a very simple and clear way. We help you learn easily, even if you are totally new to sewing.
                 </p>
                 <p className="text-white/30 text-base leading-relaxed max-w-xl">
-                  We don't just teach stitching; we nurture designers who understand the physics of fabric and the geometry of fit. Graduates join an elite lineage of fashion entrepreneurs.
+                  From basic stitching to advanced dressmaking, we guide you step-by-step. Join thousands of happy students who started their own businesses after studying with us.
                 </p>
               </div>
             </TextReveal>
 
             <motion.div variants={itemVariants}>
               <button className="btn-premium px-10 py-5 group flex items-center gap-3">
-                Download Curriculum
+                Download Details
                 <Sparkles className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
             </motion.div>
@@ -97,9 +97,9 @@ const TailoringProgram = () => {
 
               <div className="relative rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 aspect-[4/5]">
                 <img
-                  src="https://images.unsplash.com/photo-1593030942428-a5451dca4b42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  src="/lovable-uploads/tamil_tailor_1.png"
                   alt="Tailoring Workshop"
-                  className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-105 group-hover:scale-100"
+                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent opacity-80" />
 
@@ -128,11 +128,11 @@ const TailoringProgram = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold tracking-[0.3em] uppercase mb-8"
             >
-              <ShieldCheck size={16} /> Official Accreditation
+              <ShieldCheck size={16} /> Official Certificate
             </motion.div>
             <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-              A Certified <span className="gold-gradient-text italic font-normal">Global Hub</span> <br />
-              for Design Excellence
+              A Trusted <span className="gold-gradient-text italic font-normal">Government Approved</span> <br />
+              Training Center
             </h3>
           </div>
 
@@ -140,10 +140,12 @@ const TailoringProgram = () => {
             {accreditationItems.map((item, idx) => (
               <div key={idx} className="h-full flex">
                 <TextReveal delay={idx * 0.1} width="100%">
-                  <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-6 md:p-12 group/card text-center h-full flex flex-col justify-center items-center">
-                    <div className="h-[1px] w-8 md:w-12 bg-accent/30 mx-auto mb-4 md:mb-8 transition-all group-hover/card:w-16 md:group-hover/card:w-20" />
-                    <h4 className="text-white text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{item.title}</h4>
-                    <p className="text-white/40 text-[9px] md:text-sm leading-relaxed font-light max-w-[200px] mx-auto">{item.content}</p>
+                  <div className="premium-card bg-white/[0.02] border-white/5 hover:bg-white/[0.04] transition-all duration-700 p-6 md:p-8 group/card text-left h-full flex flex-col justify-start items-start">
+                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-accent/20 flex items-center justify-center text-accent mb-6 transition-all group-hover/card:scale-110 group-hover/card:bg-accent/30">
+                      {item.icon}
+                    </div>
+                    <h4 className="text-white text-sm md:text-base font-bold uppercase tracking-widest mb-2 md:mb-4">{item.title}</h4>
+                    <p className="text-white/60 text-xs md:text-sm leading-relaxed font-light mt-auto">{item.content}</p>
                   </div>
                 </TextReveal>
               </div>

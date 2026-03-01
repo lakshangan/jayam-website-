@@ -12,7 +12,7 @@ export const getCourseGroups = (lang: Language) => [
                 duration: lang === 'en' ? "1 Year" : "1 வருடம்",
                 certification: lang === 'en' ? "Advanced" : "மேம்பட்ட நிலை",
                 highlight: lang === 'en' ? "Entrepreneurship" : "தொழில்முனைவு",
-                image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                image: "/lovable-uploads/tamil_fashion_designer.png",
                 modules: lang === 'en' ? [
                     "Advanced Couture Pattern Drafting",
                     "Fashion Business & Marketing",
@@ -35,7 +35,7 @@ export const getCourseGroups = (lang: Language) => [
                 duration: lang === 'en' ? "1 Year" : "1 வருடம்",
                 certification: lang === 'en' ? "Technical" : "தொழில்நுட்ப நிலை",
                 highlight: lang === 'en' ? "Technical Mastery" : "தொழில்நுட்ப தேர்ச்சி",
-                image: "https://images.unsplash.com/photo-1537832816519-689ad163238b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                image: "/lovable-uploads/tamil_tailoring_class.png",
                 modules: lang === 'en' ? [
                     "Textile & Fabric Science",
                     "Basic & Advanced Sewing",
@@ -58,7 +58,7 @@ export const getCourseGroups = (lang: Language) => [
                 duration: lang === 'en' ? "1 Year" : "1 வருடம்",
                 certification: lang === 'en' ? "Expert" : "நிபுணர் நிலை",
                 highlight: lang === 'en' ? "Bespoke Expert" : "தனிப்பயன் நிபுணர்",
-                image: "https://images.unsplash.com/photo-1593030942428-a5451dca4b42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                image: "/lovable-uploads/tamil_tailor_1.png",
                 modules: lang === 'en' ? [
                     "Bespoke Menswear Tailoring",
                     "Intricate Women's Couture",
@@ -87,7 +87,7 @@ export const getCourseGroups = (lang: Language) => [
                 duration: lang === 'en' ? "6 Months" : "6 மாதங்கள்",
                 certification: lang === 'en' ? "Specialized" : "சிறப்பு பயிற்சி",
                 highlight: lang === 'en' ? "Cultural Couture" : "கலாச்சார ஆடைகள்",
-                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                image: "/lovable-uploads/tamil_student_1.png",
                 modules: lang === 'en' ? [
                     "Bridal Wear Architecture",
                     "Embroidery & Surface Design",
@@ -108,7 +108,7 @@ export const getCourseGroups = (lang: Language) => [
                 duration: lang === 'en' ? "6 Months" : "6 மாதங்கள்",
                 certification: lang === 'en' ? "Professional" : "தொழில்முறை",
                 highlight: lang === 'en' ? "Salon Ready" : "சலூனுக்கு தயார்",
-                image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                image: "/lovable-uploads/tamil_student_3.png",
                 modules: lang === 'en' ? [
                     "Advanced Skin Therapy",
                     "HD & Airbrush Bridal Makeup",

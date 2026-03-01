@@ -11,39 +11,39 @@ interface CampusImage {
 const campusImages: CampusImage[] = [
   {
     id: 1,
-    src: "/lovable-uploads/lowangleshot.jpg",
-    alt: "Fashion Workspace",
-    category: "Institute"
-  },
-  {
-    id: 2,
-    src: "/lovable-uploads/20241213_204558.jpg",
-    alt: "Student at Work",
+    src: "/lovable-uploads/tamil_tailoring_class.png",
+    alt: "Beautiful Classroom",
     category: "Classroom"
   },
   {
+    id: 2,
+    src: "/lovable-uploads/tamil_tailor_1.png",
+    alt: "Students Practicing",
+    category: "Practice Area"
+  },
+  {
     id: 3,
-    src: "https://images.unsplash.com/photo-1558584449-32dd023a8ed4?auto=format&fit=crop&q=80&w=800",
-    alt: "Professional Tailoring Unit",
-    category: "Workspace"
+    src: "/lovable-uploads/tamil_students_sewing.png",
+    alt: "Professional Machines",
+    category: "Professional Setup"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&q=80&w=800",
-    alt: "Pattern Making Class",
-    category: "Studio"
+    src: "/lovable-uploads/tamil_fashion_designer.png",
+    alt: "Pattern Making",
+    category: "Design Room"
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800",
-    alt: "Fashion Design Gallery",
-    category: "Exhibition"
+    src: "/lovable-uploads/tamil_stitching_closeup.png",
+    alt: "Beautiful Designs",
+    category: "Gallery"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80&w=800",
-    alt: "Advanced Stitching Lab",
-    category: "Laboratory"
+    src: "/lovable-uploads/tamil_tailoring_class.png",
+    alt: "Stitching Work",
+    category: "Stitching Lab"
   }
 ];
 
@@ -63,7 +63,7 @@ const CampusLife = () => {
             className="flex items-center gap-4 mb-6"
           >
             <Camera className="w-4 h-4 text-accent" />
-            <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-accent">Our Environment</span>
+            <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-accent">Our Beautiful Center</span>
           </motion.div>
 
           <motion.h2
@@ -72,8 +72,8 @@ const CampusLife = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-7xl font-bold text-white mb-10 leading-[0.9] tracking-tighter"
           >
-            Creative <br />
-            <span className="gold-gradient-text italic font-normal">Sanctuaries</span>
+            Learn in <br />
+            <span className="gold-gradient-text italic font-normal">Our Beautiful Classrooms</span>
           </motion.h2>
 
 
@@ -98,7 +98,7 @@ const CampusLife = () => {
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

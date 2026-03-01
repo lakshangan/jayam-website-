@@ -7,21 +7,21 @@ const awards = [
     {
         title: "Best Tailoring Institute",
         organization: "National Design Excellence Awards",
-        image: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/lovable-uploads/tamil_tailoring_class.png",
         icon: <Trophy className="w-8 h-8 text-accent" />,
         description: "Awarded for our great work in teaching traditional sewing and new fashion styles."
     },
     {
         title: "Skill India Excellence Award",
         organization: "Ministry of Skill Development",
-        image: "https://images.unsplash.com/photo-1589118949245-7d38ca95199a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/lovable-uploads/tamil_students_sewing.png",
         icon: <Award className="w-8 h-8 text-accent" />,
         description: "Given to us by the Government for being a top school for learning professional skills."
     },
     {
         title: "Vogue Creative Choice",
         organization: "Fashion Industry Forum",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+        image: "/lovable-uploads/tamil_tailor_1.png",
         icon: <Star className="w-8 h-8 text-accent" />,
         description: "Honored for having students who make amazing and creative clothing designs."
     }
@@ -97,7 +97,7 @@ const Awards = () => {
                                 <img
                                     src={award.image}
                                     alt={award.title}
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100"
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 

@@ -65,8 +65,11 @@ const ProgramsPreview = () => {
                             transition={{ delay: idx * 0.1 }}
                             className="group p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 hover:scale-[1.01] flex flex-col"
                         >
-                            <div className="w-14 h-14 rounded-2xl bg-background border border-black/[0.03] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 mb-8 transition-all duration-500 shadow-lg">
-                                <BookOpen size={20} className="text-accent group-hover:text-background" />
+                            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-8 border border-black/[0.03] relative shadow-sm inline-block shrink-0">
+                                <img src={program.image} alt={program.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                                <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-background border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg">
+                                    <BookOpen size={16} className="text-accent group-hover:text-background" />
+                                </div>
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">{program.name}</h3>
                             <span className="text-[9px] uppercase tracking-[0.2em] text-accent font-black block mb-6">{program.highlight}</span>
