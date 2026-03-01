@@ -2,6 +2,7 @@ import { Instagram, ArrowUpRight, Sparkles } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useAppContext } from '../context/AppContext';
+import AnimatedLogo from './AnimatedLogo';
 
 const Footer = () => {
   const { t } = useAppContext();
@@ -23,14 +24,19 @@ const Footer = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-secondary/10 pointer-events-none" />
 
-      {/* Massive Background Text Component (Parallax) */}
+      {/* Massive Background Text Component (Parallax) & Animated Logo */}
       <motion.div
         style={{ y, opacity }}
-        className="absolute bottom-[-5vw] left-0 w-full pointer-events-none z-0 hidden lg:block"
+        className="absolute bottom-[-5vw] left-0 w-full pointer-events-none z-0 hidden lg:flex justify-between items-end px-20"
       >
-        <h2 className="text-[25vw] font-display font-black text-black/[0.03] dark:text-white/[0.02] leading-[0.7] tracking-tighter text-center uppercase italic">
+        <h2 className="text-[25vw] font-display font-black text-black/[0.03] dark:text-white/[0.02] leading-[0.7] tracking-tighter uppercase italic">
           Jayam
         </h2>
+
+        {/* Animated Logo positioned beautifully alongside the text */}
+        <div className="w-[400px] h-[400px] translate-y-[5vw] mb-[-5vw] opacity-40 mix-blend-luminosity">
+          <AnimatedLogo />
+        </div>
       </motion.div>
 
       <div className="container-custom relative z-10">

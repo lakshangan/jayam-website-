@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const AnimatedLogo = () => {
     return (
-        <div className="relative w-full h-full min-h-[400px] flex items-center justify-center bg-transparent rounded-[2rem] overflow-hidden group">
+        <div className="relative w-full h-full aspect-square flex items-center justify-center bg-transparent rounded-[2rem] group">
             {/* Central Glow Background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-accent/10 rounded-full blur-[50px] md:blur-[100px] pointer-events-none group-hover:bg-accent/20 transition-all duration-1000" />
 

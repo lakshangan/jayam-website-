@@ -82,19 +82,30 @@ const AccreditationSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="group p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-colors transition-shadow duration-700 flex flex-col text-left overflow-hidden relative"
+                            className="group p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-card border border-black/[0.03] hover:border-accent/40 shadow-premium hover:shadow-2xl transition-all duration-700 flex flex-col text-left overflow-hidden relative min-h-[320px]"
                         >
-                            <div className="w-full aspect-[4/3] rounded-2xl md:rounded-[2rem] overflow-hidden mb-6 md:mb-8 border border-black/[0.03] relative shadow-sm shrink-0">
-                                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                                <div className="absolute top-4 left-4 w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-background/90 backdrop-blur-md border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
-                                    {item.icon}
+                            {/* Abstract Backgrounds */}
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-[60px] group-hover:bg-accent/15 transition-colors duration-700" />
+                            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-[60px] group-hover:bg-primary/10 transition-colors duration-700" />
+
+                            <div className="relative z-10 flex-1 flex flex-col justify-between">
+                                {/* Icon Container */}
+                                <div className="mb-12 relative w-fit">
+                                    <div className="absolute inset-0 bg-accent rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-background/90 backdrop-blur-md border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
+                                        <div className="scale-125 md:scale-150">
+                                            {item.icon}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="flex-1 flex flex-col justify-end relative z-10 px-2">
-                                <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 uppercase tracking-widest leading-tight group-hover:text-accent transition-colors">{item.title}</h3>
-                                <p className="text-foreground/60 text-sm leading-relaxed font-light">
-                                    {item.description}
-                                </p>
+
+                                {/* Text Content */}
+                                <div className="mt-auto">
+                                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 uppercase tracking-widest leading-tight group-hover:text-accent transition-colors duration-500">{item.title}</h3>
+                                    <p className="text-foreground/60 text-sm leading-relaxed font-light">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
                         </motion.div>
                     ))}

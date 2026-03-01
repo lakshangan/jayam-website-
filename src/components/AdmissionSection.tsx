@@ -3,6 +3,7 @@ import { Sparkles, ArrowRight, Star, Trophy, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
+import AnimatedLogo from './AnimatedLogo';
 
 const AdmissionSection = () => {
     const { t } = useAppContext();
@@ -32,7 +33,7 @@ const AdmissionSection = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[160px] pointer-events-none" />
 
             <div className="container-custom relative z-10">
-                <div className="rounded-[4rem] bg-card border border-black/[0.03] p-8 md:p-20 overflow-hidden relative shadow-premium">
+                <div className="rounded-[4rem] bg-card border border-black/[0.03] p-8 md:p-20 relative shadow-premium">
                     <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-10">
                             <div>
@@ -118,11 +119,24 @@ const AdmissionSection = () => {
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-12 -right-8 bg-accent p-8 rounded-[2rem] shadow-premium hidden lg:block rotate-6 border border-white/10"
+                                className="absolute -top-12 -left-12 bg-accent p-8 rounded-[2rem] shadow-premium hidden lg:block -rotate-6 border border-white/10 z-20"
                             >
                                 <div className="text-background text-[10px] font-black uppercase tracking-tighter mb-2 opacity-60 text-center">{t('common.learnMore')}</div>
                                 <div className="text-background text-4xl font-black italic text-center">1000+</div>
                                 <div className="text-[9px] text-background/80 font-bold uppercase mt-2 tracking-widest text-center">Graduates Since 1995</div>
+                            </motion.div>
+
+                            {/* Solid Placed Animated Logo Emblem */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                animate={{ y: [-5, 5] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 w-48 h-48 md:w-64 md:h-64 z-30 drop-shadow-2xl hidden md:block"
+                            >
+                                <div className="w-full h-full bg-background rounded-full p-2 md:p-4 shadow-2xl border border-accent/20 flex items-center justify-center group pointer-events-auto">
+                                    <AnimatedLogo />
+                                </div>
                             </motion.div>
                         </div>
                     </div>

@@ -5,7 +5,6 @@ import { useRef, useMemo } from "react";
 import { MoveRight } from "lucide-react";
 import { FloatingPaths } from "@/components/ui/background-paths";
 import { useAppContext } from "@/context/AppContext";
-import AnimatedLogo from "@/components/AnimatedLogo";
 
 const Hero = () => {
   const { t } = useAppContext();
@@ -108,16 +107,6 @@ const Hero = () => {
       </motion.div>
 
       <div className="container-custom relative z-10 w-full h-full flex flex-col items-center justify-between py-8 md:py-16">
-
-        {/* AnimatedLogo floating on the right section */}
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 0.3, x: 0 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="absolute right-[-10vw] top-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none hidden lg:block z-0 mix-blend-color-burn"
-        >
-          <AnimatedLogo />
-        </motion.div>
 
         <motion.div
           variants={containerVariants}

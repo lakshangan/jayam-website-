@@ -95,16 +95,44 @@ const TailoringProgram = () => {
               <div className="absolute -inset-2 border border-white/5 rounded-[2.5rem] rotate-6 group-hover:rotate-0 transition-transform duration-700" />
               <div className="absolute -inset-2 border border-accent/10 rounded-[2.5rem] -rotate-6 group-hover:rotate-0 transition-transform duration-700" />
 
-              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 aspect-[4/5]">
-                <img
-                  src="/lovable-uploads/tamil_tailor_1.png"
-                  alt="Tailoring Workshop"
-                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent opacity-80" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 aspect-[4/5] bg-gradient-to-b from-[#0a0a0f] to-[#050508] flex items-center justify-center p-8 group">
+                {/* Background glow & subtle patterns */}
+                <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[100px]" />
 
-                <div className="absolute top-8 right-8 bg-accent rounded-2xl p-6 shadow-2xl z-20">
-                  <Award className="w-8 h-8 text-[#0a0a0f]" />
+                <div className="absolute inset-0 bg-[#ffffff] opacity-[0.01] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] mix-blend-overlay" />
+
+                {/* Decorative border rings */}
+                <div className="absolute inset-4 border border-white/5 rounded-[1.5rem] transition-transform duration-700 group-hover:scale-95" />
+                <div className="absolute inset-8 border border-accent/20 rounded-[1rem] border-dashed animate-[spin_60s_linear_infinite]" />
+
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className="relative mb-10">
+                    <div className="absolute inset-0 animate-ping opacity-20 bg-accent rounded-full blur-xl" />
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2rem] bg-gradient-to-br from-accent/20 via-accent/5 to-transparent border border-accent/40 flex items-center justify-center backdrop-blur-md shadow-[0_0_50px_rgba(255,215,0,0.15)] rotate-45 group-hover:rotate-0 transition-all duration-700">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl border border-accent/30 flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-all duration-700 bg-black/20">
+                        <Award className="w-8 h-8 md:w-10 md:h-10 text-accent" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-2">
+                      <ShieldCheck size={14} className="text-accent" />
+                      <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-accent">Official Accreditation</span>
+                    </div>
+
+                    <p className="text-white/60 italic text-base md:text-lg font-light">Proud to be an</p>
+
+                    <div className="space-y-1">
+                      <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                        NSDC <span className="gold-gradient-text">Approved</span>
+                      </h3>
+                      <p className="text-sm md:text-lg font-medium tracking-[0.3em] md:tracking-[0.4em] text-white/70 uppercase pt-2">
+                        Training Centre
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
