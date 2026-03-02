@@ -29,7 +29,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="text-5xl md:text-8xl font-bold text-foreground mb-10 leading-[0.9] tracking-tighter"
           >
-            Shape Your <br />
+            Shape Your Future <br />
             <span className="gold-gradient-text italic font-normal">{t('contact.title')}</span>
           </motion.h2>
 
