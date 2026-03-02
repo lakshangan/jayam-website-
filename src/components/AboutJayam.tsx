@@ -67,10 +67,10 @@ const AboutJayam = () => {
             className="lg:col-span-5 relative"
           >
             <div className="relative group p-4">
-              <div className="absolute -inset-2 border border-white/5 rounded-[2.5rem] -rotate-3 transition-transform group-hover:rotate-0 duration-700" />
+              <div className="absolute -inset-2 border border-foreground/5 rounded-[2.5rem] -rotate-3 transition-transform group-hover:rotate-0 duration-700" />
               <div className="absolute -inset-2 border border-accent/10 rounded-[2.5rem] rotate-3 transition-transform group-hover:rotate-0 duration-700" />
 
-              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 aspect-[4/5]">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-foreground/10 aspect-[4/5]">
                 <img
                   src="/lovable-uploads/f12752c7-a9cd-4fe8-a9b1-95e2edd3052e.png"
                   alt="Founder"
@@ -97,19 +97,19 @@ const AboutJayam = () => {
             </motion.div>
 
             <TextReveal delay={0.1}>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-8 leading-[1.1]">
+              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6 md:mb-8 leading-[1.1]">
                 Dr. G. <span className="gold-gradient-text italic font-normal">Sahayaselvam</span>
               </h2>
             </TextReveal>
 
             <TextReveal delay={0.2}>
-              <p className="text-white/80 text-xl font-medium mb-8">
+              <p className="text-foreground/80 text-xl font-medium mb-8">
                 Founder & Director — Honorary Doctorate in Sewing
               </p>
             </TextReveal>
 
             <TextReveal delay={0.3}>
-              <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-light">
+              <p className="text-foreground/60 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-light">
                 A great teacher and master tailor with over 20+ years of experience.
                 Honored with a Doctorate for his excellent work in tailoring education,
                 Dr. Sahayaselvam has spent his life helping women learn simple tailoring skills
@@ -117,8 +117,8 @@ const AboutJayam = () => {
               </p>
             </TextReveal>
 
-            <motion.div variants={itemVariants} className="space-y-6 md:space-y-8 mb-12 md:mb-16 border-l border-white/5 pl-6 md:pl-10">
-              <p className="text-white/30 text-sm md:text-base leading-relaxed max-w-xl italic">
+            <motion.div variants={itemVariants} className="space-y-6 md:space-y-8 mb-12 md:mb-16 border-l border-foreground/5 pl-6 md:pl-10">
+              <p className="text-foreground/30 text-sm md:text-base leading-relaxed max-w-xl italic">
                 "Our mission is to transform simple skills into sustainable livelihoods,
                 creating a world where every woman has the opportunity to be a successful entrepreneur."
               </p>
@@ -137,16 +137,16 @@ const AboutJayam = () => {
                     rotateY: 5,
                     scale: 1.02
                   }}
-                  className="premium-card group py-12 px-8 text-center h-full flex flex-col items-center justify-center border-white/5 bg-white/[0.02] hover:bg-accent/5 hover:border-accent/20 transition-colors transition-shadow duration-700"
+                  className="premium-card group py-12 px-8 text-center h-full flex flex-col items-center justify-center border-foreground/5 hover:bg-accent/5 hover:border-accent/20 transition-colors transition-shadow duration-700"
                 >
-                  <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/5 flex items-center justify-center mx-auto mb-10 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-700 relative">
+                  <div className="w-20 h-20 rounded-3xl bg-foreground/[0.03] border border-foreground/5 flex items-center justify-center mx-auto mb-10 group-hover:border-accent/40 group-hover:bg-accent/10 transition-all duration-700 relative">
                     <div className="absolute inset-0 bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <div className="transition-transform duration-700 group-hover:scale-125 z-10 text-accent">
                       {feature.icon}
                     </div>
                   </div>
-                  <h4 className="text-lg uppercase tracking-[0.2em] font-black text-white mb-4 group-hover:text-accent transition-colors duration-500">{feature.title}</h4>
-                  <p className="text-[10px] text-white/20 leading-relaxed font-bold uppercase tracking-[0.3em]">{feature.description}</p>
+                  <h4 className="text-lg uppercase tracking-[0.2em] font-black text-foreground mb-4 group-hover:text-accent transition-colors duration-500">{feature.title}</h4>
+                  <p className="text-[10px] text-foreground/20 leading-relaxed font-bold uppercase tracking-[0.3em]">{feature.description}</p>
                 </motion.div>
               </TextReveal>
             </div>

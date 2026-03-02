@@ -29,7 +29,7 @@ export const FabricFloating = () => {
                 <motion.div
                     whileHover={{ scale: 1.05, rotate: 2 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="relative bg-white/5 backdrop-blur-xl p-8 rounded-[4rem] border border-white/10 shadow-2xl"
+                    className="relative bg-foreground/5 backdrop-blur-xl p-8 rounded-[4rem] border border-foreground/10 shadow-2xl"
                 >
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-accent/20 to-transparent rounded-b-[4rem]" />
                     <img

@@ -19,13 +19,13 @@ const ExperiencePage = () => {
                 <div className="p-6 md:p-10 flex justify-between items-center pointer-events-none w-full animate-fade-in transition-all duration-1000">
                     <Link
                         to="/"
-                        className="pointer-events-auto flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 backdrop-blur-md bg-white/5 px-4 py-2 rounded-full border border-white/10"
+                        className="pointer-events-auto flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors duration-300 backdrop-blur-md bg-foreground/5 px-4 py-2 rounded-full border border-foreground/10"
                     >
                         <ChevronLeft className="w-4 h-4" />
                         <span className="text-sm font-medium tracking-widest uppercase">Back to Home</span>
                     </Link>
 
-                    <div className="hidden md:flex flex-col items-end text-white/50 space-y-1">
+                    <div className="hidden md:flex flex-col items-end text-foreground/50 space-y-1">
                         <p className="text-[10px] uppercase tracking-[0.2em]">Jayam Fashion Institute</p>
                         <p className="text-[10px] uppercase tracking-[0.2em] font-light">Interactive Experience Vol 1.0</p>
                     </div>

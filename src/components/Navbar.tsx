@@ -73,7 +73,7 @@ const Navbar = () => {
           }}
           className={`relative flex justify-between items-center rounded-full border overflow-hidden transition-all duration-500 ${isScrolled
             ? 'bg-background/80 backdrop-blur-2xl px-3 py-2 shadow-2xl border-black/5'
-            : 'bg-black/5 backdrop-blur-xl px-4 py-3 border-black/5 shadow-lg'
+            : 'bg-foreground/5 backdrop-blur-xl px-4 py-3 border-black/5 shadow-lg'
             }`}
         >
           {/* Logo */}
@@ -141,16 +141,16 @@ const Navbar = () => {
             ))}
             <div className="flex items-center gap-4 ml-6 border-l border-black/10 pl-6">
               {/* Language Switcher */}
-              <div className="flex bg-black/[0.03] rounded-full p-1 border border-black/5">
+              <div className="flex bg-foreground/[0.03] rounded-full p-1 border border-black/5">
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'en' ? 'bg-foreground shadow-sm text-accent' : 'text-foreground/40'}`}
                 >
                   EN
                 </button>
                 <button
                   onClick={() => setLanguage('ta')}
-                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'ta' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${language === 'ta' ? 'bg-foreground shadow-sm text-accent' : 'text-foreground/40'}`}
                 >
                   தமிழ்
                 </button>
@@ -159,7 +159,7 @@ const Navbar = () => {
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-black/[0.03] border border-black/5 text-foreground/60 hover:text-accent transition-all"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-foreground/[0.03] border border-black/5 text-foreground/60 hover:text-accent transition-all"
               >
                 {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
               </button>
@@ -167,7 +167,7 @@ const Navbar = () => {
               <Magnetic strength={0.2}>
                 <Link
                   to="/courses"
-                  className="px-6 py-2.5 bg-foreground text-background text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-accent hover:text-white transition-all duration-300 block text-center"
+                  className="px-6 py-2.5 bg-foreground text-background text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-accent hover:text-foreground transition-all duration-300 block text-center"
                 >
                   {t('nav.admission')}
                 </Link>
@@ -180,7 +180,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 z-[101]"
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full bg-foreground/5 border border-foreground/10 z-[101]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <AnimatePresence mode="wait">
@@ -230,7 +230,7 @@ const Navbar = () => {
                         transition={{ delay: 0.1 + (index * 0.05), duration: 0.5 }}
                         href={link.href}
                         onClick={(e) => handleLinkClick(e, link.href)}
-                        className="text-3xl font-display font-medium text-white/90 active:text-accent transition-colors flex items-center gap-4"
+                        className="text-3xl font-display font-medium text-foreground/90 active:text-accent transition-colors flex items-center gap-4"
                       >
                         <span className="text-[10px] font-black tracking-widest text-accent opacity-50">0{index + 1}</span>
                         {link.label}
@@ -254,16 +254,16 @@ const Navbar = () => {
                   </div>
                 ))}
                 <div className="flex flex-col gap-4 py-8 mt-8 border-t border-black/5">
-                  <div className="flex bg-black/[0.03] rounded-2xl p-1">
+                  <div className="flex bg-foreground/[0.03] rounded-2xl p-1">
                     <button
                       onClick={() => setLanguage('en')}
-                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'en' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'en' ? 'bg-foreground shadow-sm text-accent' : 'text-foreground/40'}`}
                     >
                       English
                     </button>
                     <button
                       onClick={() => setLanguage('ta')}
-                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'ta' ? 'bg-white shadow-sm text-accent' : 'text-foreground/40'}`}
+                      className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${language === 'ta' ? 'bg-foreground shadow-sm text-accent' : 'text-foreground/40'}`}
                     >
                       தமிழ்
                     </button>
@@ -271,7 +271,7 @@ const Navbar = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={toggleTheme}
-                      className="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center text-foreground border border-black/5"
+                      className="w-14 h-14 rounded-2xl bg-foreground/[0.03] flex items-center justify-center text-foreground border border-black/5"
                     >
                       {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
                     </button>

@@ -45,7 +45,7 @@ const Awards = () => {
                 style={{ x }}
                 className="absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap pointer-events-none opacity-[0.02] z-0"
             >
-                <span className="text-[25vw] font-display font-black uppercase italic tracking-tighter text-white">
+                <span className="text-[25vw] font-display font-black uppercase italic tracking-tighter text-foreground">
                     Awards Winning Best Success
                 </span>
             </motion.div>
@@ -66,7 +66,7 @@ const Awards = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-title-section font-bold text-white mb-0"
+                            className="text-title-section font-bold text-foreground mb-0"
                         >
                             Our Certified <br />
                             <span className="gold-gradient-text italic font-normal">Success</span>
@@ -77,7 +77,7 @@ const Awards = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right"
+                        className="text-foreground/40 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right"
                     >
                         We are proud of our history of winning awards and being recognized by the best in the fashion world.
                     </motion.p>
@@ -93,7 +93,7 @@ const Awards = () => {
                             transition={{ delay: idx * 0.1, duration: 0.8 }}
                             className="group relative"
                         >
-                            <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-[2rem] overflow-hidden border border-white/5 mb-6">
+                            <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-[2rem] overflow-hidden border border-foreground/5 mb-6">
                                 <img
                                     src={award.image}
                                     alt={award.title}
@@ -102,7 +102,7 @@ const Awards = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
                                 {/* Award Type Icon Overlay */}
-                                <div className="absolute top-6 left-6 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
+                                <div className="absolute top-6 left-6 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-foreground/5 backdrop-blur-xl border border-foreground/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
                                     {award.icon}
                                 </div>
 
@@ -110,14 +110,14 @@ const Awards = () => {
                                     <span className="text-[10px] uppercase tracking-[0.2em] font-black text-accent mb-2 block">
                                         {award.organization}
                                     </span>
-                                    <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-accent transition-colors duration-300">
+                                    <h3 className="text-xl md:text-2xl font-display font-bold text-foreground group-hover:text-accent transition-colors duration-300">
                                         {award.title}
                                     </h3>
                                 </div>
                             </div>
 
                             <div className="px-4">
-                                <p className="text-[11px] md:text-sm text-white/40 leading-relaxed font-light italic border-l-2 border-accent/20 pl-6 group-hover:border-accent transition-all duration-500">
+                                <p className="text-[11px] md:text-sm text-foreground/40 leading-relaxed font-light italic border-l-2 border-accent/20 pl-6 group-hover:border-accent transition-all duration-500">
                                     {award.description}
                                 </p>
                             </div>

@@ -22,7 +22,7 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
           <div className="flex-1">
             <div className="flex items-start justify-between mb-8">
               <div className="flex items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center border border-black/10 group-hover:border-accent/40 transition-all duration-500">
+                <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center border border-black/10 group-hover:border-accent/40 transition-all duration-500">
                   <BookOpen size={24} className="text-accent" />
                 </div>
                 <div>
@@ -39,14 +39,14 @@ const CourseCard = ({ course, index }: { course: any; index: number }) => {
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-10">
-              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-black/[0.02]">
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-foreground/[0.02]">
                 <span className="text-[9px] uppercase tracking-widest text-foreground/20 font-bold">Duration</span>
                 <div className="flex items-center gap-2 text-foreground font-bold text-sm">
                   <Clock size={14} className="text-accent" />
                   {course.duration}
                 </div>
               </div>
-              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-black/[0.02]">
+              <div className="glass-premium px-5 py-4 rounded-2xl flex flex-col gap-1 border-black/5 bg-foreground/[0.02]">
                 <span className="text-[9px] uppercase tracking-widest text-foreground/20 font-bold">Level</span>
                 <div className="flex items-center gap-2 text-foreground font-bold text-sm">
                   <Award size={14} className="text-accent" />
@@ -125,7 +125,7 @@ const Courses = () => {
                   <p className="text-[10px] text-accent uppercase tracking-[0.5em] font-black">{group.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="hidden md:block px-5 py-2 rounded-full border border-black/10 bg-black/5 text-[10px] uppercase tracking-[0.3em] text-foreground/40 font-bold">
+                  <div className="hidden md:block px-5 py-2 rounded-full border border-black/10 bg-foreground/5 text-[10px] uppercase tracking-[0.3em] text-foreground/40 font-bold">
                     {group.courses.length} Certified Pathways
                   </div>
                 </div>

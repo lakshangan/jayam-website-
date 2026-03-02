@@ -203,7 +203,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 rounded-2xl bg-foreground text-background font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-white transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+            className="w-full h-14 rounded-2xl bg-foreground text-background font-black uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-foreground transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               {isSubmitting ? (

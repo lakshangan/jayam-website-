@@ -92,7 +92,7 @@ const AccreditationSection = () => {
                                 {/* Icon Container */}
                                 <div className="mb-12 relative w-fit">
                                     <div className="absolute inset-0 bg-accent rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
-                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-background/90 backdrop-blur-md border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-white">
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-background/90 backdrop-blur-md border border-black/[0.05] flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-500 shadow-lg text-accent group-hover:text-foreground">
                                         <div className="scale-125 md:scale-150">
                                             {item.icon}
                                         </div>

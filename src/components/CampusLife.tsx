@@ -70,7 +70,7 @@ const CampusLife = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-7xl font-bold text-white mb-10 leading-[0.9] tracking-tighter"
+            className="text-4xl md:text-7xl font-bold text-foreground mb-10 leading-[0.9] tracking-tighter"
           >
             Learn in <br />
             <span className="gold-gradient-text italic font-normal">Our Beautiful Classrooms</span>
@@ -89,7 +89,7 @@ const CampusLife = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className={`relative rounded-[2rem] overflow-hidden group cursor-pointer border border-white/5 ${idx === 0 ? "md:col-span-2 md:row-span-2" :
+                className={`relative rounded-[2rem] overflow-hidden group cursor-pointer border border-foreground/5 ${idx === 0 ? "md:col-span-2 md:row-span-2" :
                   idx === 1 ? "md:row-span-2" :
                     idx === 5 ? "md:col-span-2" : ""
                   }`}
@@ -103,7 +103,7 @@ const CampusLife = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                   <span className="text-accent text-[9px] uppercase tracking-widest font-black mb-2 block">{img.category}</span>
-                  <h4 className="text-white text-sm md:text-lg font-bold">{img.alt}</h4>
+                  <h4 className="text-foreground text-sm md:text-lg font-bold">{img.alt}</h4>
                 </div>
               </motion.div>
             ))}

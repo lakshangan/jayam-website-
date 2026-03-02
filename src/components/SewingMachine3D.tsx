@@ -14,7 +14,7 @@ function Loader() {
     const { progress } = useProgress();
     return (
         <Html center>
-            <div className="flex flex-col items-center justify-center text-white/50 space-y-3 font-sans min-w-[200px] mix-blend-screen pointer-events-none">
+            <div className="flex flex-col items-center justify-center text-foreground/50 space-y-3 font-sans min-w-[200px] mix-blend-screen pointer-events-none">
                 <div className="w-12 h-12 border-2 border-[#c5a358] border-t-transparent rounded-full animate-spin"></div>
                 <p className="text-[10px] uppercase tracking-[0.4em] font-light">{progress.toFixed(0)}% Loading Core Engine</p>
             </div>
@@ -233,7 +233,7 @@ export default function SewingMachine3D() {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="relative h-screen w-full bg-[#020617] text-white selection:bg-[#c5a358]/30 overflow-hidden">
+        <section ref={containerRef} className="relative h-screen w-full bg-[#020617] text-foreground selection:bg-[#c5a358]/30 overflow-hidden">
             <div className="absolute top-0 left-0 h-full w-full flex flex-col items-center justify-center">
 
                 {/* Ambient Cinematic Grain and Vignette */}
@@ -250,10 +250,10 @@ export default function SewingMachine3D() {
                         className="absolute left-6 md:left-16 opacity-0 translate-y-10 w-full max-w-lg"
                     >
                         <span className="text-[#c5a358] text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-4 block">The Foundation</span>
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white drop-shadow-2xl mb-6">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground drop-shadow-2xl mb-6">
                             Where Art<br />Meets Craft.
                         </h2>
-                        <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed border-l border-[#c5a358]/30 pl-4 py-1">
+                        <p className="text-lg md:text-xl text-foreground/50 font-light leading-relaxed border-l border-[#c5a358]/30 pl-4 py-1">
                             Your journey starts with a single thread. Master the tools and techniques that turn raw fabric into breathtaking fashion.
                         </p>
                     </div>
@@ -265,10 +265,10 @@ export default function SewingMachine3D() {
                     >
                         <div className="max-w-lg">
                             <span className="text-[#c5a358] text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-4 block">The Process</span>
-                            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white drop-shadow-2xl mb-6">
+                            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground drop-shadow-2xl mb-6">
                                 Rhythm &<br />Momentum.
                             </h2>
-                            <p className="text-lg md:text-xl text-white/50 font-light leading-relaxed border-r border-[#c5a358]/30 pr-4 py-1 flex-end text-end self-end">
+                            <p className="text-lg md:text-xl text-foreground/50 font-light leading-relaxed border-r border-[#c5a358]/30 pr-4 py-1 flex-end text-end self-end">
                                 Feel the hum of the machine as your imagination takes shape. Every stitch is a step closer to your masterpiece.
                             </p>
                         </div>
@@ -283,7 +283,7 @@ export default function SewingMachine3D() {
                             Shape The Future of Fashion.
                         </h2>
                         <div className="pointer-events-auto mt-4 group">
-                            <Link to="/courses" className="relative overflow-hidden inline-flex px-10 py-5 rounded-full bg-white text-slate-950 font-bold uppercase tracking-[0.2em] text-sm md:text-base transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]">
+                            <Link to="/courses" className="relative overflow-hidden inline-flex px-10 py-5 rounded-full bg-foreground text-slate-950 font-bold uppercase tracking-[0.2em] text-sm md:text-base transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]">
                                 <span className="relative z-10">Begin Your Journey</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#c5a358] to-[#dfbf79] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
                             </Link>
@@ -298,7 +298,7 @@ export default function SewingMachine3D() {
                         className="flex flex-col items-center animate-fade-in delay-1000 fill-mode-both"
                     >
                         <span className="text-[#c5a358] text-[9px] uppercase tracking-[0.4em] font-medium mb-4">Scroll to Explore</span>
-                        <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+                        <div className="w-[1px] h-16 bg-foreground/10 relative overflow-hidden">
                             <motion.div
                                 animate={{ y: ['-100%', '200%'] }}
                                 transition={{ repeat: Infinity, duration: 2, ease: "linear" }}

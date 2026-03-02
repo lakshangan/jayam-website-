@@ -50,15 +50,15 @@ const FounderCredentials = () => {
                                 className="flex items-center gap-4 mb-8"
                             >
                                 <Award className="text-accent w-6 h-6" />
-                                <h3 className="text-2xl font-bold text-white uppercase tracking-widest">Education & Credentials</h3>
+                                <h3 className="text-2xl font-bold text-foreground uppercase tracking-widest">Education & Credentials</h3>
                             </motion.div>
 
-                            <div className="space-y-8 border-l border-white/5 pl-10">
+                            <div className="space-y-8 border-l border-foreground/5 pl-10">
                                 {education.map((item, idx) => (
                                     <div key={idx} className="relative">
                                         <div className="absolute -left-[45px] top-1 w-2 h-2 rounded-full bg-accent" />
-                                        <h4 className="text-white font-bold text-lg mb-1">{item.title}</h4>
-                                        <p className="text-white/40 text-sm">{item.institution} • {item.year}</p>
+                                        <h4 className="text-foreground font-bold text-lg mb-1">{item.title}</h4>
+                                        <p className="text-foreground/40 text-sm">{item.institution} • {item.year}</p>
                                     </div>
                                 ))}
                             </div>
@@ -72,13 +72,13 @@ const FounderCredentials = () => {
                                 className="flex items-center gap-4 mb-8"
                             >
                                 <Briefcase className="text-accent w-6 h-6" />
-                                <h3 className="text-2xl font-bold text-white uppercase tracking-widest">Professional Impact</h3>
+                                <h3 className="text-2xl font-bold text-foreground uppercase tracking-widest">Professional Impact</h3>
                             </motion.div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {competencies.map((comp, idx) => (
-                                    <div key={idx} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/30 transition-all group">
-                                        <p className="text-white/60 text-xs font-bold uppercase tracking-wider group-hover:text-accent transition-colors">{comp}</p>
+                                    <div key={idx} className="p-6 rounded-2xl bg-foreground/5 border border-foreground/10 hover:border-accent/30 transition-all group">
+                                        <p className="text-foreground/60 text-xs font-bold uppercase tracking-wider group-hover:text-accent transition-colors">{comp}</p>
                                     </div>
                                 ))}
                             </div>
@@ -87,36 +87,36 @@ const FounderCredentials = () => {
 
                     {/* Contact & Mission Card */}
                     <div className="lg:sticky lg:top-32 h-fit">
-                        <div className="premium-card p-12 bg-white/[0.02] border-white/10 relative overflow-hidden">
+                        <div className="premium-card p-12 hover:border-accent/40 hover:shadow-xl transition-all duration-500 relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
 
                             <div className="flex items-center gap-4 mb-10">
                                 <Target className="text-accent w-8 h-8" />
-                                <h3 className="text-2xl font-bold text-white uppercase tracking-widest">Our Mission</h3>
+                                <h3 className="text-2xl font-bold text-foreground uppercase tracking-widest">Our Mission</h3>
                             </div>
 
-                            <p className="text-white/60 text-xl font-light leading-relaxed mb-12 border-l-2 border-accent/20 pl-8">
+                            <p className="text-foreground/60 text-xl font-light leading-relaxed mb-12 border-l-2 border-accent/20 pl-8">
                                 To empower women through structured tailoring education and transform skills into sustainable livelihood
                                 and successful entrepreneurship opportunities.
                             </p>
 
-                            <div className="space-y-6 pt-10 border-t border-white/5">
+                            <div className="space-y-6 pt-10 border-t border-foreground/5">
                                 <a href="tel:+918925774434" className="flex items-center gap-6 group/link cursor-pointer">
-                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center border border-foreground/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
                                         <Phone size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-white/20 tracking-widest">Direct Line</p>
-                                        <p className="text-white font-bold group-hover:text-accent transition-colors">+91 89257 74434</p>
+                                        <p className="text-[10px] uppercase font-black text-foreground/20 tracking-widest">Direct Line</p>
+                                        <p className="text-foreground font-bold group-hover:text-accent transition-colors">+91 89257 74434</p>
                                     </div>
                                 </a>
                                 <a href="mailto:jayamfashioninstitute@gmail.com" className="flex items-center gap-6 group/link cursor-pointer">
-                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center border border-foreground/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
                                         <Mail size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-white/20 tracking-widest">Email Address</p>
-                                        <p className="text-white font-bold group-hover:text-accent transition-colors break-all">jayamfashioninstitute@gmail.com</p>
+                                        <p className="text-[10px] uppercase font-black text-foreground/20 tracking-widest">Email Address</p>
+                                        <p className="text-foreground font-bold group-hover:text-accent transition-colors break-all">jayamfashioninstitute@gmail.com</p>
                                     </div>
                                 </a>
                                 <a
@@ -125,12 +125,12 @@ const FounderCredentials = () => {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-6 group/link cursor-pointer"
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
+                                    <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center border border-foreground/10 text-accent group-hover/link:bg-accent group-hover/link:text-background transition-all">
                                         <MapPin size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-black text-white/20 tracking-widest">Location</p>
-                                        <p className="text-white font-bold group-hover:text-accent transition-colors">Tamil Nadu, India</p>
+                                        <p className="text-[10px] uppercase font-black text-foreground/20 tracking-widest">Location</p>
+                                        <p className="text-foreground font-bold group-hover:text-accent transition-colors">Tamil Nadu, India</p>
                                     </div>
                                 </a>
                             </div>

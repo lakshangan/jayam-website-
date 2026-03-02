@@ -82,7 +82,7 @@ const AboutInstitute = () => {
             </motion.div>
 
             <TextReveal delay={0.2} width="100%">
-              <h2 className="text-title-section font-bold text-white mb-12 leading-[0.9] tracking-tighter">
+              <h2 className="text-title-section font-bold text-foreground mb-12 leading-[0.9] tracking-tighter">
                 Crafting <br />
                 <span className="gold-gradient-text italic font-normal text-glow">Excellence</span> Since 1995
               </h2>
@@ -99,16 +99,15 @@ const AboutInstitute = () => {
                         z: 50,
                         scale: 1.05
                       }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="premium-card group h-full flex flex-col justify-center p-6 md:p-10 border-white/5 hover:border-accent/40 bg-secondary/5 hover:bg-secondary/20 transition-all duration-500"
+                      className="premium-card group h-full flex flex-col justify-center p-6 md:p-10 border-foreground/5 hover:border-accent/40 hover:shadow-xl transition-all duration-500"
                     >
                       <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:scale-110 transition-all duration-500">
                         <CheckCircle className="w-6 h-6 text-accent group-hover:text-background" />
                       </div>
-                      <h3 className="text-lg md:text-2xl font-display font-bold text-white mb-4 group-hover:text-accent transition-colors duration-300">
+                      <h3 className="text-lg md:text-2xl font-display font-bold text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-[10px] md:text-sm text-white/30 leading-relaxed font-light uppercase tracking-wider">
+                      <p className="text-[10px] md:text-sm text-foreground/30 leading-relaxed font-light uppercase tracking-wider">
                         {item.description}
                       </p>
                     </motion.div>
@@ -126,8 +125,8 @@ const AboutInstitute = () => {
             <FabricFloating />
           </motion.div>
         </motion.div>
-      </div>
-    </motion.section>
+      </div >
+    </motion.section >
   );
 };
 

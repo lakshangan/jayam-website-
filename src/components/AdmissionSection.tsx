@@ -118,7 +118,7 @@ const AdmissionSection = () => {
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 xl:-right-16 bg-accent p-8 rounded-[2rem] shadow-premium hidden lg:block -rotate-6 border border-white/10 z-20"
+                                className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 xl:-right-16 bg-accent p-8 rounded-[2rem] shadow-premium hidden lg:block -rotate-6 border border-foreground/10 z-20"
                             >
                                 <div className="text-background text-[10px] font-black uppercase tracking-tighter mb-2 opacity-60 text-center">{t('common.learnMore')}</div>
                                 <div className="text-background text-4xl font-black italic text-center">1000+</div>

@@ -45,14 +45,14 @@ const FloatingAdmissionCTA = () => {
                                 <Sparkles className="text-background w-6 h-6 animate-pulse" />
                             </div>
                             <div>
-                                <h4 className="text-white text-sm font-bold tracking-tight">Admissions Open</h4>
-                                <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold">Limited Seats Available</p>
+                                <h4 className="text-foreground text-sm font-bold tracking-tight">Admissions Open</h4>
+                                <p className="text-foreground/40 text-[10px] uppercase tracking-widest font-bold">Limited Seats Available</p>
                             </div>
                         </div>
 
                         <button
                             onClick={scrollToContact}
-                            className="px-4 md:px-6 py-2.5 md:py-3 bg-white text-black text-[10px] md:text-xs font-black rounded-xl md:rounded-2xl hover:bg-accent transition-all duration-300 flex items-center gap-2 group whitespace-nowrap"
+                            className="px-4 md:px-6 py-2.5 md:py-3 bg-foreground text-background text-[10px] md:text-xs font-black rounded-xl md:rounded-2xl hover:bg-accent transition-all duration-300 flex items-center gap-2 group whitespace-nowrap"
                         >
                             APPLY NOW
                             <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />

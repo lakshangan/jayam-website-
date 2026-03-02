@@ -90,7 +90,7 @@ const OurLegacy = () => {
 
                 {/* Content Side */}
                 <div className="w-full md:w-5/12 ml-10 md:ml-0 group">
-                  <div className={`p-8 rounded-[2rem] bg-black/[0.02] border border-black/5 backdrop-blur-sm group-hover:border-accent/30 transition-all duration-500 shadow-xl ${idx % 2 === 0 ? "md:text-right" : "md:text-left"
+                  <div className={`p-8 rounded-[2rem] bg-foreground/[0.02] border border-black/5 backdrop-blur-sm group-hover:border-accent/30 transition-all duration-500 shadow-xl ${idx % 2 === 0 ? "md:text-right" : "md:text-left"
                     }`}>
                     <div className={`mb-4 flex text-accent/30 group-hover:text-accent transition-colors ${idx % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
                       {milestone.icon}

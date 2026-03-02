@@ -109,7 +109,7 @@ const CustomCursor = () => {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="w-full h-full bg-white opacity-20 blur-sm"
+                        className="w-full h-full bg-foreground opacity-20 blur-sm"
                     />
                 )}
             </motion.div>

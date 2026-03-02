@@ -107,7 +107,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
                 {/* Background Text Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
-                    <span className="text-[25vw] md:text-[30vw] font-bold text-black whitespace-nowrap">JAYAM</span>
+                    <span className="text-[25vw] md:text-[30vw] font-bold text-background whitespace-nowrap">JAYAM</span>
                 </div>
             </motion.div>
         </AnimatePresence>

@@ -37,7 +37,7 @@ const AnimatedLogo = () => {
             <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-56 h-56 md:w-80 md:h-80 rounded-full bg-white/[0.02] backdrop-blur-lg md:backdrop-blur-3xl border border-white/5 flex items-center justify-center shadow-2xl md:shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden"
+                className="relative z-10 w-56 h-56 md:w-80 md:h-80 rounded-full bg-foreground/[0.02] backdrop-blur-lg md:backdrop-blur-3xl border border-foreground/5 flex items-center justify-center shadow-2xl md:shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden"
             >
                 {/* Glassmorphism subtle reflection */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-20 pointer-events-none" />

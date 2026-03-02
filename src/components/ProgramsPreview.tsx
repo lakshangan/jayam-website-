@@ -76,7 +76,7 @@ const ProgramsPreview = () => {
                             <p className="text-foreground/50 text-sm leading-relaxed mb-8 font-light line-clamp-3">{program.description}</p>
 
                             <div className="mt-auto pt-4">
-                                <Link to={`/course/${program.id}`} className="w-full flex items-center justify-center gap-2 py-4 bg-secondary border border-black/[0.05] hover:border-accent/40 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-black text-foreground/70 hover:text-accent hover:bg-black/5 transition-all">
+                                <Link to={`/course/${program.id}`} className="w-full flex items-center justify-center gap-2 py-4 bg-secondary border border-black/[0.05] hover:border-accent/40 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-black text-foreground/70 hover:text-accent hover:bg-foreground/5 transition-all">
                                     {t('common.learnMore')} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </div>

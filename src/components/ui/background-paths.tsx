@@ -107,8 +107,8 @@ export function BackgroundPaths({
                         <Button
                             variant="ghost"
                             className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
-                            bg-white/5 hover:bg-white/10 text-white transition-all duration-300 
-                            group-hover:-translate-y-0.5 border border-white/10
+                            bg-foreground/5 hover:bg-foreground/10 text-foreground transition-all duration-300 
+                            group-hover:-translate-y-0.5 border border-foreground/10
                             hover:shadow-md hover:shadow-accent/20"
                         >
                             <span className="opacity-90 group-hover:opacity-100 transition-opacity uppercase tracking-widest">

@@ -48,7 +48,7 @@ const StudentShowcase = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-title-section font-bold text-white mb-0"
+                            className="text-title-section font-bold text-foreground mb-0"
                         >
                             Happy <br />
                             <span className="gold-gradient-text italic font-normal text-glow">Students</span>
@@ -59,7 +59,7 @@ const StudentShowcase = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right"
+                        className="text-foreground/40 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right"
                     >
                         Meet the students who changed their lives at Jayam Institute. Join over 5,000 successful learners.
                     </motion.p>
@@ -78,21 +78,21 @@ const StudentShowcase = () => {
                                 <Quote className="absolute top-6 right-6 w-10 h-10 text-accent/5 group-hover:text-accent/20 transition-all duration-700" />
 
                                 <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-14 h-14 rounded-2xl overflow-hidden transition-all duration-700 border border-white/10 group-hover:border-accent/30">
+                                    <div className="w-14 h-14 rounded-2xl overflow-hidden transition-all duration-700 border border-foreground/10 group-hover:border-accent/30">
                                         <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" />
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-bold tracking-tight text-base md:text-lg group-hover:text-accent transition-colors">{item.name}</h4>
+                                        <h4 className="text-foreground font-bold tracking-tight text-base md:text-lg group-hover:text-accent transition-colors">{item.name}</h4>
                                         <p className="text-accent/60 text-[9px] uppercase tracking-widest font-black">{item.role}</p>
                                     </div>
                                 </div>
 
-                                <p className="text-white/40 text-[11px] md:text-base italic leading-relaxed font-light mb-8 flex-grow relative z-10">
+                                <p className="text-foreground/40 text-[11px] md:text-base italic leading-relaxed font-light mb-8 flex-grow relative z-10">
                                     "{item.content}"
                                 </p>
 
-                                <div className="pt-6 border-t border-white/5 flex flex-col gap-2 mt-auto">
-                                    <span className="text-[9px] uppercase tracking-[0.2em] text-white/20 font-black">{item.stats}</span>
+                                <div className="pt-6 border-t border-foreground/5 flex flex-col gap-2 mt-auto">
+                                    <span className="text-[9px] uppercase tracking-[0.2em] text-foreground/20 font-black">{item.stats}</span>
                                     <div className="flex gap-1">
                                         {[1, 2, 3, 4, 5].map(i => <Star key={i} size={8} className="text-accent fill-accent" />)}
                                     </div>
