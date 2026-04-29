@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import SewingMachine3D from '@/components/SewingMachine3D';
-import CustomCursor from '@/components/CustomCursor';
 
 const ExperiencePage = () => {
     useEffect(() => {
@@ -12,8 +11,6 @@ const ExperiencePage = () => {
 
     return (
         <main className="bg-slate-950 relative w-full selection:bg-primary/30">
-            <CustomCursor />
-
             {/* Sleek Minimal Navigation overlay, wrapped to prevent GSAP/FramerMotion animation conflicts on refresh */}
             <div id="nav-overlay" className="fixed top-0 left-0 w-full z-50 pointer-events-none">
                 <div className="p-6 md:p-10 flex justify-between items-center pointer-events-none w-full animate-fade-in transition-all duration-1000">

@@ -11,7 +11,6 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
-import AnimationScript from '@/components/AnimationScript';
 import ExperienceCTA from '@/components/ExperienceCTA';
 const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
   useEffect(() => {
@@ -20,7 +19,6 @@ const Index = ({ isLoading = false }: { isLoading?: boolean }) => {
 
   return (
     <main className={`bg-background relative ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
-      <AnimationScript />
       {!isLoading && (
         <motion.div
           initial={{ opacity: 0 }}

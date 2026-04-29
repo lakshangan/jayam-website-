@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef, useMemo } from "react";
 import { MoveRight } from "lucide-react";
 import { FloatingPaths } from "@/components/ui/background-paths";
@@ -10,6 +10,7 @@ const Hero = () => {
   const { t } = useAppContext();
   const { toast } = useToast();
   const containerRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -54,7 +55,7 @@ const Hero = () => {
 
   const particles = useMemo(() => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const count = isMobile ? 30 : 80;
+    const count = shouldReduceMotion ? 0 : isMobile ? 12 : 28;
 
     return [...Array(count)].map((_, i) => ({
       id: i,
@@ -64,7 +65,7 @@ const Hero = () => {
       duration: Math.random() * 10 + 10,
       delay: Math.random() * 5
     }));
-  }, []);
+  }, [shouldReduceMotion]);
 
   return (
     <div ref={containerRef} className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-background pt-12 md:pt-16 will-change-transform">
@@ -77,7 +78,7 @@ const Hero = () => {
 
         <div className="absolute inset-0 opacity-80 md:opacity-100">
           <FloatingPaths position={1} />
-          <FloatingPaths position={-1} />
+          {!shouldReduceMotion && <FloatingPaths position={-1} />}
         </div>
 
         {particles.map((p) => (
