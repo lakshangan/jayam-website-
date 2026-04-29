@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
 import NotFound from "./pages/NotFound";
-import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
 
 import SmoothScroll from "./components/SmoothScroll";
@@ -33,7 +32,6 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <SmoothScroll />
-        <CustomCursor />
         <BackgroundMusic />
         <AnimatePresence mode="wait">
           {isLoading && (
