@@ -22,18 +22,13 @@ const TrustBar = () => {
             value: "100%",
             label: t('stats.nsdc'),
             description: "National recognition"
-        },
-        {
-            icon: <Briefcase className="w-6 h-6 transition-colors duration-500" />,
-            value: "20+",
-            label: t('stats.partners'),
         }
     ];
 
     return (
         <section className="py-24 bg-background relative overflow-hidden">
             <div className="container-custom relative z-10">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-stretch">
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
