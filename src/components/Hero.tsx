@@ -11,13 +11,6 @@ const Hero = () => {
   const { toast } = useToast();
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const scaleTransform = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,7 +63,6 @@ const Hero = () => {
   return (
     <div ref={containerRef} className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-background pt-12 md:pt-16 will-change-transform">
       <motion.div
-        style={{ opacity: opacityTransform, scale: scaleTransform }}
         className="absolute inset-0 z-0 pointer-events-none"
       >
         <div className="absolute inset-0 bg-background" />

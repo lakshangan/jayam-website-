@@ -29,20 +29,13 @@ const awards = [
 
 const Awards = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    const x = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
 
     return (
         <section id="awards" ref={containerRef} className="section-padding bg-background relative overflow-hidden">
             <div className="noise-overlay" />
 
-            {/* Dynamic Background Text (Parallax) */}
+            {/* Dynamic Background Text */}
             <motion.div
-                style={{ x }}
                 className="absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap pointer-events-none opacity-[0.02] z-0"
             >
                 <span className="text-[25vw] font-display font-black uppercase italic tracking-tighter text-foreground">

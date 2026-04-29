@@ -9,7 +9,6 @@ import { Analytics } from "@vercel/analytics/react";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/Preloader";
 
-import SmoothScroll from "./components/SmoothScroll";
 import BackgroundMusic from "./components/BackgroundMusic";
 import RouterScrollRestorer from "./components/RouterScrollRestorer";
 
@@ -31,7 +30,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <SmoothScroll />
         <BackgroundMusic />
         <AnimatePresence mode="wait">
           {isLoading && (

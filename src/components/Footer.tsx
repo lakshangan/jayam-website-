@@ -6,14 +6,6 @@ import { useAppContext } from '../context/AppContext';
 const Footer = () => {
   const { t } = useAppContext();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [-100, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
 
   return (
     <footer
@@ -23,9 +15,8 @@ const Footer = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-secondary/10 pointer-events-none" />
 
-      {/* Massive Background Text Component (Parallax) */}
+      {/* Massive Background Text Component */}
       <motion.div
-        style={{ y, opacity }}
         className="absolute bottom-[-5vw] left-0 w-full pointer-events-none z-0 hidden lg:flex justify-between items-end px-20"
       >
         <h2 className="text-[25vw] font-display font-black text-background/[0.03] dark:text-foreground/[0.02] leading-[0.7] tracking-tighter uppercase italic">
@@ -35,7 +26,6 @@ const Footer = () => {
 
       <div className="container-custom relative z-10">
         <motion.div
-          style={{ scale, opacity }}
           className="flex flex-col lg:flex-row justify-between items-start gap-24 mb-32"
         >
           {/* Brand Presence */}

@@ -10,8 +10,8 @@ function Model({ scrollValue }: { scrollValue: number }) {
 
     useFrame((state) => {
         if (ref.current) {
-            // Very simple spin
-            ref.current.rotation.y = state.clock.getElapsedTime() * 0.4 + scrollValue * 4;
+            // Very simple continuous spin, detached from scroll for performance
+            ref.current.rotation.y = state.clock.getElapsedTime() * 0.4;
         }
     });
 
