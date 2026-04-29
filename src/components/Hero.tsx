@@ -74,7 +74,7 @@ const Hero = () => {
         className="absolute inset-0 z-0 pointer-events-none"
       >
         <div className="absolute inset-0 bg-background" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[700px] h-[300px] md:h-[700px] bg-accent/5 blur-[80px] md:blur-[160px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[700px] h-[300px] md:h-[700px] bg-accent/5 blur-[80px] md:blur-[160px] rounded-full pointer-events-none will-change-gpu" />
 
         <div className="absolute inset-0 opacity-80 md:opacity-100">
           <FloatingPaths position={1} />

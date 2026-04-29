@@ -135,13 +135,13 @@
     background: linear-gradient(to right, #c5a358, #e2c17d, #c5a358);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(197, 163, 88, 0.2));
+    filter: drop-shadow(0 4px 12px rgba(197, 163, 88, 0.3));
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 20px rgba(197, 163, 88, 0.25);
   }
 
   .kerning-loose {
@@ -366,7 +366,6 @@
     radial-gradient(at 100% 100%, rgba(197, 163, 88, 0.08) 0px, transparent 50%),
     radial-gradient(circle, rgba(0, 0, 0, 0.03) 1.5px, transparent 1.5px);
   background-size: 100% 100%, 100% 100%, 32px 32px;
-  background-attachment: fixed, fixed, fixed;
 }
 
 .light .bg-secondary {
@@ -374,7 +373,6 @@
     radial-gradient(at 100% 0%, rgba(197, 163, 88, 0.08) 0px, transparent 50%),
     radial-gradient(circle, rgba(0, 0, 0, 0.03) 1.5px, transparent 1.5px);
   background-size: 100% 100%, 32px 32px;
-  background-attachment: fixed, fixed;
 }
 
 .dark .bg-background,
@@ -384,5 +382,4 @@
     radial-gradient(at 100% 100%, rgba(197, 163, 88, 0.04) 0px, transparent 50%),
     radial-gradient(circle, rgba(255, 255, 255, 0.02) 1.5px, transparent 1.5px);
   background-size: 100% 100%, 100% 100%, 32px 32px;
-  background-attachment: fixed, fixed, fixed;
 }

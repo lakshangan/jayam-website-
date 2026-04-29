@@ -66,8 +66,8 @@ const AboutInstitute = () => {
       className="section-padding bg-secondary relative overflow-hidden mask-linear-t mask-linear-b"
     >
       {/* Premium background with decorative elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -z-10 opacity-60" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[120px] -z-10 opacity-40" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -z-10 opacity-60 pointer-events-none will-change-gpu" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[120px] -z-10 opacity-40 pointer-events-none will-change-gpu" />
 
       <div className="container-custom">
         <motion.div
