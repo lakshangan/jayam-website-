@@ -189,23 +189,7 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
 
-  ::-webkit-scrollbar-track {
-    background: #fbfaf8;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #c5a358;
-    border-radius: 10px;
-    border: 2px solid #fbfaf8;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #e2c17d;
-  }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
